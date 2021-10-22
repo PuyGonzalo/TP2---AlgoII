@@ -1,6 +1,6 @@
 # Trabajo Practico 2 - Algoritmos y Programacion II
 ## Grupo: Soldados de MC
-## Integrantes:
+### Integrantes:
 - Puy Gonzalo, Padron: 99784
 - Ivan Lisman, Padron; 100001
 
