@@ -33,4 +33,6 @@ public:
     void restar_cantidad_construidos();
 };
 
+bool contiene_numeros(string s);
+
 #endif // EDFICIO_H

@@ -14,12 +14,18 @@ Edificio::Edificio(){
 Edificio::Edificio(string linea){
     const int CONSTATE_MAYUSCULA = 32;
     const int POS_PRIMERA_LETRA = 0;
+    const string ESPACIO = " ";
     string aux;
 
     stringstream sstream(linea);
     sstream >> this -> nombre;
     this -> identificador = this -> nombre[POS_PRIMERA_LETRA] - CONSTATE_MAYUSCULA;
     sstream >> aux;
+    while(!contiene_numeros(aux)){
+        this -> nombre.append(ESPACIO);
+        this -> nombre.append(aux);
+        sstream >> aux;
+    }
     this -> costo_piedra = stoi(aux);
     sstream >> aux;
     this -> costo_madera = stoi(aux);
@@ -63,4 +69,13 @@ void Edificio::agregar_cantidad_construidos(){
 void Edificio::restar_cantidad_construidos(){
     if(this -> cantidad_construidos != 0)
         this -> cantidad_construidos--;
+}
+
+// Esta funcion seguramente no quede definida aca. Va a ir en otro lado, esto es solo de prueba.
+bool contiene_numeros(string s){
+    const string CONT = "0123456789";
+    if(s.find_first_of(CONT) != string::npos){
+        return true;
+    }else
+        return false;
 }
