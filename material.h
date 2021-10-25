@@ -4,7 +4,9 @@
 #include <sstream>
 #include <fstream>
 #include <string>
-//#include "errors.h"
+#include "errores.h"
+
+using namespace std;
 
 // esto va en constantes.h o tipos.h?
 const int CANT_MATERIALES_CONSTRUCCION = 3;
@@ -22,7 +24,6 @@ const string materiales_de_construccion[CANT_MATERIALES_CONSTRUCCION][CANT_MATER
     {STR_METAL,IDENTIF_METAL}
 };
 
-using namespace std;
 
 class Material{
 

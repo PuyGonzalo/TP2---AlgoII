@@ -12,14 +12,14 @@ Edificio::Edificio(){
 }
 
 Edificio::Edificio(string linea){
-    const int CONSTATE_MAYUSCULA = 32;
+    const int CONSTATE_MAYUSCULA = 32; // estos 3 deberian ir en edificio.h
     const int POS_PRIMERA_LETRA = 0;
     const string ESPACIO = " ";
     string aux;
 
     stringstream sstream(linea);
     sstream >> this -> nombre;
-    this -> identificador = this -> nombre[POS_PRIMERA_LETRA] - CONSTATE_MAYUSCULA;
+    this -> identificador = this -> nombre[POS_PRIMERA_LETRA] - CONSTATE_MAYUSCULA; // string -> redefinir operador, char es mas facil
     sstream >> aux;
     while(!contiene_numeros(aux)){
         this -> nombre.append(ESPACIO);
