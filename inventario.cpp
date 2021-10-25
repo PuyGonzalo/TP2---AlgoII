@@ -76,3 +76,14 @@ Inventario::~Inventario(){
     lista_materiales = nullptr;
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Inventario::mostrar_inventario(){
+
+    for(int i = 0 ; i < cantidad_materiales_actual ; i++)
+        cout << "> " << lista_materiales[i] -> obtener_nombre() << ": " << lista_materiales[i] -> obtener_cantidad() << endl;
+
+}

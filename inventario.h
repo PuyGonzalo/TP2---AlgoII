@@ -9,7 +9,7 @@
 
 using namespace std;
 
-const int ampliacion_cantidad_materiales = 2;
+const int ampliacion_cantidad_materiales = 3;
 
 class Inventario{
 
@@ -36,6 +36,10 @@ public:
     // pre:
     // pos:
     ~Inventario(); // destructor
+
+    // pre:
+    // pos:
+    void mostrar_inventario(); // agregar formato y status_t
 
 };
 
