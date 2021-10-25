@@ -46,7 +46,7 @@ public:
 
     // pre: 
     // pos: 
-    Material(string linea); // Constructor con linea
+    Material(string linea); // Constructor por linea string
 
     // pre: 
     // pos: 

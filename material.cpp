@@ -101,7 +101,7 @@ void Material::restar_cantidad(double cantidad){
 
 string Material::obtener_identificador_con_nombre(string nombre){
 
-    string aux_identif = "X"; // si no es de construccion, no tiene identificador. ¿vacio o una letra random?
+    string aux_identif = "?"; // si no es de construccion, no tiene identificador.
 
     for (int i = 0 ; i < CANT_MATERIALES_CONSTRUCCION ; i++){
         if( nombre == materiales_de_construccion[i][0])
