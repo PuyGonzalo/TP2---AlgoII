@@ -2,7 +2,7 @@
 
 Edificio::Edificio(){
     this -> nombre = " ";
-    this -> identificador = " ";
+    this -> identificador = ' ';
     this -> material_brindado = " ";
     this -> costo_piedra = -1;
     this -> costo_madera = -1;
@@ -12,14 +12,15 @@ Edificio::Edificio(){
 }
 
 Edificio::Edificio(string linea){
-    const int CONSTATE_MAYUSCULA = 32; // estos 3 deberian ir en edificio.h
-    const int POS_PRIMERA_LETRA = 0;
-    const string ESPACIO = " ";
+    //Resolvi el problema usando toupper.
+    // Tengo entendido que es una funcion de C (habria que ver si nos dicen algo por usarla).
+    //Ni puta idea que es eso de locale loc (lo saque de la documentacion de toupper en cplusplus.com).
+    locale loc;
     string aux;
 
     stringstream sstream(linea);
     sstream >> this -> nombre;
-    this -> identificador = this -> nombre[POS_PRIMERA_LETRA] - CONSTATE_MAYUSCULA; // TIRA ERROR, opciones: string -> redefinir operador, char es mas facil
+    this -> identificador = toupper(this->nombre[POS_PRIMERA_LETRA],loc);
     sstream >> aux;
     while(!contiene_numeros(aux)){
         this -> nombre.append(ESPACIO);

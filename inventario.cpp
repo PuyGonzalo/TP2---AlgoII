@@ -7,7 +7,7 @@
 
 Inventario::Inventario(Material** lista_materiales, int cantidad_materiales_actual, int cantidad_materiales_maxima){
 
-    this -> lista_materiales = lista_materiales; // esta bien=
+    this -> lista_materiales = lista_materiales; // esta bien?
     this -> cantidad_materiales_actual = cantidad_materiales_actual;
     this -> cantidad_materiales_maxima = cantidad_materiales_maxima;
 
