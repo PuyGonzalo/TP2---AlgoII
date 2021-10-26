@@ -6,10 +6,12 @@
 #include <string>
 #include <fstream>
 #include "material.h"
+#include "parser.h"
 
 using namespace std;
 
-const int ampliacion_cantidad_materiales = 3;
+const int ampliacion_cantidad_materiales = 2;
+const int cantidad_maxima_inicial = 1;
 
 class Inventario{
 

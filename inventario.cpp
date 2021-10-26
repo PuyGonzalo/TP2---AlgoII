@@ -19,9 +19,9 @@ Inventario::Inventario(Material** lista_materiales, int cantidad_materiales_actu
 
 Inventario::Inventario(){
 
-    this -> lista_materiales = nullptr; // esta bien?
+    this -> lista_materiales = new Material*[cantidad_maxima_inicial]; // esta bien esto en el construct sin param?
     this -> cantidad_materiales_actual = 0;
-    this -> cantidad_materiales_maxima = 0;
+    this -> cantidad_materiales_maxima = cantidad_maxima_inicial;
 
 
 }
@@ -34,17 +34,26 @@ Inventario::Inventario(ifstream& archivo){
     
     string linea_leida;
     Material** nueva_lista_materiales;
-    
+
+    this -> lista_materiales = new Material*[cantidad_maxima_inicial];
+    this -> cantidad_materiales_actual = 0;
+    this -> cantidad_materiales_maxima = cantidad_maxima_inicial; 
  
     while(getline(archivo, linea_leida)){
         
-        Material* material_leido = new Material;
-        Material mat(linea_leida);
-        *material_leido = mat;
+        Parser parser(linea_leida);
+        Material* material_leido = parser.procesar_entrada();
+        cout << material_leido -> obtener_tipo_material() << endl;
+        cout << material_leido -> obtener_cantidad() << endl;
+        cout << material_leido -> obtener_identificador() << endl;
+        cout << "CANTIDAD ACTUAL " << cantidad_materiales_actual << endl;
+        cout << "CANTIDAD MAXIMA " << cantidad_materiales_maxima << endl;
 
         if(cantidad_materiales_actual < cantidad_materiales_maxima){
+            cout << "llegue 1" << endl;
             lista_materiales[cantidad_materiales_actual] = material_leido;
             cantidad_materiales_actual++;
+            cout << "llegue 2" << endl;
         } else{
             nueva_lista_materiales = new Material*[cantidad_materiales_maxima+ampliacion_cantidad_materiales];
             for(int i = 0; i < cantidad_materiales_maxima ; i++)
@@ -82,8 +91,8 @@ Inventario::~Inventario(){
 
 
 void Inventario::mostrar_inventario(){
-
     for(int i = 0 ; i < cantidad_materiales_actual ; i++)
-        cout << "> " << lista_materiales[i] -> obtener_nombre() << ": " << lista_materiales[i] -> obtener_cantidad() << endl;
+        cout << "> " << lista_materiales[i] -> obtener_tipo_material() << ": " << lista_materiales[i] -> obtener_cantidad() << endl;
 
 }
+

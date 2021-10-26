@@ -4,4 +4,3 @@ fabrica 100 100 258 4
 escuela 152 298 45 1
 obelisco 392 0 50 6
 planta electrica 200 150 30 8
-castillo 231 230 392 4 

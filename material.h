@@ -27,9 +27,8 @@ const string materiales_de_construccion[CANT_MATERIALES_CONSTRUCCION][CANT_MATER
 
 class Material{
 
-private:
+protected:
     // Atributos
-    string nombre;
     string identificador; // string por si en un futuro necesito identifadores de 2 letras, por ejemplo
     double cantidad;
 
@@ -38,19 +37,15 @@ public:
 
     // pre: 
     // pos: 
-    Material(string nombre, string indentificador, double cantidad); // Constructor con parametros
+    Material(double cantidad); // Constructor con parametros
 
     // pre: 
     // pos: 
     Material(); // Constructor por default
 
-    // pre: 
-    // pos: 
-    Material(string linea); // Constructor por linea string
-
-    // pre: 
-    // pos: 
-    string obtener_nombre();
+    // pre:
+    // pos:
+    virtual ~Material(){}; // destructor?? deleting object of abstract class type ‘Material’ which has non-virtual destructor will cause undefined behavior
 
     // pre: 
     // pos: 
@@ -68,9 +63,9 @@ public:
     // pos:
     void restar_cantidad(double cantidad);
 
-    // pre: 
-    // pos: 
-    string obtener_identificador_con_nombre(string nombre);
+    // pre:
+    // pos:
+    virtual string obtener_tipo_material() = 0;
 
 };
 
