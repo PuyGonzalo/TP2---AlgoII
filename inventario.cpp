@@ -35,7 +35,7 @@ Inventario::Inventario(ifstream& archivo){
     string linea_leida;
     Material** nueva_lista_materiales;
 
-    this -> lista_materiales = new Material*[cantidad_maxima_inicial];
+    this -> lista_materiales = new Material*[cantidad_maxima_inicial]; // mmmmm
     this -> cantidad_materiales_actual = 0;
     this -> cantidad_materiales_maxima = cantidad_maxima_inicial; 
  
@@ -43,17 +43,10 @@ Inventario::Inventario(ifstream& archivo){
         
         Parser parser(linea_leida);
         Material* material_leido = parser.procesar_entrada();
-        cout << material_leido -> obtener_tipo_material() << endl;
-        cout << material_leido -> obtener_cantidad() << endl;
-        cout << material_leido -> obtener_identificador() << endl;
-        cout << "CANTIDAD ACTUAL " << cantidad_materiales_actual << endl;
-        cout << "CANTIDAD MAXIMA " << cantidad_materiales_maxima << endl;
 
         if(cantidad_materiales_actual < cantidad_materiales_maxima){
-            cout << "llegue 1" << endl;
             lista_materiales[cantidad_materiales_actual] = material_leido;
             cantidad_materiales_actual++;
-            cout << "llegue 2" << endl;
         } else{
             nueva_lista_materiales = new Material*[cantidad_materiales_maxima+ampliacion_cantidad_materiales];
             for(int i = 0; i < cantidad_materiales_maxima ; i++)
