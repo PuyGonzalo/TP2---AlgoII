@@ -3,9 +3,9 @@
 
 #include "material.h"
 #include "edificio.h"
-#include "piedra.h"
-#include "madera.h"
-#include "metal.h"
+#include "Materiales/piedra.h"
+#include "Materiales/madera.h"
+#include "Materiales/metal.h"
 #include <string>
 #include <fstream>
 
