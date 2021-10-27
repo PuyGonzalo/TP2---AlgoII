@@ -20,7 +20,6 @@ Parser::Parser(string linea) {
 
         if(cantidad_de_palabras < cantidad_de_palabras_max){
         sstream >> this -> entrada[i];
-        cout << this -> entrada [i] << endl;
         ++cantidad_de_palabras;
         ++i;
         } else {
@@ -86,7 +85,7 @@ string Parser::tipo_material(){
 double Parser::cantidad_material(){
 
     return stod(entrada[1]);
-    
+
 }
 
 
@@ -95,14 +94,14 @@ double Parser::cantidad_material(){
 
 string Parser::obtener_identificador_con_nombre(string nombre){
 
-    string aux_identif = "?"; // si no es de construccion, no tiene identificador.
+    string identif = "?"; // si no es de construccion, no tiene identificador.
 
     for (int i = 0 ; i < CANT_MATERIALES_CONSTRUCCION ; i++){
         if( nombre == materiales_de_construccion[i][0])
-            aux_identif = materiales_de_construccion[i][1];
+            identif = materiales_de_construccion[i][1];
     }
 
-    return aux_identif;
+    return identif;
 }
 
 

@@ -20,6 +20,8 @@ int main (void){
 
     inventario.mostrar_inventario();
 
+    cout << "hola mundo" << endl;
+
 
     return 0;
 }
