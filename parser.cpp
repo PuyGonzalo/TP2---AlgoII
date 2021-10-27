@@ -1,29 +1,54 @@
 #include <iostream>
 #include "parser.h"
 
-using namespace std;
-
-
 
 // ------------------------------------------------------------------------------------------------------------
 
 
 Parser::Parser(string linea) {
 
-    this -> entrada = new string[1]; // deshardcodear ese numero
+    this -> entrada = new string[cantidad_max_palabras_inicial];
+    this -> cantidad_de_palabras = 0;
+    this ->cantidad_de_palabras_max = cantidad_max_palabras_inicial;
+
     string palabra;
+    string* nueva_entrada;
     int i = 0;
 
-    while(getline(linea, palabra , DELIM_ESPACIO)){
-        if (cantidad_de_palabras < cantidad_de_palabras_max)
-            this -> entrada[i] = palabra;
-        else{
+    stringstream sstream(linea);
+    while (sstream.good()){
 
+        if(cantidad_de_palabras < cantidad_de_palabras_max){
+        sstream >> this -> entrada[i];
+        cout << this -> entrada [i] << endl;
+        ++cantidad_de_palabras;
+        ++i;
+        } else {
+            nueva_entrada = new string[cantidad_de_palabras_max+ampliacion_max_palabras];
+            for(int j = 0; j < cantidad_de_palabras_max ; j++){
+                nueva_entrada[j] = this -> entrada[j]; // reasigno punteros
+            }
+            sstream >> nueva_entrada[cantidad_de_palabras_max];
+
+            delete [] this -> entrada;
+            this -> entrada = nueva_entrada;
+            cantidad_de_palabras_max += ampliacion_max_palabras;
+            cantidad_de_palabras++;
+            ++i;
         }
     }
 
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Parser::~Parser(){
+
+    delete [] entrada;
+
+}
 
 // ------------------------------------------------------------------------------------------------------------
 
@@ -50,13 +75,8 @@ Material* Parser::procesar_entrada_material(){
 
 string Parser::tipo_material(){
 
-    string tipo_material; // buscar forma mas elegante de hacer esto (si o si)
+    return entrada[0];
 
-    stringstream sstream(entrada);
-    
-    sstream >> tipo_material;
-
-    return tipo_material;
 }
 
 
@@ -65,15 +85,8 @@ string Parser::tipo_material(){
 
 double Parser::cantidad_material(){
 
-    string tipo_material;
-    string cantidad_material; // buscar forma mas elegante de hacer esto (si o si)
-
-    stringstream sstream(entrada);
+    return stod(entrada[1]);
     
-    sstream >> tipo_material;
-    sstream >> cantidad_material; // ESTO ES HORRIBLE
-
-    return stod(cantidad_material);
 }
 
 

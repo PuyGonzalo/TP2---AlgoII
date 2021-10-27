@@ -12,6 +12,8 @@
 using namespace std;
 
 const char DELIM_ESPACIO = ' ';
+const int ampliacion_max_palabras = 3;
+const int cantidad_max_palabras_inicial = 1;
 
 class Parser {
 private:
@@ -29,7 +31,7 @@ public:
 
     // pre:
     // pos:
-    ~Parser(){}; // IMPLEMENTARLO (si pidio memoria..)
+    ~Parser();
 
 
     // ### Para materiales ###

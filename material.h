@@ -37,7 +37,7 @@ public:
 
     // pre: 
     // pos: 
-    Material(double cantidad); // Constructor con parametros
+    Material(double cantidad); // Constructor con parametros (solo cantidad.. esta bien?)
 
     // pre: 
     // pos: 
