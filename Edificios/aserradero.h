@@ -1,12 +1,8 @@
-//
-// Created by gonzalop on 27/10/21.
-//
-
 #ifndef ASERRADERO_H
 #define ASERRADERO_H
 
-#include "edificio.h"
-#include "material.h"
+#include "../edificio.h"
+#include "../material.h"
 
 const int CANTIDAD_MADERA_BRINDADA = 25;
 

@@ -1,7 +1,7 @@
 #ifndef PIEDRA_H
 #define PIEDRA_H
 
-#include "material.h"
+#include "../material.h"
 
 class Piedra: public Material {
 

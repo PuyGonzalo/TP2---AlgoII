@@ -1,7 +1,7 @@
 #ifndef MADERA_H
 #define MADERA_H
 
-#include "material.h"
+#include "../material.h"
 
 class Madera: public Material {
 

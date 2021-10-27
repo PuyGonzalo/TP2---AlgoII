@@ -7,8 +7,8 @@
 
 using namespace std;
 
-const string PATH_ENTRADA_MATERIALES = "materiales.txt";
-const string PATH_ENTRADA_EDIFICIOS = "edificios.txt";
+const string PATH_ENTRADA_MATERIALES = "Archivos/materiales.txt";
+const string PATH_ENTRADA_EDIFICIOS = "Archivos/edificios.txt";
 
 int main (void){
 

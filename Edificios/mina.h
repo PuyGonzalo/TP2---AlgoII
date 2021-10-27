@@ -1,8 +1,8 @@
 #ifndef MINA_H
 #define MINA_H
 
-#include "edificio.h"
-#include "material.h"
+#include "../edificio.h"
+#include "../material.h"
 
 const int CANTIDAD_PIEDRA_BRINDADA = 15;
 
