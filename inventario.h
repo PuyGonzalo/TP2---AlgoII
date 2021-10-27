@@ -22,6 +22,7 @@ private:
     int cantidad_materiales_maxima;
 
 public:
+    // Metodos
 
     // pre: 
     // pos: 

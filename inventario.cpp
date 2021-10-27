@@ -42,7 +42,7 @@ Inventario::Inventario(ifstream& archivo){
     while(getline(archivo, linea_leida)){
         
         Parser parser(linea_leida);
-        Material* material_leido = parser.procesar_entrada();
+        Material* material_leido = parser.procesar_entrada_material();
 
         if(cantidad_materiales_actual < cantidad_materiales_maxima){
             lista_materiales[cantidad_materiales_actual] = material_leido;
@@ -70,8 +70,8 @@ Inventario::Inventario(ifstream& archivo){
 Inventario::~Inventario(){
     
     for (int i = 0 ; i < cantidad_materiales_maxima ; i++){
-    delete lista_materiales[i];
-    lista_materiales[i] = nullptr;
+        delete lista_materiales[i];
+        lista_materiales[i] = nullptr;
     }
     
     delete [] lista_materiales;

@@ -3,27 +3,50 @@
 
 using namespace std;
 
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 Parser::Parser(string linea) {
-    this -> entrada = linea;
+
+    this -> entrada = new string[1]; // deshardcodear ese numero
+    string palabra;
+    int i = 0;
+
+    while(getline(linea, palabra , DELIM_ESPACIO)){
+        if (cantidad_de_palabras < cantidad_de_palabras_max)
+            this -> entrada[i] = palabra;
+        else{
+
+        }
+    }
+
 }
 
 
-Material* Parser::procesar_entrada(){
+// ------------------------------------------------------------------------------------------------------------
+
+
+Material* Parser::procesar_entrada_material(){
 
     Material* material = nullptr; // esto no es instanciar la clase material
 
     // me fijo que tipo de material es para poder crearlo
     if (tipo_material() == STR_PIEDRA){
-        material = new Piedra(this -> cantidad_material()); // puedo hacerlo xq es un puntero, no una instancia (Y PORQUE PPALMENTE son madre-hijo)
+        material = new Piedra(cantidad_material()); // puedo hacerlo xq es un puntero, no una instancia (Y PORQUE PPALMENTE son madre-hijo)
     } else if (tipo_material() == STR_MADERA){
-        material = new Madera(this -> cantidad_material()); // los this son necesarios?
+        material = new Madera(cantidad_material());
     } else {
-        material = new Metal(this -> cantidad_material()); // poner identif con nombre en parser? parser_material y parser_edificios
+        material = new Metal(cantidad_material());
     }
 
     return material;
-
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 string Parser::tipo_material(){
 
@@ -34,8 +57,10 @@ string Parser::tipo_material(){
     sstream >> tipo_material;
 
     return tipo_material;
-
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
 
 
 double Parser::cantidad_material(){
@@ -49,9 +74,10 @@ double Parser::cantidad_material(){
     sstream >> cantidad_material; // ESTO ES HORRIBLE
 
     return stod(cantidad_material);
-
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
 
 
 string Parser::obtener_identificador_con_nombre(string nombre){
@@ -64,5 +90,9 @@ string Parser::obtener_identificador_con_nombre(string nombre){
     }
 
     return aux_identif;
-
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
