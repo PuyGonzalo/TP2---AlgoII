@@ -2,7 +2,7 @@
 #define FABRICA_H
 
 #include "../edificio.h"
-#include "../material.h
+#include "../material.h"
 
 const int CANTIDAD_METAL_BRINDADA = 40;
 
