@@ -8,15 +8,19 @@
 using namespace std;
 
 const int POS_PRIMERA_LETRA = 0;
-const string ESPACIO = " ";
+const string STR_MINA = "mina";
+const string STR_ASERRADERO = "aserradero";
+const string STR_FABRICA = "fabrica";
+const string STR_ESCUELA = "escuela";
+const string STR_OBELISCO = "obelisco";
+const string STR_YACIMIENTO = "yacimiento";
+const string STR_P_ELECTRICA = "planta electrica";
 
 
 class Edificio{
 
-private:
-    string nombre;
+protected:
     string identificador;
-    string material_brindado;
     int costo_piedra;
     int costo_madera;
     int costo_metal;
@@ -31,7 +35,11 @@ public:
 
     //PRE:
     //POST:
-    Edificio(string linea);
+    Edificio(string identificador, int consto_piedra, int costo_madera, int costo_metal,int cantidad_construidos, int maximos_permitidos);
+
+    //PRE:
+    //POST:
+    virtual ~Edificio(){};
 
     //PRE:
     //POST:
@@ -51,7 +59,7 @@ public:
 
     //PRE:
     //POST:
-    string obtener_nombre();
+    virtual string obtener_tipo_edificio() = 0;
 
     //PRE:
     //POST:
@@ -59,11 +67,7 @@ public:
 
     //PRE:
     //POST:
-    //string obtener_material_brindado(); // DUDAS
-
-    //PRE:
-    //POST:
-    void agregar_cantidad_construidos(); //Nombre prototipo, esta horrible eso xD.
+    void agregar_cantidad_construidos();
 
     //PRE:
     //POST:
