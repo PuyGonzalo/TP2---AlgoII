@@ -11,7 +11,7 @@
 
 using namespace std;
 
-
+const string ESPACIO = " ";
 const int ampliacion_max_palabras = 3;
 const int cantidad_max_palabras_inicial = 1;
 
@@ -54,6 +54,32 @@ public:
 
 
     // ### Para edificios ###
+
+    //PRE:
+    //POST:
+    Edificio* procesar_entrada_edificio();
+
+    // pre:
+    // pos:
+    string nombre_edificio();
+
+    // pre:
+    // pos:
+    double cantidad_piedra();
+
+    // pre:
+    // pos:
+    double cantidad_madera();
+
+    // pre:
+    // pos:
+    double cantidad_metal();
+
+    // pre:
+    // pos:
+    double cantidad_maxima_permitida();
+
+
 
 
 

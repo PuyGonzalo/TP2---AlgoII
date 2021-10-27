@@ -12,7 +12,7 @@ private:
     string material_brindado;
     int cantidad_material_brindado;
 public:
-    Aserradero(string identificador, int consto_piedra, int costo_madera, int costo_metal,int cantidad_construidos, int maximos_permitidos);
+    Aserradero(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
     ~Aserradero(){};
     string obtener_tipo_edificio();
     string obtener_material_brindado();
@@ -20,4 +20,4 @@ public:
 };
 
 
-#endif //TP2___ALGOII_ASERRADERO_H
+#endif //ASERRADERO_H

@@ -5,7 +5,7 @@
 
 class Planta_Electrica: public Edificio {
 public:
-    Planta_Electrica(string identificador, int consto_piedra, int costo_madera, int costo_metal,int cantidad_construidos, int maximos_permitidos);
+    Planta_Electrica(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
     ~Planta_Electrica(){};
     string obtener_tipo_edificio();
 };

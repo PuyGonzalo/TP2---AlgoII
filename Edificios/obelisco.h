@@ -6,7 +6,7 @@
 
 class Obelisco: public Edificio {
 public:
-    Obelisco(string identificador, int consto_piedra, int costo_madera, int costo_metal,int cantidad_construidos, int maximos_permitidos);
+    Obelisco(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
     ~Obelisco(){};
     string obtener_tipo_edificio();
 };

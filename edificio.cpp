@@ -38,12 +38,12 @@ Edificio::Edificio(string linea){
 }
 */
 
-Edificio::Edificio(string identificador, int consto_piedra, int costo_madera, int costo_metal,int cantidad_construidos, int maximos_permitidos){
+Edificio::Edificio(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos){
     this -> identificador = identificador;
     this -> costo_piedra = consto_piedra;
     this -> costo_madera = costo_madera;
     this -> costo_metal = costo_metal;
-    this -> cantidad_construidos = cantidad_construidos;
+    this -> cantidad_construidos = 0;
     this -> maximos_permitidos = maximos_permitidos;
 }
 

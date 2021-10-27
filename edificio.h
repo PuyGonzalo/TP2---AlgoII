@@ -35,7 +35,7 @@ public:
 
     //PRE:
     //POST:
-    Edificio(string identificador, int consto_piedra, int costo_madera, int costo_metal,int cantidad_construidos, int maximos_permitidos);
+    Edificio(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
 
     //PRE:
     //POST:

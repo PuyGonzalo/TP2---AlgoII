@@ -1,7 +1,7 @@
 #include "mina.h"
 
-Mina::Mina(string identificador, int consto_piedra, int costo_madera, int costo_metal,int cantidad_construidos, int maximos_permitidos) :
-Edificio(identificador, consto_piedra, costo_madera, costo_metal, cantidad_construidos, maximos_permitidos) {
+Mina::Mina(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos) :
+Edificio(identificador, consto_piedra, costo_madera, costo_metal, maximos_permitidos) {
     this -> material_brindado = STR_PIEDRA;
     this -> cantidad_material_brindado = CANTIDAD_PIEDRA_BRINDADA;
 }
