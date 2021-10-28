@@ -5,7 +5,7 @@
 #include <fstream>
 #include <string>
 #include "errores.h"
-#include "Casilleros/formatos.h"
+#include "formatos.h"
 
 using namespace std;
 

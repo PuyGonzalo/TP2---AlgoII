@@ -8,9 +8,9 @@ Edificio::Edificio(){
     this -> maximos_permitidos = -1;
 }
 
-Edificio::Edificio(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos){
+Edificio::Edificio(string identificador, int costo_piedra, int costo_madera, int costo_metal, int maximos_permitidos){
     this -> identificador = identificador;
-    this -> costo_piedra = consto_piedra;
+    this -> costo_piedra = costo_piedra;
     this -> costo_madera = costo_madera;
     this -> costo_metal = costo_metal;
     this -> cantidad_construidos = 0;

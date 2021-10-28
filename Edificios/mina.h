@@ -17,7 +17,7 @@ public:
 
     // pre: 
     // pos: 
-    Mina(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
+    Mina(string identificador, int costo_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
 
     // pre: 
     // pos: 

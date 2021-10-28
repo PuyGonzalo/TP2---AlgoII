@@ -36,7 +36,7 @@ public:
 
     // pre: 
     // pos: 
-    Edificio(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
+    Edificio(string identificador, int costo_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
 
     // pre: 
     // pos: 

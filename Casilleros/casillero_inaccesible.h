@@ -3,6 +3,7 @@
 
 
 #include "../casillero.h"
+#include "../formatos.h"
 
 class Casillero_Inaccesible : public Casillero {
 

@@ -82,15 +82,15 @@ public:
 
     // pre:
     // pos:
-    int cantidad_piedra();
+    int costo_piedra();
 
     // pre:
     // pos:
-    int cantidad_madera();
+    int costo_madera();
 
     // pre:
     // pos:
-    int cantidad_metal();
+    int costo_metal();
 
     // pre:
     // pos:

@@ -10,7 +10,7 @@ public:
 
     // pre: 
     // pos: 
-    Obelisco(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
+    Obelisco(string identificador, int costo_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
 
     // pre: 
     // pos: 

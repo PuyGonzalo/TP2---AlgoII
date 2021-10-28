@@ -18,7 +18,7 @@ public:
 
     // pre: 
     // pos: 
-    Aserradero(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
+    Aserradero(string identificador, int costo_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
 
     // pre: 
     // pos: 

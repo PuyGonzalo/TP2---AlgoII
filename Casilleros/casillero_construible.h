@@ -3,6 +3,7 @@
 
 #include "../edificio.h"
 #include "../casillero.h"
+#include "../formatos.h"
 
 class Casillero_Construible: public Casillero {
 

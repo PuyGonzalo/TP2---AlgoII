@@ -9,7 +9,7 @@ public:
 
     // pre: 
     // pos: 
-    Planta_Electrica(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
+    Planta_Electrica(string identificador, int costo_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
 
     // pre: 
     // pos: 

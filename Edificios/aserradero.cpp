@@ -1,7 +1,7 @@
 #include "aserradero.h"
 
-Aserradero::Aserradero(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos) :
-Edificio(identificador, consto_piedra, costo_madera, costo_metal, maximos_permitidos) {
+Aserradero::Aserradero(string identificador, int costo_piedra, int costo_madera, int costo_metal, int maximos_permitidos) :
+Edificio(identificador, costo_piedra, costo_madera, costo_metal, maximos_permitidos) {
     this -> material_brindado = STR_MADERA;
     this -> cantidad_material_brindado = CANTIDAD_MADERA_BRINDADA;
 }
