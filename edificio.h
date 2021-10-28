@@ -3,7 +3,6 @@
 
 #include <string>
 #include <sstream>
-#include <cctype>
 #include "errores.h"
 
 using namespace std;

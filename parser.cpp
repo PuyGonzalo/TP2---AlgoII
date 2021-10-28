@@ -113,26 +113,41 @@ string Parser::obtener_identificador_con_nombre(string nombre){
 
 }*/
 
+string Parser::obtener_identificador_edificio(){
+    string identificador;
+    locale loc;
+
+    identificador = toupper(this->entrada[0][POS_PRIMERA_LETRA],loc);
+
+    return identificador;
+}
+
 string Parser::nombre_edificio(){
-    return entrada[0];
+    string nombre_edificio;
+    int i = 0;
+
+    for( ; i < cantidad_de_palabras_max - CANTIDAD_PARAMETROS_EDIFICIO - 1; ++i){
+        nombre_edificio.append(this -> entrada[i]);
+        nombre_edificio.append(ESPACIO);
+    }
+
+    nombre_edificio.append(this -> entrada[i]);
+
+    return nombre_edificio;
 }
 
 int Parser::cantidad_piedra(){
-    return 0; // pa que compile mientras estas en yoga (?)
-    //return stoi(entrada[1]);
+    return stoi(entrada[cantidad_de_palabras_max - 4]);
 }
 
 int Parser::cantidad_madera(){
-    return 0;
-    //return stoi(entrada[2]);
+    return stoi(entrada[cantidad_de_palabras_max - 3]);
 }
 
 int Parser::cantidad_metal(){
-    return 0;
-    //return stoi(entrada[3]);
+    return stoi(entrada[cantidad_de_palabras_max - 2]);
 }
 
 int Parser::cantidad_maxima_permitida(){
-    return 0;
-    //return stoi(entrada[4]);
+    return stoi(entrada[cantidad_de_palabras_max - 1]);
 }

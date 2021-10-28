@@ -9,12 +9,16 @@
 // incluir los edificios y superficies/casilleros
 #include <string>
 #include <fstream>
+#include <algorithm>
+#include <cctype>
 
 using namespace std;
 
 const string ESPACIO = " ";
 const int ampliacion_max_palabras = 3;
 const int cantidad_max_palabras_inicial = 1;
+const int CANTIDAD_PARAMETROS_EDIFICIO = 4;
+
 
 class Parser {
 private:
@@ -59,6 +63,10 @@ public:
     // pre:
     // pos:
     Edificio* procesar_entrada_edificio();
+
+    //PRE:
+    //POST:
+    string obtener_identificador_edificio();
 
     // pre:
     // pos:
