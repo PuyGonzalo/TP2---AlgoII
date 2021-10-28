@@ -108,10 +108,27 @@ string Parser::obtener_identificador_con_nombre(string nombre){
 // ------------------------------------------------------------------------------------------------------------
 
 
-/*Edificio* Parser::procesar_entrada_edificio(){
-    Edificio* edificios = nullptr;
+Edificio* Parser::procesar_entrada_edificio(){
+    Edificio* edificio = nullptr;
 
-}*/
+    if(nombre_edificio() == STR_MINA){
+        edificio = new Mina(obtener_identificador_edificio(), cantidad_piedra(), cantidad_madera(), cantidad_metal(), cantidad_maxima_permitida());
+    } else if(nombre_edificio() == STR_P_ELECTRICA){
+        edificio = new Planta_Electrica(obtener_identificador_edificio(), cantidad_piedra(), cantidad_madera(), cantidad_metal(), cantidad_maxima_permitida());
+    } else if(nombre_edificio() == STR_YACIMIENTO){
+        edificio = new Yacimiento(obtener_identificador_edificio(), cantidad_piedra(), cantidad_madera(), cantidad_metal(), cantidad_maxima_permitida());
+    } else if(nombre_edificio() == STR_ESCUELA){
+        edificio = new Escuela(obtener_identificador_edificio(), cantidad_piedra(), cantidad_madera(), cantidad_metal(), cantidad_maxima_permitida());
+    } else if(nombre_edificio() == STR_OBELISCO){
+        edificio = new Obelisco(obtener_identificador_edificio(), cantidad_piedra(), cantidad_madera(), cantidad_metal(), cantidad_maxima_permitida());
+    } else if(nombre_edificio() == STR_FABRICA){
+        edificio = new Fabrica(obtener_identificador_edificio(), cantidad_piedra(), cantidad_madera(), cantidad_metal(), cantidad_maxima_permitida());
+    } else {
+        edificio = new Aserradero(obtener_identificador_edificio(), cantidad_piedra(), cantidad_madera(), cantidad_metal(), cantidad_maxima_permitida());
+    }
+
+    return edificio;
+}
 
 string Parser::obtener_identificador_edificio(){
     string identificador;

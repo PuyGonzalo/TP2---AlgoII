@@ -6,10 +6,17 @@
 #include "Materiales/piedra.h"
 #include "Materiales/madera.h"
 #include "Materiales/metal.h"
+#include "Edificios/mina.h"
+#include "Edificios/aserradero.h"
+#include "Edificios/escuela.h"
+#include "Edificios/fabrica.h"
+#include "Edificios/obelisco.h"
+#include "Edificios/planta_electrica.h"
+#include "Edificios/yacimiento.h"
+
 // incluir los edificios y superficies/casilleros
 #include <string>
 #include <fstream>
-#include <algorithm>
 #include <cctype>
 
 using namespace std;
