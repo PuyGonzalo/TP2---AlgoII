@@ -19,9 +19,9 @@ int main (void){
 	ifstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES);
     ifstream archivo_entrada_edificios(PATH_ENTRADA_EDIFICIOS);
 
-    /*Inventario inventario(archivo_entrada_materiales);
+    Inventario inventario(archivo_entrada_materiales);
 
-    inventario.mostrar_inventario();*/
+    inventario.mostrar_inventario();
 
 
     Parser parser("planta electrica 100 300 400 5");
