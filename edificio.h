@@ -7,7 +7,6 @@
 
 using namespace std;
 
-const int POS_PRIMERA_LETRA = 0;
 const string STR_MINA = "mina";
 const string STR_ASERRADERO = "aserradero";
 const string STR_FABRICA = "fabrica";
