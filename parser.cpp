@@ -107,27 +107,32 @@ string Parser::obtener_identificador_con_nombre(string nombre){
 
 // ------------------------------------------------------------------------------------------------------------
 
-Edificio* Parser::procesar_entrada_edificio(){
+
+/*Edificio* Parser::procesar_entrada_edificio(){
     Edificio* edificios = nullptr;
 
-}
+}*/
 
 string Parser::nombre_edificio(){
     return entrada[0];
 }
 
 int Parser::cantidad_piedra(){
-    return stoi(entrada[1]);
+    return 0; // pa que compile mientras estas en yoga (?)
+    //return stoi(entrada[1]);
 }
 
 int Parser::cantidad_madera(){
-    return stoi(entrada[2]);
+    return 0;
+    //return stoi(entrada[2]);
 }
 
 int Parser::cantidad_metal(){
-    return stoi(entrada[3]);
+    return 0;
+    //return stoi(entrada[3]);
 }
 
 int Parser::cantidad_maxima_permitida(){
-    return stoi(entrada[4]);
+    return 0;
+    //return stoi(entrada[4]);
 }

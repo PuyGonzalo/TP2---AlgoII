@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <cctype>
+#include "errores.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ const string STR_P_ELECTRICA = "planta electrica";
 class Edificio{
 
 protected:
+    // Atributos
     string identificador;
     int costo_piedra;
     int costo_madera;
@@ -28,52 +30,53 @@ protected:
     int maximos_permitidos;
 
 public:
+    // Metodos
 
-    //PRE:
-    //POST:
+    // pre: 
+    // pos: 
     Edificio();
 
-    //PRE:
-    //POST:
+    // pre: 
+    // pos: 
     Edificio(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
 
-    //PRE:
-    //POST:
+    // pre: 
+    // pos: 
     virtual ~Edificio(){};
 
-    //PRE:
-    //POST:
+    // pre: 
+    // pos: 
     int obtener_costo_piedra();
 
-    //PRE:
-    //POST:
+    // pre: 
+    // pos: 
     int obtener_costo_madera();
 
-    //PRE:
-    //POST:
+    // pre: 
+    // pos: 
     int obtener_costo_metal();
 
-    //PRE:
-    //POST:
+    // pre: 
+    // pos: 
     int obtener_maximos_permitidos();
 
-    //PRE:
-    //POST:
+    // pre: 
+    // pos: 
     virtual string obtener_tipo_edificio() = 0;
 
-    //PRE:
-    //POST:
+    // pre: 
+    // pos: 
     string obtener_identificador();
 
-    //PRE:
-    //POST:
+    // pre: 
+    // pos: 
     void agregar_cantidad_construidos();
 
-    //PRE:
-    //POST:
+    // pre: 
+    // pos: 
     void restar_cantidad_construidos();
 };
 
-bool contiene_numeros(string s);
+bool contiene_numeros(string s); // esto va en UTILES o HERRAMIENTAS
 
 #endif // EDFICIO_H

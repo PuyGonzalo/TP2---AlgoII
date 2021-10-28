@@ -1,8 +1,10 @@
 #include <iostream>
 #include "edificio.h"
-#include "errores.h"
 #include "material.h"
 #include "inventario.h"
+#include "superficie.h"
+#include "casillero.h"
+#include "errores.h"
 #include "menu.h"
 
 using namespace std;
@@ -20,7 +22,7 @@ int main (void){
 
     inventario.mostrar_inventario();
 
-    cout << "hola mundo" << endl;
+
 
 
     return 0;

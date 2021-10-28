@@ -14,7 +14,7 @@ class Lago : Superficie {
 
 public:
     // Metodos
-
+    Lago();
 
 };
 

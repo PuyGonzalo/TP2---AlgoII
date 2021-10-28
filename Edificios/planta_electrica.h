@@ -5,8 +5,18 @@
 
 class Planta_Electrica: public Edificio {
 public:
+    // Metodos
+
+    // pre: 
+    // pos: 
     Planta_Electrica(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
+
+    // pre: 
+    // pos: 
     ~Planta_Electrica(){};
+
+    // pre: 
+    // pos: 
     string obtener_tipo_edificio();
 };
 

@@ -6,6 +6,7 @@
 #include "Materiales/piedra.h"
 #include "Materiales/madera.h"
 #include "Materiales/metal.h"
+// incluir los edificios y superficies/casilleros
 #include <string>
 #include <fstream>
 
@@ -55,8 +56,8 @@ public:
 
     // ### Para edificios ###
 
-    //PRE:
-    //POST:
+    // pre:
+    // pos:
     Edificio* procesar_entrada_edificio();
 
     // pre:
@@ -65,19 +66,19 @@ public:
 
     // pre:
     // pos:
-    double cantidad_piedra();
+    int cantidad_piedra();
 
     // pre:
     // pos:
-    double cantidad_madera();
+    int cantidad_madera();
 
     // pre:
     // pos:
-    double cantidad_metal();
+    int cantidad_metal();
 
     // pre:
     // pos:
-    double cantidad_maxima_permitida();
+    int cantidad_maxima_permitida();
 
 
 

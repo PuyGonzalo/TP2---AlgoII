@@ -5,8 +5,18 @@
 
 class Yacimiento: public Edificio {
 public:
+    // Metodos
+
+    // pre: 
+    // pos: 
     Yacimiento(string identificador, int consto_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
+
+    // pre: 
+    // pos: 
     ~Yacimiento(){};
+
+    // pre: 
+    // pos: 
     string obtener_tipo_edificio();
 };
 

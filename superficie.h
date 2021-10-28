@@ -12,14 +12,35 @@ class Superficie{
 
 protected:
     // Atributos
+    char identificador;
+    string color; // "ROJO" o "R" ? 
     bool transitable;
     bool construible;
     bool accesible;
-    string color; // "ROJO" o "R" ? 
 
 public:
     // Metodos
+    Superficie(char identificador);
 
+    // pre: 
+    // pos: 
+    char obtener_identificador();
+
+    // pre: 
+    // pos: 
+    string obtener_color();
+
+    // pre: 
+    // pos: 
+    bool es_transitable();
+
+    // pre: 
+    // pos: 
+    bool es_construible();
+
+    // pre: 
+    // pos: 
+    bool es_accesible();
 
 };
 

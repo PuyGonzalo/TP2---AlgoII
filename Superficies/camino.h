@@ -14,6 +14,7 @@ class Camino : Superficie {
 
 public:
     // Metodos
+    Camino();
 
 
 };
