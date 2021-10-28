@@ -14,7 +14,7 @@ class Terreno : Superficie {
 
 public:
     // Metodos
-    Terreno();
+    Terreno(char identificador);
 
 };
 

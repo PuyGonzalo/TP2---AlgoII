@@ -2,7 +2,7 @@
 #include "camino.h"
 
 
-Camino::Camino() : Superficie(identificador) {
+Camino::Camino(char identificador) : Superficie(identificador) {
     this -> color = "gris";
     this -> transitable = true;
     this -> construible = false;

@@ -13,7 +13,7 @@ class Casillero{
 
 protected:
     // Atributos
-    Superficie superficie;
+    Superficie* superficie;
     int coord_x;
     int coord_y;
     bool ocupado;
@@ -21,9 +21,27 @@ protected:
 
 public:
     // Metodos
-    Casillero();
+    Casillero(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
 
+    // pre: 
+    // pos: 
+    int obtener_coordenada_x();
     
+    // pre: 
+    // pos: 
+    int obtener_coordenada_y();
+
+    // pre:
+    // pos:
+    bool esta_ocupado();
+
+    // pre:
+    // pos:
+    virtual void imprimir_casillero() = 0;
+
+    // pre:
+    // pos:
+    virtual void consultar_casillero() = 0;
 
 };
 

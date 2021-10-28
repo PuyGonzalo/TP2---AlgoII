@@ -2,7 +2,7 @@
 #include "lago.h"
 
 
-Lago::Lago() : Superficie(identificador) {
+Lago::Lago(char identificador) : Superficie(identificador) {
     this -> color = "azul";
     this -> transitable = false;
     this -> construible = false;

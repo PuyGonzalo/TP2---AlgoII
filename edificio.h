@@ -79,4 +79,4 @@ public:
 
 bool contiene_numeros(string s); // esto va en UTILES o HERRAMIENTAS
 
-#endif // EDFICIO_H
+#endif // EDIFICIO_H
