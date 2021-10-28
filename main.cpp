@@ -30,7 +30,7 @@ int main (void){
     cout << parser.costo_piedra() << endl;
     cout << parser.costo_madera() << endl;
     cout << parser.costo_metal() << endl; // por la primera funcion (obtener nombre edif) todo está agarrando 1 a la derecha de lo que tiene que agarrar
-  //  cout << parser.cantidad_maxima_permitida() << endl; ESTO LEAKEA 
+    cout << parser.cantidad_maxima_permitida() << endl; //ESTO LEAKEA. YA NO LEAKEA MAS JAJAJAJAJ A CASA CHICHULIN
 
 
 

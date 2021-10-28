@@ -144,28 +144,30 @@ string Parser::nombre_edificio(){
     string nombre_edificio;
     int i = 0;
 
-    for( ; i < cantidad_de_palabras_max - CANTIDAD_PARAMETROS_EDIFICIO - 1; ++i){
-        nombre_edificio.append(this -> entrada[i]);
-        nombre_edificio.append(ESPACIO);
-    }
+    if(!contiene_numeros(this -> entrada[i+1])) {
+        for (; i < this -> cantidad_de_palabras - CANTIDAD_PARAMETROS_EDIFICIO - 1; ++i) {
+            nombre_edificio.append(this->entrada[i]);
+            nombre_edificio.append(ESPACIO);
+        }
 
-    nombre_edificio.append(this -> entrada[i]);
+        nombre_edificio.append(this->entrada[i]);
+        return nombre_edificio;
+    } else return this -> entrada[i];
 
-    return nombre_edificio;
 }
 
 int Parser::costo_piedra(){
-    return stoi(entrada[cantidad_de_palabras_max - 4]);
+    return stoi(entrada[cantidad_de_palabras - 4]);
 }
 
 int Parser::costo_madera(){
-    return stoi(entrada[cantidad_de_palabras_max - 3]);
+    return stoi(entrada[cantidad_de_palabras - 3]);
 }
 
 int Parser::costo_metal(){
-    return stoi(entrada[cantidad_de_palabras_max - 2]);
+    return stoi(entrada[cantidad_de_palabras - 2]);
 }
 
 int Parser::cantidad_maxima_permitida(){
-    return stoi(entrada[cantidad_de_palabras_max - 1]);
+    return stoi(entrada[cantidad_de_palabras - 1]);
 }
