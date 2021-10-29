@@ -49,7 +49,7 @@ Inventario::Inventario(ifstream& archivo){
             cantidad_materiales_actual++;
         } else{
             nueva_lista_materiales = new Material*[cantidad_materiales_maxima+ampliacion_cantidad_materiales];
-            for(int i = 0; i < cantidad_materiales_maxima ; i++)
+            for(int i = 0; i < cantidad_materiales_maxima ; ++i)
                 nueva_lista_materiales[i] = lista_materiales[i]; // reasigno punteros
             nueva_lista_materiales[cantidad_materiales_maxima] = material_leido;
 
@@ -67,7 +67,7 @@ Inventario::Inventario(ifstream& archivo){
 
 Inventario::~Inventario(){
     
-    for (int i = 0 ; i < cantidad_materiales_maxima ; i++){
+    for (int i = 0 ; i < cantidad_materiales_maxima ; ++i){
         delete lista_materiales[i];
         lista_materiales[i] = nullptr;
     }
@@ -82,7 +82,7 @@ Inventario::~Inventario(){
 
 
 void Inventario::mostrar_inventario(){
-    for(int i = 0 ; i < cantidad_materiales_actual ; i++)
+    for(int i = 0 ; i < cantidad_materiales_actual ; ++i)
         cout << "> " << lista_materiales[i] -> obtener_tipo_material() << ": " << lista_materiales[i] -> obtener_cantidad() << endl;
 
 }
