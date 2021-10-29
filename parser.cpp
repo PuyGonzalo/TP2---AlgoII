@@ -9,10 +9,10 @@ Parser::Parser(string linea) {
 
     this -> entrada = new string[cantidad_max_palabras_inicial];
     this -> cantidad_de_palabras = 0;
-    this ->cantidad_de_palabras_max = cantidad_max_palabras_inicial;
+    this -> cantidad_de_palabras_max = cantidad_max_palabras_inicial;
 
     string palabra;
-    string* nueva_entrada;
+    string* nueva_entrada; // declararlo directo en el else?
     int i = 0;
 
     stringstream sstream(linea);
@@ -44,10 +44,11 @@ Parser::Parser(string linea) {
 
 
 Parser::~Parser(){
-    cout << "eliminooo"<< endl;
+
     delete [] entrada;
 
 }
+
 
 // ------------------------------------------------------------------------------------------------------------
 
@@ -92,22 +93,6 @@ double Parser::cantidad_material(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Parser::obtener_identificador_con_nombre(string nombre){
-
-    string identif = "?"; // si no es de construccion, no tiene identificador.
-
-    for (int i = 0 ; i < CANT_MATERIALES_CONSTRUCCION ; i++){
-        if( nombre == materiales_de_construccion[i][0])
-            identif = materiales_de_construccion[i][1];
-    }
-
-    return identif;
-}
-
-
-// ------------------------------------------------------------------------------------------------------------
-
-
 Edificio* Parser::procesar_entrada_edificio(){
    
     Edificio* edificio = nullptr;
@@ -131,6 +116,10 @@ Edificio* Parser::procesar_entrada_edificio(){
     return edificio;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 string Parser::obtener_identificador_edificio(){
     string identificador;
     locale loc;
@@ -139,6 +128,10 @@ string Parser::obtener_identificador_edificio(){
 
     return identificador;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 string Parser::nombre_edificio(){
     string nombre_edificio;
@@ -156,17 +149,33 @@ string Parser::nombre_edificio(){
 
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 int Parser::costo_piedra(){
     return stoi(entrada[cantidad_de_palabras - 4]);
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 int Parser::costo_madera(){
     return stoi(entrada[cantidad_de_palabras - 3]);
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 int Parser::costo_metal(){
     return stoi(entrada[cantidad_de_palabras - 2]);
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 int Parser::cantidad_maxima_permitida(){
     return stoi(entrada[cantidad_de_palabras - 1]);

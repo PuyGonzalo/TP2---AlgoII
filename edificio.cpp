@@ -1,5 +1,9 @@
 #include "edificio.h"
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 Edificio::Edificio(){
     this -> identificador = ' ';
     this -> costo_piedra = -1;
@@ -7,6 +11,10 @@ Edificio::Edificio(){
     this -> costo_metal = -1;
     this -> maximos_permitidos = -1;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 Edificio::Edificio(string identificador, int costo_piedra, int costo_madera, int costo_metal, int maximos_permitidos){
     this -> identificador = identificador;
@@ -17,21 +25,40 @@ Edificio::Edificio(string identificador, int costo_piedra, int costo_madera, int
     this -> maximos_permitidos = maximos_permitidos;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 int Edificio::obtener_costo_piedra(){
     return this -> costo_piedra;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 int Edificio::obtener_costo_madera(){
     return this -> costo_madera;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 int Edificio::obtener_costo_metal() {
     return this -> costo_metal;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 int Edificio::obtener_maximos_permitidos(){
     return this -> maximos_permitidos;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
 
 
 string Edificio::obtener_identificador(){
@@ -39,9 +66,16 @@ string Edificio::obtener_identificador(){
 }
 
 
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Edificio::agregar_cantidad_construidos(){
     this -> cantidad_construidos++;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 void Edificio::restar_cantidad_construidos(){
     if(this -> cantidad_construidos != 0) {
@@ -49,6 +83,9 @@ void Edificio::restar_cantidad_construidos(){
     }
     // Retornar error con estado_t
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
 
 
 // Esta funcion seguramente no quede definida aca. Va a ir en otro lado, esto es solo de prueba.

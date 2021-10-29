@@ -2,10 +2,10 @@
 #define PARSER_H
 
 #include "material.h"
-#include "edificio.h"
 #include "Materiales/piedra.h"
 #include "Materiales/madera.h"
 #include "Materiales/metal.h"
+#include "edificio.h"
 #include "Edificios/mina.h"
 #include "Edificios/aserradero.h"
 #include "Edificios/escuela.h"
@@ -13,8 +13,7 @@
 #include "Edificios/obelisco.h"
 #include "Edificios/planta_electrica.h"
 #include "Edificios/yacimiento.h"
-
-// incluir los edificios y superficies/casilleros
+// incluir superficies/casilleros
 #include <string>
 #include <fstream>
 #include <cctype>
@@ -60,11 +59,6 @@ public:
     // pre:
     // pos: 
     double cantidad_material();
-
-    // pre:
-    // pos: 
-    string obtener_identificador_con_nombre(string nombre);
-
 
     // ### Para edificios ###
 

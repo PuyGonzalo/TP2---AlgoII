@@ -25,13 +25,14 @@ int main (void){
 
 
     Parser parser("planta electrica 100 300 400 5");
-    cout << parser.obtener_identificador_edificio() << endl;
-    cout << parser.nombre_edificio() << endl; // planta electrica 100 imprime
-    cout << parser.costo_piedra() << endl;
-    cout << parser.costo_madera() << endl;
-    cout << parser.costo_metal() << endl; // por la primera funcion (obtener nombre edif) todo está agarrando 1 a la derecha de lo que tiene que agarrar
-    cout << parser.cantidad_maxima_permitida() << endl; //ESTO LEAKEA. YA NO LEAKEA MAS JAJAJAJAJ A CASA CHICHULIN
+    Edificio* edificio = parser.procesar_entrada_edificio();
+    cout << edificio -> obtener_tipo_edificio() << endl;
+    cout << edificio -> obtener_costo_piedra() << endl;
+    cout << edificio -> obtener_costo_madera() << endl;
+    cout << edificio -> obtener_costo_metal() << endl;
+    cout << edificio -> obtener_maximos_permitidos() << endl;
 
+    delete edificio;
 
 
     // Cierro archivos de lectura

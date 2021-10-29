@@ -58,9 +58,7 @@ Inventario::Inventario(ifstream& archivo){
             cantidad_materiales_actual++;
             cantidad_materiales_maxima += ampliacion_cantidad_materiales;
         }
-
     }
-
 }
 
 
