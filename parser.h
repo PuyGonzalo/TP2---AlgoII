@@ -104,7 +104,7 @@ public:
 
     // pre: 
     // pos: 
-    Superficie* procesas_entrada_superficie();
+    Superficie* procesar_entrada_superficie();
 
     // pre:
     // pos:

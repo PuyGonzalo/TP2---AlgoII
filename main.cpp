@@ -34,6 +34,14 @@ int main (void){
 
     delete edificio;
 
+    Parser parserserdos("L");
+    Superficie* superficie = parserserdos.procesar_entrada_superficie();
+    cout << superficie->obtener_identificador() << endl;
+    cout << superficie->obtener_color() << endl;
+
+    delete superficie;
+
+
 
     // Cierro archivos de lectura
 	archivo_entrada_materiales.close(); 

@@ -185,7 +185,7 @@ int Parser::cantidad_maxima_permitida(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Superficie* Parser::procesas_entrada_superficie(){
+Superficie* Parser::procesar_entrada_superficie(){
 
     Superficie* superficie = nullptr; 
 
@@ -206,10 +206,6 @@ Superficie* Parser::procesas_entrada_superficie(){
 
 char Parser::identificador_superficie(){
 
-    char* identif; // creo que esto esta como el orto, ver
-
-    strcpy(identif, entrada[0].c_str());
-
-    return identif[0];
+    return entrada[0][0];
 
 }
