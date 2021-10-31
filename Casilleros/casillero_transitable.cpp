@@ -2,8 +2,14 @@
 #include "casillero_transitable.h"
 
 
+// ------------------------------------------------------------------------------------------------------------
+
 
 Casillero_Transitable::Casillero_Transitable(Superficie* superficie, int coord_x, int coord_y, bool ocupado) : Casillero(superficie, coord_x, coord_y, ocupado){}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 void Casillero_Transitable::imprimir_casillero(){
 
@@ -23,6 +29,9 @@ void Casillero_Transitable::imprimir_casillero(){
 }
 
 
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Casillero_Transitable::consultar_casillero(){
 
     cout << "Soy un casillero transitable y";
@@ -31,5 +40,16 @@ void Casillero_Transitable::consultar_casillero(){
     } else {
         cout << "tengo " << material_ocupado -> obtener_tipo_material() << " en mi casillero" << endl;
     }
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Casillero_Transitable::poner_material_en_casillero(Material* mat){
+
+    this -> material_ocupado = mat;
+    this -> ocupado = true;
 
 }

@@ -13,10 +13,6 @@
 #include "Edificios/obelisco.h"
 #include "Edificios/planta_electrica.h"
 #include "Edificios/yacimiento.h"
-/*#include "casillero.h"
-#include "Casilleros/casillero_construible.h"
-#include "Casilleros/casillero_inaccesible.h"
-#include "Casilleros/casillero_transitable.h" creo que no hace faltan estos */
 #include "superficie.h"
 #include "Superficies/camino.h"
 #include "Superficies/terreno.h"

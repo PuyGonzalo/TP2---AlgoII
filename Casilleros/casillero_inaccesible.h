@@ -11,6 +11,8 @@ public:
     // Metodos
     Casillero_Inaccesible(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
 
+    ~Casillero_Inaccesible(){};
+
     // pre:
     // pos:
     void imprimir_casillero();

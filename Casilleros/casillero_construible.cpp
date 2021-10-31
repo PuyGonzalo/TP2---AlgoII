@@ -3,7 +3,18 @@
 
 
 
-Casillero_Construible::Casillero_Construible(Superficie* superficie, int coord_x, int coord_y, bool ocupado) : Casillero(superficie, coord_x, coord_y, ocupado){}
+// ------------------------------------------------------------------------------------------------------------
+
+
+Casillero_Construible::Casillero_Construible(Superficie* superficie, int coord_x, int coord_y, bool ocupado) : Casillero(superficie, coord_x, coord_y, ocupado){
+
+    this -> edificio_construido = nullptr; // hasta no leer ubicaciones.txt no tiene sentido construir el casillero con el edificio (ni se cual poner)
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 void Casillero_Construible::imprimir_casillero(){
 
@@ -23,6 +34,9 @@ void Casillero_Construible::imprimir_casillero(){
 }
 
 
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Casillero_Construible::consultar_casillero(){
 
     cout << "Soy un casillero construible y";
@@ -31,5 +45,16 @@ void Casillero_Construible::consultar_casillero(){
     } else {
         cout << " hay construido un/a " << edificio_construido -> obtener_tipo_edificio() << " en mi casillero" << endl;
     }
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Casillero_Construible::construir_edificio_en_casillero(Edificio* edificio){
+
+    this -> edificio_construido = edificio;
+    this -> ocupado = true;
 
 }

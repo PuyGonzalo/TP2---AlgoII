@@ -23,6 +23,8 @@ public:
     // Metodos
     Casillero(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
 
+    virtual ~Casillero(){};
+
     // pre: 
     // pos: 
     int obtener_coordenada_x();
