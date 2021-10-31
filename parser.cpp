@@ -180,3 +180,36 @@ int Parser::costo_metal(){
 int Parser::cantidad_maxima_permitida(){
     return stoi(entrada[cantidad_de_palabras - 1]);
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Superficie* Parser::procesas_entrada_superficie(){
+
+    Superficie* superficie = nullptr; 
+
+    if (identificador_superficie() == identificador_lago){
+        superficie = new Lago(identificador_superficie());
+    } else if (identificador_superficie() == identificador_camino){
+        superficie = new Camino(identificador_superficie());
+    } else {
+        superficie = new Terreno(identificador_superficie());
+    }
+
+    return superficie; 
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+char Parser::identificador_superficie(){
+
+    char* identif; // creo que esto esta como el orto, ver
+
+    strcpy(identif, entrada[0].c_str());
+
+    return identif[0];
+
+}

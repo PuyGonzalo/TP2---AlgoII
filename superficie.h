@@ -20,6 +20,10 @@ const string codigos_color_superficies[CANT_SUPERFICIES][CANT_SUPERFICIES] = {
     {STR_COLOR_VERDE, FONDO_COLOR_VERDE}
 };
 
+const char identificador_lago = 'L';
+const char identificador_terreno = 'T';
+const char identificador_camino = 'C';
+
 class Superficie{
 
 protected:
