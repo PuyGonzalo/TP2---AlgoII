@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class Lago : Superficie {
+class Lago : public Superficie {
 
 public:
     // Metodos
