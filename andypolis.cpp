@@ -9,7 +9,7 @@ Andypolis::Andypolis(ifstream& archivo_mats, ifstream& archivo_edif, ifstream& a
 
     cargar_lista_edificios_construibles(archivo_edif);
 
-    Inventario inventario(archivo_mats); 
+    Inventario inventario(archivo_mats);
     this -> inventario = inventario;
 
     cargar_mapa(archivo_mapa);
@@ -64,9 +64,9 @@ void Andypolis::cargar_mapa(ifstream& archivo_mapa){
     string letra_leida;
 
     archivo_mapa >> letra_leida;
-    this -> cantidad_filas = stoi(letra_leida) - 1;
+    this -> cantidad_filas = stoi(letra_leida);
     archivo_mapa >> letra_leida;
-    this -> cantidad_columnas = stoi(letra_leida) - 1;
+    this -> cantidad_columnas = stoi(letra_leida);
 
     mapa = new Casillero**[cantidad_filas];
     for (int i = 0 ; i < cantidad_filas ; ++i){
