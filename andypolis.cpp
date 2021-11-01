@@ -49,7 +49,6 @@ void Andypolis::cargar_lista_edificios_construibles(ifstream& archivo_edif){
         this -> lista_edificios_construibles[i] = parser.procesar_entrada_edificio();
         ++cantidad_edificios_construibles;
         ++i;
-        cout << this -> lista_edificios_construibles[i]-> obtener_identificador() << endl;
 
     }
     
@@ -65,9 +64,9 @@ void Andypolis::cargar_mapa(ifstream& archivo_mapa){
     string letra_leida;
 
     archivo_mapa >> letra_leida;
-    this -> cantidad_filas = stoi(letra_leida);
+    this -> cantidad_filas = stoi(letra_leida) - 1;
     archivo_mapa >> letra_leida;
-    this -> cantidad_columnas = stoi(letra_leida);
+    this -> cantidad_columnas = stoi(letra_leida) - 1;
 
     mapa = new Casillero**[cantidad_filas];
     for (int i = 0 ; i < cantidad_filas ; ++i){
@@ -129,6 +128,7 @@ void Andypolis::mostrar_mapa(){
         for (int j = 0 ; j < cantidad_columnas ; ++j){
             mapa[i][j] -> imprimir_casillero();
         }
+        cout << endl;
     }
 
 
