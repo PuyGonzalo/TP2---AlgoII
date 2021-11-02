@@ -1,6 +1,7 @@
 #ifndef CASILLERO_H
 #define CASILLERO_H
 
+#include <iostream>
 #include <sstream>
 #include <fstream>
 #include <string>
@@ -13,7 +14,7 @@ class Casillero{
 
 protected:
     // Atributos
-    Superficie* superficie;
+    Superficie* superficie = nullptr;
     int coord_x;
     int coord_y;
     bool ocupado;
@@ -23,7 +24,7 @@ public:
     // Metodos
     Casillero(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
 
-    virtual ~Casillero(){};
+    virtual ~Casillero(){ if(superficie!=nullptr){delete superficie;superficie=nullptr;} };
 
     // pre: 
     // pos: 

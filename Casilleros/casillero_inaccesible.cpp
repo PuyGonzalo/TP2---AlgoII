@@ -9,7 +9,7 @@ Casillero_Inaccesible::Casillero_Inaccesible(Superficie* superficie, int coord_x
 void Casillero_Inaccesible::imprimir_casillero(){
 
     bool color_superficie_encontrada = false;
-    int i= 0;
+    int i = 0;
 
     while(!color_superficie_encontrada && i < CANT_SUPERFICIES){
 

@@ -5,7 +5,8 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa){
+Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa):
+mapa(nullptr),lista_edificios_construibles(nullptr),cantidad_edificios_construibles(0),cantidad_max_edificios_construibles(0),cantidad_filas(0),cantidad_columnas(0){
 
     cargar_lista_edificios_construibles(archivo_edif);
 
@@ -86,13 +87,13 @@ void Andypolis::cargar_mapa(ifstream& archivo_mapa){
             } else {
                 mapa[i][j] = new Casillero_Inaccesible(superficie_leida, i, j, false);
             }
-            delete superficie_leida;
+            //delete superficie_leida; //ESTOY ELIMINANDO LA REFERENCIA DE LO QUE LE PASO AL CASILLERO!! SIN EMABRGO SI NO ELIMINO PIERDO MEMORIA!
         }
     }
 
 }
 
-
+ 
 // ------------------------------------------------------------------------------------------------------------
 
 

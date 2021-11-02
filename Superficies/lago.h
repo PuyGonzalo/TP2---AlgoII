@@ -16,6 +16,8 @@ public:
     // Metodos
     Lago(char identificador);
 
+    ~Lago(){};
+
 };
 
 

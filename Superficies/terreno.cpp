@@ -8,4 +8,3 @@ Terreno::Terreno(char identificador) : Superficie(identificador) {
     this -> construible = true;
     this -> accesible = true;
 }
-

@@ -16,6 +16,7 @@ public:
     // Metodos
     Camino(char identificador);
 
+    ~Camino(){};
 
 };
 

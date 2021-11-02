@@ -16,6 +16,8 @@ public:
     // Metodos
     Terreno(char identificador);
 
+    ~Terreno(){};
+
 };
 
 

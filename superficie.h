@@ -40,7 +40,11 @@ public:
 
     // pre:
     // pos:
-    Superficie(){}; // IMPLEMENTAR?
+    Superficie(){}; // IMPLEMENTAR??
+
+    // pre:
+    // pos:
+    virtual ~Superficie(){};
 
     // pre: 
     // pos: 

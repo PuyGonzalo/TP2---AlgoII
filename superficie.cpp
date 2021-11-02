@@ -2,6 +2,9 @@
 #include "superficie.h"
 
 
+// ------------------------------------------------------------------------------------------------------------
+
+
 Superficie::Superficie(char identificador){
 
     this -> identificador = identificador;
