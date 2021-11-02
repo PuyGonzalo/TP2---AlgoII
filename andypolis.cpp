@@ -9,7 +9,12 @@ Andypolis::Andypolis(ifstream& archivo_mats, ifstream& archivo_edif, ifstream& a
 
     cargar_lista_edificios_construibles(archivo_edif);
 
-    Inventario inventario(archivo_mats);
+    static Inventario inventario(archivo_mats);
+    // Lisman: El inventario se estaba borrando cuando terminaba el constructor. Con ese static
+    //logro que eso no pase (si queres proba intentando imprimir el inventario cuando imprimis la matriz :D )
+    //Lo malo: El programa sigue tirando "segmentation fault". Debemos estar mandandonos una cagada en la matriz
+    //o algo por el estilo. Pero con ese static al menos se resuelve lo del inventario
+    // Por si queres mas data con eso de static: https://en.cppreference.com/w/cpp/language/storage_duration
     this -> inventario = inventario;
 
     cargar_mapa(archivo_mapa);
