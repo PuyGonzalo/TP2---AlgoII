@@ -1,8 +1,6 @@
 #ifndef INVENTARIO_H
-#define INVENARIO_H
+#define INVENTARIO_H
 
-
-#include <iostream>
 #include <string>
 #include <fstream>
 #include "material.h"
@@ -24,20 +22,17 @@ private:
 public:
     // Metodos
 
-    // pre: 
-    // pos: 
-    Inventario(Material** lista_materiales, int cantidad_materiales_actual, int cantidad_materiales_maxima); // Constructor con parametros
+    // pre: el archivo debe estar bien formado (por ejemplo: no vacio)
+    // pos: Constructor a partir de un archivo a la entrada
+    Inventario(ifstream& archivo);
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: construye un inventario vacio con una capacidad inicial para cargar materiales
     Inventario(); // Constructor por default
 
-    // pre: 
-    // pos: 
-    Inventario(ifstream& archivo); // Constructor a partir de un archivo
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: destruye el inventario (especificamente la lista de materiales dinamica)
     ~Inventario(); // destructor
 
     // pre:

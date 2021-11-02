@@ -9,7 +9,6 @@
 #include "Casilleros/casillero_inaccesible.h"
 #include "Casilleros/casillero_transitable.h"
 #include "edificio.h"
-#include "inventario.h"
 #include "parser.h"
 
 using namespace std;
@@ -25,7 +24,6 @@ private:
     // Atributos
     Casillero*** mapa; // matriz dinamica (1 nivel mas porque son estructuras complejas)
     Edificio** lista_edificios_construibles;
-    Inventario inventario;
     int cantidad_edificios_construibles;
     int cantidad_max_edificios_construibles;
     int cantidad_filas;
@@ -34,7 +32,7 @@ private:
 
 public:
     // Metodos
-    Andypolis(ifstream& archivo_mats, ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa);
+    Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa);
 
     ~Andypolis(); // destruir lista y mapa
 

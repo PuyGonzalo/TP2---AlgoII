@@ -3,6 +3,7 @@
 
 #include "../material.h"
 
+
 class Metal: public Material {
 
 public:
@@ -12,10 +13,6 @@ public:
     string obtener_tipo_material();
 
 };
-
-
-
-
 
 
 #endif // METAL_H

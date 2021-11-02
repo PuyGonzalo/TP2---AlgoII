@@ -17,7 +17,7 @@ Material::Material(double cantidad){
 
 Material::Material(){
 
-    this -> cantidad = -1; // 0 es una cantidad viable.. OJO
+    this -> cantidad = 0;
 
 }
 
@@ -25,7 +25,7 @@ Material::Material(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Material::obtener_identificador(){
+char Material::obtener_identificador(){
 
     return identificador;
 

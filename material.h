@@ -1,35 +1,27 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
-#include <sstream>
-#include <fstream>
 #include <string>
 #include "errores.h"
 
 using namespace std;
 
-// esto va en constantes.h o tipos.h?
+
 const int CANT_MATERIALES_CONSTRUCCION = 3;
 
 const string STR_PIEDRA = "piedra";
 const string STR_MADERA = "madera";
 const string STR_METAL = "metal";
-const string IDENTIF_PIEDRA = "S";
-const string IDENTIF_MADERA = "W";
-const string IDENTIF_METAL = "I";
-
-const string materiales_de_construccion[CANT_MATERIALES_CONSTRUCCION][CANT_MATERIALES_CONSTRUCCION] = {
-    {STR_PIEDRA, IDENTIF_PIEDRA},
-    {STR_MADERA,IDENTIF_MADERA},
-    {STR_METAL,IDENTIF_METAL}
-};
+const char IDENTIF_PIEDRA = 'S';
+const char IDENTIF_MADERA = 'W';
+const char IDENTIF_METAL = 'I';
 
 
 class Material{
 
 protected:
     // Atributos
-    string identificador; // string por si en un futuro necesito identifadores de 2 letras, por ejemplo
+    char identificador;
     double cantidad;
 
 public:
@@ -37,7 +29,7 @@ public:
 
     // pre: 
     // pos: 
-    Material(double cantidad); // Constructor con parametros (solo cantidad.. esta bien?)
+    Material(double cantidad); // Constructor con parametros
 
     // pre: 
     // pos: 
@@ -45,11 +37,11 @@ public:
 
     // pre:
     // pos:
-    virtual ~Material(){}; // destructor?? deleting object of abstract class type ‘Material’ which has non-virtual destructor will cause undefined behavior
+    virtual ~Material(){};
 
     // pre: 
     // pos: 
-    string obtener_identificador();
+    char obtener_identificador();
 
     // pre: 
     // pos: 

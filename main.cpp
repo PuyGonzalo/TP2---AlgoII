@@ -2,6 +2,7 @@
 #include "errores.h"
 #include "menu.h"
 #include "andypolis.h"
+#include "inventario.h"
 
 using namespace std;
 
@@ -19,7 +20,8 @@ int main (void){
     ifstream archivo_entrada_ubicaciones(PATH_ENTRADA_UBICACIONES);
     ifstream archivo_entrada_mapa(PATH_ENTRADA_MAPA);
 
-    Andypolis andypolis(archivo_entrada_materiales, archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa); // inicializo el juego
+    Inventario inventario(archivo_entrada_materiales); // inicializo el inventario
+    Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa); // inicializo la ciudad
 
     andypolis.mostrar_mapa();
 
