@@ -9,13 +9,13 @@ class Casillero_Construible: public Casillero {
 
 private:
     // Atributos
-    Edificio* edificio_construido;
+    Edificio* edificio_construido = nullptr;
 
 public:
     // Metodos
     Casillero_Construible(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
 
-    ~Casillero_Construible(){};
+    ~Casillero_Construible();
 
     // pre:
     // pos:

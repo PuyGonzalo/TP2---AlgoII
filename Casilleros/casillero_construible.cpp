@@ -15,6 +15,15 @@ Casillero_Construible::Casillero_Construible(Superficie* superficie, int coord_x
 
 // ------------------------------------------------------------------------------------------------------------
 
+Casillero_Construible::~Casillero_Construible(){
+    if(edificio_construido!=nullptr){
+        delete edificio_construido;
+        edificio_construido=nullptr;
+    }
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 void Casillero_Construible::imprimir_casillero(){
 
