@@ -9,7 +9,7 @@ class Casillero_Transitable: public Casillero {
 
 private:
     // Atributos
-    Material* material_ocupado;
+    Material* material_ocupado = nullptr;
 
 public:
     // Metodos

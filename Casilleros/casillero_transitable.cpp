@@ -10,6 +10,16 @@ Casillero_Transitable::Casillero_Transitable(Superficie* superficie, int coord_x
 
 // ------------------------------------------------------------------------------------------------------------
 
+Casillero_Transitable::~Casillero_Transitable(){
+    if(material_ocupado != nullptr){
+        delete material_ocupado;
+        material_ocupado = nullptr;
+    }
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 void Casillero_Transitable::imprimir_casillero(){
 
