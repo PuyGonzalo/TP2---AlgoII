@@ -15,7 +15,7 @@ public:
     // Metodos
     Casillero_Transitable(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
 
-    ~Casillero_Transitable(){};
+    ~Casillero_Transitable();
 
     // pre:
     // pos:
