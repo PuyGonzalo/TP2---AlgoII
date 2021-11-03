@@ -210,5 +210,45 @@ char Parser::identificador_superficie(){
 
 }
 
-//                                     ### Para ubicaciones
+//                                     ### Para ubicaciones.txt
 // ------------------------------------------------------------------------------------------------------------
+
+string Parser::nombre_edificio_ubicaciones(){
+    string nombre_edificio;
+    int i = 0;
+
+    if(!contiene_numeros(this -> entrada[i+1])){
+        for(; i < cantidad_de_palabras - CANTIDAD_PARAMETROS_UBICACIONES - 1; ++i){
+            nombre_edificio.append(this -> entrada[i]);
+            nombre_edificio.append(ESPACIO);
+        }
+
+        nombre_edificio.append(this->entrada[i]);
+        return nombre_edificio;
+    } else return this -> entrada[i];
+
+}
+
+int Parser::obtener_coordenada_x(){
+    string coordenada;
+    int i = 1;
+
+    while(isdigit(this -> entrada[cantidad_de_palabras - 2][i])){
+        coordenada.append(1,this -> entrada[cantidad_de_palabras - 2][i]);
+        ++i;
+    }
+
+    return stoi(coordenada);
+}
+
+int Parser::obtener_coordenada_y(){
+    string coordenada;
+    int i = 0;
+
+    while(isdigit(this -> entrada[cantidad_de_palabras - 1][i])){
+        coordenada.append(1, this -> entrada[cantidad_de_palabras - 1][i]);
+        ++i;
+    }
+
+    return stoi(coordenada);
+}

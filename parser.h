@@ -29,6 +29,7 @@ const string ESPACIO = " ";
 const int ampliacion_max_palabras = 3;
 const int cantidad_max_palabras_inicial = 1;
 const int CANTIDAD_PARAMETROS_EDIFICIO = 4;
+const int CANTIDAD_PARAMETROS_UBICACIONES = 2;
 const int POS_PRIMERA_LETRA = 0;
 
 
@@ -105,6 +106,18 @@ public:
     // pre:
     // pos:
     char identificador_superficie();
+
+    // PRE:
+    // POST:
+    string nombre_edificio_ubicaciones();
+
+    // PRE:
+    // POST:
+    int obtener_coordenada_x();
+
+    // PRE:
+    // POST:
+    int obtener_coordenada_y();
 
 
 
