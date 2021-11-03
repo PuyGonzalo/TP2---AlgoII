@@ -24,7 +24,7 @@ public:
     // Metodos
     Casillero(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
 
-    virtual ~Casillero(){ if(superficie!=nullptr){delete superficie;superficie=nullptr;} };
+    virtual ~Casillero();
 
     // pre: 
     // pos: 

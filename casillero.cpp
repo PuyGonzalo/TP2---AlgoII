@@ -14,6 +14,15 @@ Casillero::Casillero(Superficie* superficie, int coord_x, int coord_y, bool ocup
 
 }
 
+// ------------------------------------------------------------------------------------------------------------
+
+Casillero::~Casillero(){
+    if(superficie!=nullptr){
+        delete superficie;
+        superficie=nullptr;
+    }
+}
+
 
 // ------------------------------------------------------------------------------------------------------------
 
