@@ -5,8 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa):
-mapa(nullptr),lista_edificios_construibles(nullptr),cantidad_edificios_construibles(0),cantidad_max_edificios_construibles(0),cantidad_filas(0),cantidad_columnas(0){
+Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa){
 
     cargar_lista_edificios_construibles(archivo_edif);
 
@@ -30,8 +29,8 @@ void Andypolis::cargar_lista_edificios_construibles(ifstream& archivo_edif){
     string linea_leida;
     int i = 0;
 
-    while (getline(archivo_edif,linea_leida))
-    {
+    while (getline(archivo_edif,linea_leida)){
+
         Parser parser(linea_leida);
 
         if(cantidad_edificios_construibles == cantidad_max_edificios_construibles){
@@ -49,8 +48,7 @@ void Andypolis::cargar_lista_edificios_construibles(ifstream& archivo_edif){
         ++cantidad_edificios_construibles;
         ++i;
 
-    }
-    
+    }   
 
 }
 
@@ -67,11 +65,13 @@ void Andypolis::cargar_mapa(ifstream& archivo_mapa){
     archivo_mapa >> letra_leida;
     this -> cantidad_columnas = stoi(letra_leida);
 
+    // Creo el mapa
     mapa = new Casillero**[cantidad_filas];
     for (int i = 0 ; i < cantidad_filas ; ++i){
         mapa[i] = new Casillero*[cantidad_columnas];
     }
 
+    // Utilizo el polimorfismo para crear el casillero y superficie correspondiente
     for(int i = 0 ; i < cantidad_filas ; ++i){
         for (int j = 0 ; j < cantidad_columnas; ++j){
             
@@ -98,6 +98,7 @@ void Andypolis::cargar_mapa(ifstream& archivo_mapa){
 
 
 void Andypolis::cargar_edificios(ifstream& archivo_ubics){
+
     string linea_leida;
     int coordenada_x, coordenada_y;
 
@@ -106,21 +107,14 @@ void Andypolis::cargar_edificios(ifstream& archivo_ubics){
         */
 
     while(getline(archivo_ubics, linea_leida)){
+
         string aux;
         stringstream sstream;
-        //cout << "Parser de archivo ubicaciones:" << endl;
-        //cout << linea_leida << endl;
         Parser parser(linea_leida);
-        //cout << "Cantidad de palabras: " << parser.obtener_cantidad_palabras() << endl;
-        //parser.mostrar_entrada();
-        //cout << parser.nombre_edificio_ubicaciones() << endl;
-        //cout << parser.obtener_coordenada_x() << endl;
-        //cout << parser.obtener_coordenada_y() << endl;
         coordenada_x = parser.obtener_coordenada_x();
         coordenada_y = parser.obtener_coordenada_y();
 
         for(int i = 0; i < cantidad_edificios_construibles; ++i){
-
             if(lista_edificios_construibles[i] -> obtener_tipo_edificio() == parser.nombre_edificio_ubicaciones()){
                 sstream << lista_edificios_construibles[i] -> obtener_tipo_edificio()
                 << ESPACIO << to_string(lista_edificios_construibles[i] -> obtener_costo_piedra())
@@ -133,10 +127,12 @@ void Andypolis::cargar_edificios(ifstream& archivo_ubics){
         }
 
         Parser parser_auxiliar(aux); //Ver si podemos poner mas lindo esto de la string auxiliar.
+        
 
         if( mapa[coordenada_x][coordenada_y] -> obtener_superficie() -> es_construible()){
             mapa[coordenada_x][coordenada_y] -> construir_edificio_en_casillero(parser_auxiliar.procesar_entrada_edificio());
         }
+
     }
 }
 
@@ -162,7 +158,6 @@ void Andypolis::mostrar_mapa(){
         }
         cout << endl;
     }
-
 
 }
 

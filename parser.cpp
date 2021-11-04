@@ -10,32 +10,25 @@ Parser::Parser(string linea) {
     this -> entrada = new string[cantidad_max_palabras_inicial];
     this -> cantidad_de_palabras = 0;
     this -> cantidad_de_palabras_max = cantidad_max_palabras_inicial;
-
-    string palabra;
-    string* nueva_entrada; // declararlo directo en el else?
+    
     int i = 0;
-
     stringstream sstream(linea);
+
     while (sstream.good()){
 
-        if(cantidad_de_palabras < cantidad_de_palabras_max){
-        sstream >> this -> entrada[i];
-        ++cantidad_de_palabras;
-        ++i;
-        } else {
-            nueva_entrada = new string[cantidad_de_palabras_max+ampliacion_max_palabras];
+        if(cantidad_de_palabras == cantidad_de_palabras_max){
+            string* nueva_entrada = new string[cantidad_de_palabras_max+ampliacion_max_palabras];
             for(int j = 0; j < cantidad_de_palabras_max ; j++){
                 nueva_entrada[j] = this -> entrada[j]; // reasigno punteros
             }
-            sstream >> nueva_entrada[cantidad_de_palabras_max];
-
             delete [] this -> entrada;
             this -> entrada = nueva_entrada;
             cantidad_de_palabras_max += ampliacion_max_palabras;
-            cantidad_de_palabras++;
-            ++i;
         }
-        //cout << this -> entrada[i-1] << endl;
+
+        sstream >> this -> entrada[i];
+        cantidad_de_palabras++;
+        ++i;
     }
 
 }
@@ -51,16 +44,19 @@ Parser::~Parser(){
 }
 
 
-// ------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------//
+//                                     +-----------------------+                                             //
+//                                     | Para  materiales.txt  |                                             //
+//                                     +-----------------------+                                             //
+// ----------------------------------------------------------------------------------------------------------//
 
 
 Material* Parser::procesar_entrada_material(){
 
-    Material* material = nullptr; // esto no es instanciar la clase material
+    Material* material = nullptr;
 
-    // me fijo que tipo de material es para poder crearlo
     if (tipo_material() == STR_PIEDRA){
-        material = new Piedra(cantidad_material()); // puedo hacerlo xq es un puntero, no una instancia (Y PORQUE PPALMENTE son madre-hijo)
+        material = new Piedra(cantidad_material());
     } else if (tipo_material() == STR_MADERA){
         material = new Madera(cantidad_material());
     } else {
@@ -68,6 +64,7 @@ Material* Parser::procesar_entrada_material(){
     }
 
     return material;
+
 }
 
 
@@ -91,7 +88,11 @@ double Parser::cantidad_material(){
 }
 
 
-// ------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------//
+//                                     +-----------------------+                                             //
+//                                     |  Para edificios.txt   |                                             //
+//                                     +-----------------------+                                             //
+// ----------------------------------------------------------------------------------------------------------//
 
 
 Edificio* Parser::procesar_entrada_edificio(){
@@ -122,12 +123,14 @@ Edificio* Parser::procesar_entrada_edificio(){
 
 
 string Parser::obtener_identificador_edificio(){
+
     string identificador;
-    locale loc;
+    locale loc; // mmmmmmm
 
     identificador = toupper(this->entrada[0][POS_PRIMERA_LETRA],loc);
 
     return identificador;
+
 }
 
 
@@ -135,10 +138,12 @@ string Parser::obtener_identificador_edificio(){
 
 
 string Parser::nombre_edificio(){
+
     string nombre_edificio;
     int i = 0;
 
     if(!contiene_numeros(this -> entrada[i+1])) {
+        
         for (; i < this -> cantidad_de_palabras - CANTIDAD_PARAMETROS_EDIFICIO - 1; ++i) {
             nombre_edificio.append(this->entrada[i]);
             nombre_edificio.append(ESPACIO);
@@ -146,6 +151,7 @@ string Parser::nombre_edificio(){
 
         nombre_edificio.append(this->entrada[i]);
         return nombre_edificio;
+
     } else return this -> entrada[i];
 
 }
@@ -205,48 +211,63 @@ Superficie* Parser::procesar_entrada_superficie(){
 
 // ------------------------------------------------------------------------------------------------------------
 
+
 char Parser::identificador_superficie(){
 
     return entrada[0][0];
 
 }
 
-//                                     ### Para ubicaciones.txt
-// ------------------------------------------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------------------------------------//
+//                                     +-----------------------+                                             //
+//                                     | Para ubicaciones .txt |                                             //
+//                                     +-----------------------+                                             //
+// ----------------------------------------------------------------------------------------------------------//
+
 
 string Parser::nombre_edificio_ubicaciones(){
+    
     string nombre_edificio;
     int i = 0;
 
-    if(!contiene_numeros(this -> entrada[i+1])){
-        for(; i < cantidad_de_palabras - CANTIDAD_PARAMETROS_UBICACIONES - 1; i++){
-            nombre_edificio.append(this -> entrada[i]);
-            nombre_edificio.append(ESPACIO);
-        }
-
-        nombre_edificio.append(this->entrada[i]);
-        return nombre_edificio;
-    } else return this -> entrada[i];
+    for (; i < cantidad_de_palabras - CANTIDAD_PARAMETROS_UBICACIONES ; ++i){
+        nombre_edificio.append(this -> entrada[i]);
+        nombre_edificio.append(ESPACIO);
+    }
+    nombre_edificio.append(this->entrada[i]);
+    
+    return nombre_edificio;
 
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 int Parser::obtener_coordenada_x(){
+
     string coordenada;
     int i = 1;
 
-    while(isdigit(this -> entrada[cantidad_de_palabras - 3][i])){
-        coordenada.append(1,this -> entrada[cantidad_de_palabras - 3][i]);
+    while(isdigit(this -> entrada[cantidad_de_palabras - 2][i])){
+        coordenada.append(1,this -> entrada[cantidad_de_palabras - 2][i]);
         ++i;
     }
 
-    if(i > 1){ // Si i > 1 significa que es un numero de mas de un digito
-        return stoi(coordenada);
-    }else return this -> entrada[cantidad_de_palabras - 3][1] - '0';
 
+    // Si i > 1 significa que es un numero de mas de un digito
+    return i > 1 ? stoi(coordenada) : this -> entrada[cantidad_de_palabras - 2][1] - '0';
 
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 int Parser::obtener_coordenada_y(){
+
     string coordenada;
     int i = 0;
 
@@ -255,18 +276,26 @@ int Parser::obtener_coordenada_y(){
         ++i;
     }
 
-    if(i > 0){ // Si i > 0 significa que es un numero de mas de un digito
-        return stoi(coordenada);
-    }else return this -> entrada[cantidad_de_palabras - 2][0] - '0';
+    // Si i > 0 significa que es un numero de mas de un digito
+    return i > 0 ? stoi(coordenada) : this -> entrada[cantidad_de_palabras - 1][0] - '0';
 
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+// ··············· METODOS PARA DEBUGGEAR -> BORRAR
+
 int Parser::obtener_cantidad_palabras(){
+
     return this -> cantidad_de_palabras;
+
 }
 
 void Parser::mostrar_entrada(){
+
     for(int i = 0; i < cantidad_de_palabras; ++i ){
         cout << this -> entrada[i] << endl;
     }
+
 }
