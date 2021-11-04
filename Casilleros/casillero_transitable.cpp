@@ -33,7 +33,7 @@ void Casillero_Transitable::imprimir_casillero(){
             if(ocupado)
                 cout << codigos_color_superficies[i][1] << material_ocupado -> obtener_identificador() << FIN_DE_FORMATO;
             else
-                cout << codigos_color_superficies[i][1] << ' '<< FIN_DE_FORMATO;
+                cout << codigos_color_superficies[i][1] << ' ' << FIN_DE_FORMATO;
         }
 
         ++i;

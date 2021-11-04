@@ -11,7 +11,7 @@ mapa(nullptr),lista_edificios_construibles(nullptr),cantidad_edificios_construib
     cargar_lista_edificios_construibles(archivo_edif);
 
     cargar_mapa(archivo_mapa);
-    //cargar_edificios(archivo_ubics);
+    cargar_edificios(archivo_ubics);
 
 
     }
@@ -87,7 +87,7 @@ void Andypolis::cargar_mapa(ifstream& archivo_mapa){
             } else {
                 mapa[i][j] = new Casillero_Inaccesible(superficie_leida, i, j, false);
             }
-            //delete superficie_leida; //ESTOY ELIMINANDO LA REFERENCIA DE LO QUE LE PASO AL CASILLERO!! SIN EMABRGO SI NO ELIMINO PIERDO MEMORIA!
+
         }
     }
 
@@ -98,13 +98,46 @@ void Andypolis::cargar_mapa(ifstream& archivo_mapa){
 
 
 void Andypolis::cargar_edificios(ifstream& archivo_ubics){
+    string linea_leida;
+    int coordenada_x, coordenada_y;
 
     /*if(archivo_ubics.peek() == ifstream::traits_type::eof())
-        int pistola = 1; // estado_t st = ARCHIVO_VACIO */
+        int pistola = 1; // estado_t st = ARCHIVO_VACIO
+        */
 
-    
+    while(getline(archivo_ubics, linea_leida)){
+        string aux;
+        stringstream sstream;
+        //cout << "Parser de archivo ubicaciones:" << endl;
+        //cout << linea_leida << endl;
+        Parser parser(linea_leida);
+        //cout << "Cantidad de palabras: " << parser.obtener_cantidad_palabras() << endl;
+        //parser.mostrar_entrada();
+        //cout << parser.nombre_edificio_ubicaciones() << endl;
+        //cout << parser.obtener_coordenada_x() << endl;
+        //cout << parser.obtener_coordenada_y() << endl;
+        coordenada_x = parser.obtener_coordenada_x();
+        coordenada_y = parser.obtener_coordenada_y();
 
+        for(int i = 0; i < cantidad_edificios_construibles; ++i){
 
+            if(lista_edificios_construibles[i] -> obtener_tipo_edificio() == parser.nombre_edificio_ubicaciones()){
+                sstream << lista_edificios_construibles[i] -> obtener_tipo_edificio()
+                << ESPACIO << to_string(lista_edificios_construibles[i] -> obtener_costo_piedra())
+                << ESPACIO << to_string(lista_edificios_construibles[i] -> obtener_costo_madera())
+                << ESPACIO << to_string(lista_edificios_construibles[i] -> obtener_costo_metal())
+                << ESPACIO << to_string(lista_edificios_construibles[i] -> obtener_maximos_permitidos());
+                aux = sstream.str();
+                lista_edificios_construibles[i] -> agregar_cantidad_construidos();
+            }
+        }
+
+        Parser parser_auxiliar(aux); //Ver si podemos poner mas lindo esto de la string auxiliar.
+
+        if( mapa[coordenada_x][coordenada_y] -> obtener_superficie() -> es_construible()){
+            mapa[coordenada_x][coordenada_y] -> construir_edificio_en_casillero(parser_auxiliar.procesar_entrada_edificio());
+        }
+    }
 }
 
 
@@ -139,7 +172,7 @@ void Andypolis::mostrar_mapa(){
 
 Andypolis::~Andypolis(){
 
-    for (int i = 0 ; i < cantidad_max_edificios_construibles ; ++i){
+    for (int i = 0 ; i < cantidad_edificios_construibles ; ++i){
         delete lista_edificios_construibles[i];
         lista_edificios_construibles[i] = nullptr;
     }

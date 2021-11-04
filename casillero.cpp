@@ -52,3 +52,9 @@ bool Casillero::esta_ocupado(){
     return ocupado;
 
 }
+
+// ------------------------------------------------------------------------------------------------------------
+
+Superficie* Casillero::obtener_superficie(){
+    return this -> superficie;
+}

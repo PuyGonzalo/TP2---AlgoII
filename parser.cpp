@@ -35,6 +35,7 @@ Parser::Parser(string linea) {
             cantidad_de_palabras++;
             ++i;
         }
+        //cout << this -> entrada[i-1] << endl;
     }
 
 }
@@ -218,7 +219,7 @@ string Parser::nombre_edificio_ubicaciones(){
     int i = 0;
 
     if(!contiene_numeros(this -> entrada[i+1])){
-        for(; i < cantidad_de_palabras - CANTIDAD_PARAMETROS_UBICACIONES - 1; ++i){
+        for(; i < cantidad_de_palabras - CANTIDAD_PARAMETROS_UBICACIONES - 1; i++){
             nombre_edificio.append(this -> entrada[i]);
             nombre_edificio.append(ESPACIO);
         }
@@ -233,12 +234,16 @@ int Parser::obtener_coordenada_x(){
     string coordenada;
     int i = 1;
 
-    while(isdigit(this -> entrada[cantidad_de_palabras - 2][i])){
-        coordenada.append(1,this -> entrada[cantidad_de_palabras - 2][i]);
+    while(isdigit(this -> entrada[cantidad_de_palabras - 3][i])){
+        coordenada.append(1,this -> entrada[cantidad_de_palabras - 3][i]);
         ++i;
     }
 
-    return stoi(coordenada);
+    if(i > 1){ // Si i > 1 significa que es un numero de mas de un digito
+        return stoi(coordenada);
+    }else return this -> entrada[cantidad_de_palabras - 3][1] - '0';
+
+
 }
 
 int Parser::obtener_coordenada_y(){
@@ -250,5 +255,18 @@ int Parser::obtener_coordenada_y(){
         ++i;
     }
 
-    return stoi(coordenada);
+    if(i > 0){ // Si i > 0 significa que es un numero de mas de un digito
+        return stoi(coordenada);
+    }else return this -> entrada[cantidad_de_palabras - 2][0] - '0';
+
+}
+
+int Parser::obtener_cantidad_palabras(){
+    return this -> cantidad_de_palabras;
+}
+
+void Parser::mostrar_entrada(){
+    for(int i = 0; i < cantidad_de_palabras; ++i ){
+        cout << this -> entrada[i] << endl;
+    }
 }

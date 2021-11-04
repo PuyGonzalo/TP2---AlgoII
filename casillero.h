@@ -7,6 +7,7 @@
 #include <string>
 #include "errores.h"
 #include "superficie.h"
+#include "edificio.h"
 
 using namespace std;
 
@@ -45,6 +46,14 @@ public:
     // pre:
     // pos:
     virtual void consultar_casillero() = 0;
+
+    // pre:
+    // pos:
+    Superficie* obtener_superficie();
+
+    //PRE:
+    //POST:
+    virtual void construir_edificio_en_casillero(Edificio* edificio){};
 
 };
 
