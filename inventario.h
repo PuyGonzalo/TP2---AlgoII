@@ -37,7 +37,7 @@ public:
 
     // pre:
     // pos:
-    void mostrar_inventario(); // agregar formato y status_t
+    void mostrar_inventario(); // agregar formato y Estado_t
 
 };
 
