@@ -56,6 +56,18 @@ public:
     // pos: 
     void mostrar_mapa();
 
+    // pre:
+    // pos: 
+    void mostrar_edificios_construibles();
+
+    // pre:
+    // pos:
+    int obtener_filas_mapa();
+
+    // pre:
+    // pos:
+    int obtener_columnas_mapa();
+
 
 };
 

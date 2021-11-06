@@ -165,6 +165,39 @@ void Andypolis::mostrar_mapa(){
 // ------------------------------------------------------------------------------------------------------------
 
 
+void Andypolis::mostrar_edificios_construibles(){
+
+    for(int i = 0 ; i < cantidad_edificios_construibles ; ++i){
+        cout << lista_edificios_construibles[i] << endl;
+    }
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+int Andypolis::obtener_filas_mapa(){
+
+    return cantidad_filas;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+int Andypolis::obtener_columnas_mapa(){
+
+    return cantidad_columnas;
+
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 Andypolis::~Andypolis(){
 
     for (int i = 0 ; i < cantidad_edificios_construibles ; ++i){
