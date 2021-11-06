@@ -12,12 +12,16 @@ void mostrar_menu(){
     cout << endl << endl;
     cout << TAB <<NEGRITA<< MSJ_MENU_BIENVENIDA <<FIN_DE_FORMATO<< endl;
     cout << TAB << "╔═══════════════════════════════════════╗" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_ROJO        << MSJ_MENU_OPCION_1 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_ANARANJADO  << MSJ_MENU_OPCION_2 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_AMARILLO    << MSJ_MENU_OPCION_3 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_VERDE       << MSJ_MENU_OPCION_4 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_AZUL        << MSJ_MENU_OPCION_5 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA     << MSJ_MENU_OPCION_6 << TAB << FIN_DE_FORMATO << "║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_1 << TAB << FIN_DE_FORMATO << "║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_2 << TAB << FIN_DE_FORMATO << "║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_3 << TAB << FIN_DE_FORMATO << "║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_4 << TAB << FIN_DE_FORMATO << "║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_5 << TAB << FIN_DE_FORMATO << "║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_6 << TAB << FIN_DE_FORMATO << "║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_7 << TAB << FIN_DE_FORMATO << "║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_8 << TAB << FIN_DE_FORMATO << "║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_9 << TAB << FIN_DE_FORMATO << "║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_10 << TAB << FIN_DE_FORMATO << "║" << endl;
     cout << TAB << "╚═══════════════════════════════════════╝" << endl;
 }
 
@@ -27,21 +31,15 @@ void mostrar_menu(){
 
 Estado_t procesar_opcion(int opcion_elegida, Andypolis andypolis, Inventario inventario){
 
-    // Estado_t st; unused variable ‘st’
+    // Estado_t st = OK; unused variable ‘st’
     string str_edificio;
     string codigo_ingresado;
 
 
     switch (opcion_elegida) {
 
-        case LISTAR_MATERIALES:
-            // system(CLR_SCREEN); error: ignoring return value of ‘int system(const char*)’, declared with attribute warn_unused_result
-            //if( (st = listar_materiales(lm)) != OK )
-            //    return st;
-            break;
-
         case CONSTRUIR_EDIFICIO_POR_NOMBRE:
-            // system(CLR_SCREEN);
+            // system(CLR_SCREEN); error: ignoring return value of ‘int system(const char*)’, declared with attribute warn_unused_result
             cout << TAB << MSJ_INGRESO_EDIFICIO_CONSTRUIR << endl;
             getline(cin, str_edificio);
             //if( (st = construir_edificio_nombre(andypolis, lm, str_edificio)) != OK )
@@ -49,23 +47,43 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis andypolis, Inventario inv
             break;
 
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
-            //system(CLR_SCREEN);
-            //if( (st = listar_edificios_construidos(andypolis)) != OK )
-            //    return st;
+            // system(CLR_SCREEN);
+
             break;
 
-        case LISTAR_TODOS_LOS_EDIFICIOS:
+        case LISTAR_TODOS_LOS_EDIFICIOS: // metodo en andypolis
             //system(CLR_SCREEN);
-            //if( (st = listar_edificios_todos(andypolis)) != OK )
-            //    return st;
+
             break;
 
-        case DEMOLER_EDIFICIO_POR_NOMBRE:
+        case DEMOLER_EDIFICIO_POR_COORD:
             //system(CLR_SCREEN);
-            cout << TAB << MSJ_INGRESO_EDIFICIO_DEMOLER << endl;
-            getline(cin, str_edificio);
-            //if( (st = demoler_edificio_nombre(andypolis, lm, str_edificio)) != OK )
-            //    return st;
+
+            break;
+
+        case MOSTRAR_MAPA: // metodo en andypolis
+            //system(CLR_SCREEN);
+
+            break;
+        
+        case CONSULTAR_COORDENADA: 
+            //system(CLR_SCREEN);
+
+            break;
+
+        case MOSTRAR_INVENTARIO: // metodo de inventario
+            //system(CLR_SCREEN);
+
+            break;
+
+        case RECOLETAR_RECURSOS_PRODUCIDOS:
+            //system(CLR_SCREEN);
+
+            break;
+
+        case LLUVIA_RECURSOS:
+            //system(CLR_SCREEN);
+
             break;
 
         case GUARDAR_SALIR:
@@ -107,7 +125,6 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis andypolis, Inventario inv
         if (isdigit(c) == 0) validez = false;
     }
 
-    
     
     return validez;
 }

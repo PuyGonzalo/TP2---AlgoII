@@ -13,16 +13,20 @@ using namespace std;
 
 
 const int OPCION_MINIMA = 1;
-const int OPCION_MAXIMA = 7;
+const int OPCION_MAXIMA = 11;
 
 enum Opciones_menu{
-	LISTAR_MATERIALES = 1,
-	CONSTRUIR_EDIFICIO_POR_NOMBRE = 2,
-	LISTAR_EDIFICIOS_CONSTRUIDOS = 3,
-	LISTAR_TODOS_LOS_EDIFICIOS = 4,
-	DEMOLER_EDIFICIO_POR_NOMBRE = 5,
-	GUARDAR_SALIR = 6,
-	MENU_SECRETO = 7
+	CONSTRUIR_EDIFICIO_POR_NOMBRE = 1,
+	LISTAR_EDIFICIOS_CONSTRUIDOS = 2,
+	LISTAR_TODOS_LOS_EDIFICIOS = 3,
+	DEMOLER_EDIFICIO_POR_COORD = 4,
+	MOSTRAR_MAPA = 5,
+	CONSULTAR_COORDENADA = 6,
+	MOSTRAR_INVENTARIO = 7,
+	RECOLETAR_RECURSOS_PRODUCIDOS = 8,
+	LLUVIA_RECURSOS = 9,
+	GUARDAR_SALIR = 10,
+	MENU_SECRETO = 11
 };
 
 const string CODIGO_SECRETO_PIEDRA = "piedra porfa";
@@ -38,12 +42,16 @@ const string codigos_secretos[MAX_CODIGOS_SECRETOS] = {
 };
 
 const string MSJ_MENU_BIENVENIDA = "Bienevenido a Andypolis, ¿Que desea?";
-const string MSJ_MENU_OPCION_1 = "1. Listar todos los materiales      ";
-const string MSJ_MENU_OPCION_2 = "2. Construir edificio por nombre    ";
-const string MSJ_MENU_OPCION_3 = "3. Listar los edificios construidos " ;
-const string MSJ_MENU_OPCION_4 = "4. Listar todos los edificios       ";
-const string MSJ_MENU_OPCION_5 = "5. Demoler un edificio por nombre   ";
-const string MSJ_MENU_OPCION_6 = "6. Guardar y salir                  ";
+const string MSJ_MENU_OPCION_1 = "1. Construir edificio por nombre      ";
+const string MSJ_MENU_OPCION_2 = "2. Listar los edificios construidos   ";
+const string MSJ_MENU_OPCION_3 = "3. Listar todos los edificios			";
+const string MSJ_MENU_OPCION_4 = "4. Demoler un edificio por coordenada ";
+const string MSJ_MENU_OPCION_5 = "5. Mostrar mapa						";
+const string MSJ_MENU_OPCION_6 = "6. Consultar coordenada				";
+const string MSJ_MENU_OPCION_7 = "7. Mostrar inventario					";
+const string MSJ_MENU_OPCION_8 = "8. Recolectar recursos producidos		";
+const string MSJ_MENU_OPCION_9 = "9. Lluvia de recursos					";
+const string MSJ_MENU_OPCION_10 = "10. Guardar y salir                  ";
 const string MSJ_MENU_INGRESO_OPCION = "Ingrese una opcion";
 
 const string MSJ_INGRESO_EDIFICIO_CONSTRUIR = "Ingresa el nombre del edifico a construir:";
