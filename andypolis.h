@@ -10,6 +10,8 @@
 #include "Casilleros/casillero_transitable.h"
 #include "edificio.h"
 #include "parser.h"
+#include "inventario.h"
+#include "mapa.h"
 
 using namespace std;
 
@@ -22,17 +24,17 @@ class Andypolis{
 
 private:
     // Atributos
-    Casillero*** mapa; // matriz dinamica (1 nivel mas porque son estructuras complejas)
+    //Casilleroptr** mapa;
+    Mapa mapa;
     Edificio** lista_edificios_construibles;
+    Inventario inventario;
     int cantidad_edificios_construibles;
     int cantidad_max_edificios_construibles;
-    int cantidad_filas;
-    int cantidad_columnas; // atributos de andypolis? CLASE MAPA (alta paja)?
 
 
 public:
     // Metodos
-    Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa);
+    Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa, ifstream& archivo_mats);
 
     ~Andypolis(); // destruir lista y mapa
 
@@ -52,6 +54,14 @@ public:
     // pos: 
     Edificio* buscar_por_nombre_edificio_en_lista(string nombre);
 
+    // pre:
+    // pos:
+    int obtener_filas_mapa();
+
+    // pre:
+    // pos:
+    int obtener_columnas_mapa();
+
     // pre: 
     // pos: 
     void mostrar_mapa();
@@ -60,13 +70,14 @@ public:
     // pos: 
     void mostrar_edificios_construibles();
 
-    // pre:
-    // pos:
-    int obtener_filas_mapa();
+    // pre: 
+    // pos: 
+    void mostrar_edificios_construidos();
 
-    // pre:
-    // pos:
-    int obtener_columnas_mapa();
+    // pre: 
+    // pos: 
+    void mostrar_andypolis();
+
 
 
 };

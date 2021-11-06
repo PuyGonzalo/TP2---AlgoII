@@ -57,6 +57,28 @@ bool Casillero::esta_ocupado(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Superficie* Casillero::obtener_superficie(){
-    return this -> superficie;
+bool Casillero::es_casillero_transitable(){
+
+    return superficie -> es_transitable();
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+bool Casillero::es_casillero_construible(){
+
+    return superficie -> es_construible();
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+bool Casillero::es_casillero_accesible(){
+
+    return superficie -> es_accesible();
+
 }

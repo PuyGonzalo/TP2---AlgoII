@@ -50,10 +50,10 @@ void Casillero_Construible::imprimir_casillero(){
 
 
 void Casillero_Construible::consultar_casillero(){
-
+ 
     cout << "Soy un casillero construible y";
-    if(ocupado){
-        cout << "estoy vacio" << endl;
+    if(!ocupado){
+        cout << " estoy vacio" << endl;
     } else {
         cout << " hay construido un/a " << edificio_construido -> obtener_tipo_edificio() << " en mi casillero" << endl;
     }

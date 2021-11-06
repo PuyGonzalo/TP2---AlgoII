@@ -4,16 +4,14 @@
 
 // ------------------------------------------------------------------------------------------------------------
 
-
-Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa){
-
+// typedef Casillero* casilleroptr;
+Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa, ifstream& archivo_mats) : 
+mapa(archivo_mapa) , inventario(archivo_mats) {
+    
     cargar_lista_edificios_construibles(archivo_edif);
-
-    cargar_mapa(archivo_mapa);
     cargar_edificios(archivo_ubics);
 
-
-    }
+}
 
 
 // ------------------------------------------------------------------------------------------------------------
@@ -52,47 +50,6 @@ void Andypolis::cargar_lista_edificios_construibles(ifstream& archivo_edif){
 
 }
 
-
-// ------------------------------------------------------------------------------------------------------------
-
-
-void Andypolis::cargar_mapa(ifstream& archivo_mapa){
-
-    string letra_leida;
-
-    archivo_mapa >> letra_leida;
-    this -> cantidad_filas = stoi(letra_leida);
-    archivo_mapa >> letra_leida;
-    this -> cantidad_columnas = stoi(letra_leida);
-
-    // Creo el mapa
-    mapa = new Casillero**[cantidad_filas];
-    for (int i = 0 ; i < cantidad_filas ; ++i){
-        mapa[i] = new Casillero*[cantidad_columnas];
-    }
-
-    // Utilizo el polimorfismo para crear el casillero y superficie correspondiente
-    for(int i = 0 ; i < cantidad_filas ; ++i){
-        for (int j = 0 ; j < cantidad_columnas; ++j){
-            
-            archivo_mapa >> letra_leida;
-            Parser parser(letra_leida);
-            Superficie* superficie_leida = parser.procesar_entrada_superficie();
-            if(superficie_leida -> es_accesible()){
-                if ( superficie_leida -> es_construible()){
-                    mapa[i][j] = new Casillero_Construible(superficie_leida, i, j, false);
-                } else {
-                    mapa[i][j] = new Casillero_Transitable(superficie_leida, i, j, false);
-                }
-            } else {
-                mapa[i][j] = new Casillero_Inaccesible(superficie_leida, i, j, false);
-            }
-
-        }
-    }
-
-}
-
  
 // ------------------------------------------------------------------------------------------------------------
 
@@ -127,11 +84,7 @@ void Andypolis::cargar_edificios(ifstream& archivo_ubics){
         }
 
         Parser parser_auxiliar(aux); //Ver si podemos poner mas lindo esto de la string auxiliar.
-        
-
-        if( mapa[coordenada_x][coordenada_y] -> obtener_superficie() -> es_construible()){
-            mapa[coordenada_x][coordenada_y] -> construir_edificio_en_casillero(parser_auxiliar.procesar_entrada_edificio());
-        }
+        mapa.construir_edificio_en_coord(parser_auxiliar.procesar_entrada_edificio(), coordenada_x , coordenada_y);
 
     }
 }
@@ -150,21 +103,6 @@ void Andypolis::cargar_edificios(ifstream& archivo_ubics){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Andypolis::mostrar_mapa(){
-
-    for (int i = 0 ; i < cantidad_filas ; ++i){
-        for (int j = 0 ; j < cantidad_columnas ; ++j){
-            mapa[i][j] -> imprimir_casillero();
-        }
-        cout << endl;
-    }
-
-}
-
-
-// ------------------------------------------------------------------------------------------------------------
-
-
 void Andypolis::mostrar_edificios_construibles(){
 
     for(int i = 0 ; i < cantidad_edificios_construibles ; ++i){
@@ -177,9 +115,11 @@ void Andypolis::mostrar_edificios_construibles(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Andypolis::obtener_filas_mapa(){
+void Andypolis::mostrar_edificios_construidos(){
 
-    return cantidad_filas;
+    for(int i = 0 ; i < mapa.obtener_filas() ; ++i){
+
+    }
 
 }
 
@@ -187,12 +127,11 @@ int Andypolis::obtener_filas_mapa(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Andypolis::obtener_columnas_mapa(){
+void Andypolis::mostrar_andypolis(){
 
-    return cantidad_columnas;
-
+    mapa.mostrar_mapa();
+    
 }
-
 
 
 // ------------------------------------------------------------------------------------------------------------
@@ -207,20 +146,5 @@ Andypolis::~Andypolis(){
     
     delete [] lista_edificios_construibles;
     lista_edificios_construibles = nullptr;
-
-
-    for(int i = 0 ; i < cantidad_filas ; ++i){
-        for(int j = 0 ; j < cantidad_columnas ; ++j){
-            delete mapa[i][j];
-            mapa[i][j] = nullptr;
-        }
-    
-        delete [] mapa[i];
-        mapa[i] = nullptr;
-    }
-    
-    delete [] mapa;
-    mapa = nullptr;
-
 
 }

@@ -49,7 +49,15 @@ public:
 
     // pre:
     // pos:
-    Superficie* obtener_superficie();
+    bool es_casillero_transitable();
+
+    // pre:
+    // pos:
+    bool es_casillero_construible();
+
+    // pre:
+    // pos:
+    bool es_casillero_accesible();
 
     //PRE:
     //POST:

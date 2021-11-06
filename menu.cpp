@@ -29,7 +29,7 @@ void mostrar_menu(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Estado_t procesar_opcion(int opcion_elegida, Andypolis andypolis, Inventario inventario){
+Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
 
     // Estado_t st = OK; unused variable ‘st’
     string str_edificio;
@@ -51,9 +51,9 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis andypolis, Inventario inv
 
             break;
 
-        case LISTAR_TODOS_LOS_EDIFICIOS: // metodo en andypolis
+        case LISTAR_TODOS_LOS_EDIFICIOS: 
             //system(CLR_SCREEN);
-
+            andypolis.mostrar_edificios_construibles();
             break;
 
         case DEMOLER_EDIFICIO_POR_COORD:
@@ -61,9 +61,9 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis andypolis, Inventario inv
 
             break;
 
-        case MOSTRAR_MAPA: // metodo en andypolis
+        case MOSTRAR_MAPA:
             //system(CLR_SCREEN);
-
+            andypolis.mostrar_andypolis();
             break;
         
         case CONSULTAR_COORDENADA: 
@@ -71,7 +71,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis andypolis, Inventario inv
 
             break;
 
-        case MOSTRAR_INVENTARIO: // metodo de inventario
+        case MOSTRAR_INVENTARIO:
             //system(CLR_SCREEN);
 
             break;
@@ -133,7 +133,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis andypolis, Inventario inv
 // ------------------------------------------------------------------------------------------------------------
 
 
-Estado_t ingreso_menu(int &opcion , Andypolis andypolis, Inventario inventario){
+Estado_t ingreso_menu(int &opcion , Andypolis &andypolis){
     
     Estado_t st = OK;
     string  opcion_elegida;
