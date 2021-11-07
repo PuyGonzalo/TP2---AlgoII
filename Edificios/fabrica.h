@@ -17,7 +17,7 @@ public:
 
     // pre: 
     // pos: 
-    Fabrica(string identificador, int costo_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
+    Fabrica(string identificador);
 
     // pre: 
     // pos: 

@@ -17,6 +17,7 @@
 #include "Superficies/camino.h"
 #include "Superficies/terreno.h"
 #include "Superficies/lago.h"
+// #include "andypolis.h" ANDYPOLIS INCLUYE AL PARSER!!! NO PODEMOS HACER ESTO.. STRUCT EN OTRO ARCHIVO OC LASE (Datos_edificio)
 
 #include <string>
 #include <cstring>
@@ -70,7 +71,7 @@ public:
 
     // pre:
     // pos:
-    Edificio* procesar_entrada_edificio();
+    Datos_edificio* procesar_entrada_edificio();
 
     //PRE:
     //POST:
@@ -98,6 +99,10 @@ public:
 
 
     // ### Para superficies ###
+
+    // pre:
+    // pos:
+    Edificio* procesar_entrada_ubicaciones();
 
     // pre: 
     // pos: 

@@ -38,6 +38,10 @@ public:
 
     void construir_edificio_en_coord(Edificio* edificio, int coord_x, int coord_y); // status t
 
+    void consultar_casillero(int coord_x, int coord_y);
+
+    void mostrar_edificios_construidos();
+
 };
 
 

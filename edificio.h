@@ -15,17 +15,22 @@ const string STR_OBELISCO = "obelisco";
 const string STR_YACIMIENTO = "yacimiento";
 const string STR_P_ELECTRICA = "planta electrica";
 
+struct Datos_edificio{
+    string nombre;
+    int costo_piedra;
+    int costo_madera;
+    int costo_metal;
+    int cantidad_construidos;
+    int maximos_permitidos;
+    string ubicaciones_construidos;
+};
 
 class Edificio{
 
 protected:
     // Atributos
     string identificador;
-    int costo_piedra;
-    int costo_madera;
-    int costo_metal;
-    int cantidad_construidos;
-    int maximos_permitidos;
+
 
 public:
     // Metodos
@@ -36,27 +41,11 @@ public:
 
     // pre: 
     // pos: 
-    Edificio(string identificador, int costo_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
+    Edificio(string identificador);
 
     // pre: 
     // pos: 
     virtual ~Edificio(){};
-
-    // pre: 
-    // pos: 
-    int obtener_costo_piedra();
-
-    // pre: 
-    // pos: 
-    int obtener_costo_madera();
-
-    // pre: 
-    // pos: 
-    int obtener_costo_metal();
-
-    // pre: 
-    // pos: 
-    int obtener_maximos_permitidos();
 
     // pre: 
     // pos: 
@@ -66,13 +55,6 @@ public:
     // pos: 
     string obtener_identificador();
 
-    // pre: 
-    // pos: 
-    void agregar_cantidad_construidos();
-
-    // pre: 
-    // pos: 
-    void restar_cantidad_construidos();
 };
 
 bool contiene_numeros(string s); // esto va en UTILES o HERRAMIENTAS

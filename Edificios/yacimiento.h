@@ -9,7 +9,7 @@ public:
 
     // pre: 
     // pos: 
-    Yacimiento(string identificador, int costo_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
+    Yacimiento(string identificador);
 
     // pre: 
     // pos: 

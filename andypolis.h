@@ -4,6 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+#include <locale>
 #include "casillero.h"
 #include "Casilleros/casillero_construible.h"
 #include "Casilleros/casillero_inaccesible.h"
@@ -20,16 +21,17 @@ const int AMPLIACION_EDIF_CONSTRUIBLES = 2;
 const char DELIM_ESPACIO = ' ';
 
 
+
 class Andypolis{
 
 private:
     // Atributos
     //Casilleroptr** mapa;
     Mapa mapa;
-    Edificio** lista_edificios_construibles;
+    Datos_edificio** catalogo;
     Inventario inventario;
-    int cantidad_edificios_construibles;
-    int cantidad_max_edificios_construibles;
+    int cantidad_edificios_catalogo;
+    int cantidad_max_edificios_catalogo;
 
 
 public:
@@ -40,7 +42,7 @@ public:
 
     // pre:
     // pos: 
-    void cargar_lista_edificios_construibles(ifstream& archivo_edif);
+    void cargar_catalogo(ifstream& archivo_edif);
 
     // pre:
     // pos:
@@ -68,15 +70,31 @@ public:
 
     // pre:
     // pos: 
-    void mostrar_edificios_construibles();
-
-    // pre: 
-    // pos: 
-    void mostrar_edificios_construidos();
+    void mostrar_catalogo();
 
     // pre: 
     // pos: 
     void mostrar_andypolis();
+
+    // pre:
+    // pos:
+    void consultar_casillero_de_mapa(int coord_x, int coord_y); // estado t
+
+    // pre:
+    // pos:
+    void mostrar_inventario();
+
+    // pre:
+    // pos:
+    void mostrar_edificios_en_andypolis();
+
+    // pre: 
+    // pos: 
+    void cargar_coordenadas_en_catalogo(string nombre_edificio, int coord_x, int coord_y);
+
+    // pre:
+    // pos:
+    void listar_edificios_construidos();
 
 
 

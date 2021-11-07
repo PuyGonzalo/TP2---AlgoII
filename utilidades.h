@@ -7,5 +7,9 @@
 
 using namespace std;
 
+// pre: 
+// pos:
+
+
 
 #endif // UTILIDADES_H

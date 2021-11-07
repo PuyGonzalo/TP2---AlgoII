@@ -132,6 +132,25 @@ void Mapa::construir_edificio_en_coord(Edificio* edificio, int coord_x, int coor
 // ------------------------------------------------------------------------------------------------------------
 
 
+void Mapa::consultar_casillero(int coord_x, int coord_y){
+
+    mapa[coord_x][coord_y] -> consultar_casillero();
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Mapa::mostrar_edificios_construidos(){
+
+// IMPLEMENTAR
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 Mapa::~Mapa(){
 
     for(int i = 0 ; i < cantidad_filas ; ++i){

@@ -59,8 +59,8 @@ public:
     // pos:
     bool es_casillero_accesible();
 
-    //PRE:
-    //POST:
+    // pre:
+    // pos:
     virtual void construir_edificio_en_casillero(Edificio* edificio){};
 
 };

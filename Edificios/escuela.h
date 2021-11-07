@@ -10,7 +10,7 @@ public:
 
     // pre: 
     // pos: 
-    Escuela(string identificador, int costo_piedra, int costo_madera, int costo_metal, int maximos_permitidos);
+    Escuela(string identificador);
 
     // pre: 
     // pos: 

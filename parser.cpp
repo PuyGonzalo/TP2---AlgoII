@@ -95,31 +95,22 @@ double Parser::cantidad_material(){
 // ----------------------------------------------------------------------------------------------------------//
 
 
-Edificio* Parser::procesar_entrada_edificio(){
-   
-    Edificio* edificio = nullptr;
+Datos_edificio* Parser::procesar_entrada_edificio(){
 
-    if(nombre_edificio() == STR_MINA){
-        edificio = new Mina(obtener_identificador_edificio(), costo_piedra(), costo_madera(), costo_metal(), cantidad_maxima_permitida());
-    } else if(nombre_edificio() == STR_P_ELECTRICA){
-        edificio = new Planta_Electrica(obtener_identificador_edificio(), costo_piedra(), costo_madera(), costo_metal(), cantidad_maxima_permitida());
-    } else if(nombre_edificio() == STR_YACIMIENTO){
-        edificio = new Yacimiento(obtener_identificador_edificio(), costo_piedra(), costo_madera(), costo_metal(), cantidad_maxima_permitida());
-    } else if(nombre_edificio() == STR_ESCUELA){
-        edificio = new Escuela(obtener_identificador_edificio(), costo_piedra(), costo_madera(), costo_metal(), cantidad_maxima_permitida());
-    } else if(nombre_edificio() == STR_OBELISCO){
-        edificio = new Obelisco(obtener_identificador_edificio(), costo_piedra(), costo_madera(), costo_metal(), cantidad_maxima_permitida());
-    } else if(nombre_edificio() == STR_FABRICA){
-        edificio = new Fabrica(obtener_identificador_edificio(), costo_piedra(), costo_madera(), costo_metal(), cantidad_maxima_permitida());
-    } else {
-        edificio = new Aserradero(obtener_identificador_edificio(), costo_piedra(), costo_madera(), costo_metal(), cantidad_maxima_permitida());
-    }
+    Datos_edificio* nuevos_datos = new Datos_edificio;
 
-    return edificio;
+    nuevos_datos -> nombre = nombre_edificio();
+    nuevos_datos -> costo_piedra = costo_piedra();
+    nuevos_datos -> costo_madera = costo_madera();
+    nuevos_datos -> costo_metal = costo_metal();
+    nuevos_datos -> cantidad_construidos = 0;
+    nuevos_datos -> maximos_permitidos = cantidad_maxima_permitida();
+    nuevos_datos -> ubicaciones_construidos = "";
+
+    return nuevos_datos;
+
 }
 
-
-// ------------------------------------------------------------------------------------------------------------
 
 
 string Parser::obtener_identificador_edificio(){
@@ -225,6 +216,33 @@ char Parser::identificador_superficie(){
 //                                     | Para ubicaciones .txt |                                             //
 //                                     +-----------------------+                                             //
 // ----------------------------------------------------------------------------------------------------------//
+
+
+Edificio* Parser::procesar_entrada_ubicaciones(){
+   
+    Edificio* edificio = nullptr;
+
+    if(nombre_edificio_ubicaciones() == STR_MINA){
+        edificio = new Mina(obtener_identificador_edificio());
+    } else if(nombre_edificio_ubicaciones() == STR_P_ELECTRICA){
+        edificio = new Planta_Electrica(obtener_identificador_edificio());
+    } else if(nombre_edificio_ubicaciones() == STR_YACIMIENTO){
+        edificio = new Yacimiento(obtener_identificador_edificio());
+    } else if(nombre_edificio_ubicaciones() == STR_ESCUELA){
+        edificio = new Escuela(obtener_identificador_edificio());
+    } else if(nombre_edificio_ubicaciones() == STR_OBELISCO){
+        edificio = new Obelisco(obtener_identificador_edificio());
+    } else if(nombre_edificio_ubicaciones() == STR_FABRICA){
+        edificio = new Fabrica(obtener_identificador_edificio());
+    } else {
+        edificio = new Aserradero(obtener_identificador_edificio());
+    }
+
+    return edificio;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
 
 
 string Parser::nombre_edificio_ubicaciones(){

@@ -48,12 +48,12 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
 
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
             // system(CLR_SCREEN);
-
+            andypolis.listar_edificios_construidos();
             break;
 
         case LISTAR_TODOS_LOS_EDIFICIOS: 
             //system(CLR_SCREEN);
-            andypolis.mostrar_edificios_construibles();
+            andypolis.mostrar_catalogo();
             break;
 
         case DEMOLER_EDIFICIO_POR_COORD:
@@ -73,7 +73,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
 
         case MOSTRAR_INVENTARIO:
             //system(CLR_SCREEN);
-
+            andypolis.mostrar_inventario();
             break;
 
         case RECOLETAR_RECURSOS_PRODUCIDOS:

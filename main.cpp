@@ -12,6 +12,7 @@ const string PATH_ENTRADA_UBICACIONES = "Archivos/ubicaciones.txt";
 const string PATH_ENTRADA_MAPA = "Archivos/mapa.txt";
 
 
+
 int main (void){
 
     // Abro archivos de lectura
@@ -24,7 +25,9 @@ int main (void){
     Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa, archivo_entrada_materiales);
 	
 	andypolis.mostrar_andypolis();
-
+	andypolis.consultar_casillero_de_mapa(7,9);
+	andypolis.mostrar_inventario();
+	andypolis.listar_edificios_construidos();
 
     // Cierro archivos de lectura
 	archivo_entrada_materiales.close(); 
