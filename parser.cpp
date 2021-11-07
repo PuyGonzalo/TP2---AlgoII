@@ -151,7 +151,7 @@ string Parser::nombre_edificio(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Parser::costo_piedra(){
+double Parser::costo_piedra(){
     return stod(entrada[cantidad_de_palabras - 4]);
 }
 
@@ -159,7 +159,7 @@ int Parser::costo_piedra(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Parser::costo_madera(){
+double Parser::costo_madera(){
     return stod(entrada[cantidad_de_palabras - 3]);
 }
 
@@ -167,7 +167,7 @@ int Parser::costo_madera(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Parser::costo_metal(){
+double Parser::costo_metal(){
     return stod(entrada[cantidad_de_palabras - 2]);
 }
 

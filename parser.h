@@ -17,7 +17,7 @@
 #include "Superficies/camino.h"
 #include "Superficies/terreno.h"
 #include "Superficies/lago.h"
-// #include "andypolis.h" ANDYPOLIS INCLUYE AL PARSER!!! NO PODEMOS HACER ESTO.. STRUCT EN OTRO ARCHIVO OC LASE (Datos_edificio)
+#include "herramientas.h"
 
 #include <string>
 #include <cstring>
@@ -83,15 +83,15 @@ public:
 
     // pre:
     // pos:
-    int costo_piedra();
+    double costo_piedra();
 
     // pre:
     // pos:
-    int costo_madera();
+    double costo_madera();
 
     // pre:
     // pos:
-    int costo_metal();
+    double costo_metal();
 
     // pre:
     // pos:

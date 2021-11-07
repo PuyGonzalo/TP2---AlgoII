@@ -5,8 +5,7 @@
 #include <string>
 #include "errores.h"
 #include "formatos.h"
-#include "inventario.h"
-#include "andypolis.h"
+#include "utilidades.h"
 
 
 using namespace std;
@@ -54,7 +53,7 @@ const string MSJ_MENU_OPCION_9 = "9. Lluvia de recursos					";
 const string MSJ_MENU_OPCION_10 = "10. Guardar y salir                  ";
 const string MSJ_MENU_INGRESO_OPCION = "Ingrese una opcion";
 
-const string MSJ_INGRESO_EDIFICIO_CONSTRUIR = "Ingresa el nombre del edifico a construir:";
+
 const string MSJ_INGRESO_EDIFICIO_DEMOLER = "Ingresa el nombre del edificio a demoler:";
 const string MSJ_DESPEDIDA = "¡Hasta la proxima!";
 const string MSJ_INGRESO_CODIGO_SECRETO = "Ingrese algun codigo secreto:";

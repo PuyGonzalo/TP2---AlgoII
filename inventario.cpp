@@ -79,12 +79,13 @@ void Inventario::mostrar_inventario(){
 
 int Inventario::ubicacion_material_en_lista(char identificador){
     int i = 0;
-    int ubicacion;
+    int ubicacion = -1;
+    bool material_encontrado = false;
 
-    while(i < cantidad_materiales_actual){
-        if(lista_materiales[i]->obtener_identificador() == identificador){
+    while(i < cantidad_materiales_actual || !material_encontrado ){
+        if(lista_materiales[i] -> obtener_identificador() == identificador){
             ubicacion = i;
-            break;
+            material_encontrado = true;
         }
         ++i;
     }

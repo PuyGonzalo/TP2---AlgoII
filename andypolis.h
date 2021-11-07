@@ -5,11 +5,6 @@
 #include <fstream>
 #include <string>
 #include <locale>
-#include "casillero.h"
-#include "Casilleros/casillero_construible.h"
-#include "Casilleros/casillero_inaccesible.h"
-#include "Casilleros/casillero_transitable.h"
-#include "edificio.h"
 #include "parser.h"
 #include "inventario.h"
 #include "mapa.h"

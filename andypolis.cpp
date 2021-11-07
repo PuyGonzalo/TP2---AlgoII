@@ -135,15 +135,6 @@ void Andypolis::mostrar_inventario(){
 
 }
 
-// ------------------------------------------------------------------------------------------------------------
-
-
-void Andypolis::mostrar_edificios_en_andypolis(){
-    
-    mapa.mostrar_edificios_construidos();
-
-}
-
 
 // ------------------------------------------------------------------------------------------------------------
 
@@ -207,15 +198,20 @@ bool Andypolis::esta_edificio(string nombre_edificio){
 // ------------------------------------------------------------------------------------------------------------
 
 int Andypolis::ubicacion_edificio_en_catalogo(string nombre_edificio){
-    int ubicacion;
+    
+    int ubicacion = -1;
     int i = 0;
+    bool edificio_encontrado = false;
 
-    while(i < cantidad_edificios_catalogo){
+    while(i < cantidad_edificios_catalogo || !edificio_encontrado){
         if(catalogo[i] -> nombre == nombre_edificio){
             ubicacion = i;
+            edificio_encontrado = true;
         }
         ++i;
     }
+
+    return ubicacion;
 
 }
 

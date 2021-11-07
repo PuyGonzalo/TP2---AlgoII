@@ -4,7 +4,6 @@
 #include <string>
 #include <sstream>
 #include "errores.h"
-#include "utilidades.h"
 
 using namespace std;
 
