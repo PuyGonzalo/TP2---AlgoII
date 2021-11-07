@@ -96,6 +96,10 @@ public:
     // pos:
     void listar_edificios_construidos();
 
+    // pre:
+    // pos:
+    bool esta_edificio(string nombre_edificio);
+
 
 
 };

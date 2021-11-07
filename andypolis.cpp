@@ -190,6 +190,22 @@ void Andypolis::listar_edificios_construidos(){
 
 // ------------------------------------------------------------------------------------------------------------
 
+bool Andypolis::esta_edificio(string nombre_edificio){
+    bool edificio_encontrado = false;
+    int i = 0;
+
+    while(!edificio_encontrado){
+        if(catalogo[i] -> nombre == nombre_edificio){
+            edificio_encontrado = true;
+        }
+        ++i;
+    }
+
+    return edificio_encontrado;
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 Andypolis::~Andypolis(){
 
