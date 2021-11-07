@@ -36,34 +36,37 @@ protected:
 
 public:
     // Metodos
+
+    // pre: -
+    // pos: CONSTRUCTOR de superficie
     Superficie(char identificador);
 
-    // pre:
-    // pos:
-    Superficie(){}; // IMPLEMENTAR??
+    // pre: -
+    // pos: CONSTRUCTOR de una superficie default
+    Superficie();
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: DESTRUCTOR de una superficie (virtual hacia todas las hiajs)
     virtual ~Superficie(){};
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: devuelve el identificador de la superficie
     char obtener_identificador();
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: obtiene el color caracteristico de la superficie
     string obtener_color();
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: devuelve si es una superficie transitable o no
     bool es_transitable();
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: devuelve si es una superficie construible o no
     bool es_construible();
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: devuelve si es una superficie accesible o no
     bool es_accesible();
 
 };

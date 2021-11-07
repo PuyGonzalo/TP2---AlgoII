@@ -14,9 +14,23 @@ Casillero::Casillero(Superficie* superficie, int coord_x, int coord_y, bool ocup
 
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Casillero::Casillero(){
+
+    this -> coord_x = -1; // 0,0 ES una posicion valida en el mapa.
+    this -> coord_y = -1;
+    this -> ocupado = false;
+
+}
+
+
 // ------------------------------------------------------------------------------------------------------------
 
 Casillero::~Casillero(){
+    
     if(superficie!=nullptr){
         delete superficie;
         superficie=nullptr;
