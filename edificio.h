@@ -58,6 +58,5 @@ public:
 
 };
 
-bool contiene_numeros(string s); // esto va en UTILES o HERRAMIENTAS
 
 #endif // EDIFICIO_H
