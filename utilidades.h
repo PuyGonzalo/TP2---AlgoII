@@ -17,6 +17,10 @@ Estado_t construir_edificio_por_nombre(Andypolis& andypolis);
 // pos:
 bool contiene_numeros(string s);
 
+// pre:
+// pos:
+bool contiene_letras(string s);
+
 
 
 #endif // UTILIDADES_H

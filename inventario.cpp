@@ -75,3 +75,62 @@ void Inventario::mostrar_inventario(){
 
 }
 
+// ------------------------------------------------------------------------------------------------------------
+
+int Inventario::ubicacion_material_en_lista(char identificador){
+    int i = 0;
+    int ubicacion;
+
+    while(i < cantidad_materiales_actual){
+        if(lista_materiales[i]->obtener_identificador() == identificador){
+            ubicacion = i;
+            break;
+        }
+        ++i;
+    }
+
+    return ubicacion;
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+double Inventario::obtener_cantidad_de_piedra(){
+    int ubicacion_material;
+
+    ubicacion_material = ubicacion_material_en_lista(IDENTIF_PIEDRA);
+
+    return lista_materiales[ubicacion_material]->obtener_cantidad();
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+double Inventario::obtener_cantidad_de_madera(){
+    int ubicacion_material;
+
+    ubicacion_material = ubicacion_material_en_lista(IDENTIF_MADERA);
+
+    return lista_materiales[ubicacion_material]->obtener_cantidad();
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+double Inventario::obtener_cantidad_de_metal(){
+    int ubicacion_material;
+
+    ubicacion_material = ubicacion_material_en_lista(IDENTIF_METAL);
+
+    return lista_materiales[ubicacion_material]->obtener_cantidad();
+}
+
+void Inventario::restar_cantidad_materiales_construccion(double costo_piedra, double costo_madera, double costo_metal){
+    int ubicacion_piedra, ubicacion_madera, ubicacion_metal;
+
+    ubicacion_piedra = ubicacion_material_en_lista(IDENTIF_PIEDRA);
+    ubicacion_madera = ubicacion_material_en_lista(IDENTIF_MADERA);
+    ubicacion_metal = ubicacion_material_en_lista(IDENTIF_METAL);
+
+    lista_materiales[ubicacion_piedra]->restar_cantidad(costo_piedra);
+    lista_materiales[ubicacion_madera]->restar_cantidad(costo_madera);
+    lista_materiales[ubicacion_metal]->restar_cantidad(costo_metal);
+
+}

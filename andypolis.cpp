@@ -194,7 +194,7 @@ bool Andypolis::esta_edificio(string nombre_edificio){
     bool edificio_encontrado = false;
     int i = 0;
 
-    while(!edificio_encontrado){
+    while(!edificio_encontrado || i < cantidad_edificios_catalogo){
         if(catalogo[i] -> nombre == nombre_edificio){
             edificio_encontrado = true;
         }
@@ -202,6 +202,63 @@ bool Andypolis::esta_edificio(string nombre_edificio){
     }
 
     return edificio_encontrado;
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+int Andypolis::ubicacion_edificio_en_catalogo(string nombre_edificio){
+    int ubicacion;
+    int i = 0;
+
+    while(i < cantidad_edificios_catalogo){
+        if(catalogo[i] -> nombre == nombre_edificio){
+            ubicacion = i;
+        }
+        ++i;
+    }
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+Estado_t Andypolis::construir_edificio(string nombre_edificio, int coord_x, int coord_y){
+    Estado_t estado;
+    int ubicacion_edificio;
+    string linea = "";
+
+    if(esta_edificio(nombre_edificio)){
+        ubicacion_edificio = ubicacion_edificio_en_catalogo(nombre_edificio);
+        if(coord_x < mapa.obtener_filas() && coord_y < mapa.obtener_columnas()){
+            if(catalogo[ubicacion_edificio] -> cantidad_construidos < catalogo[ubicacion_edificio] -> maximos_permitidos){
+                if(catalogo[ubicacion_edificio] -> costo_piedra < inventario.obtener_cantidad_de_piedra() && catalogo[ubicacion_edificio] -> costo_madera < inventario.obtener_cantidad_de_madera() && catalogo[ubicacion_edificio] -> costo_metal < inventario.obtener_cantidad_de_metal()){
+
+                    linea.append(catalogo[ubicacion_edificio] -> nombre);
+                    linea.append(ESPACIO);
+                    linea.append("(");
+                    linea.append(to_string(coord_x));
+                    linea.append(", ");
+                    linea.append(to_string(coord_y));
+                    linea.append(")");
+
+                    Parser parser(linea);
+
+                    mapa.construir_edificio_en_coord(parser.procesar_entrada_ubicaciones(), coord_x, coord_y);
+                    cargar_coordenadas_en_catalogo(parser.nombre_edificio_ubicaciones(), coord_x, coord_y);
+                    inventario.restar_cantidad_materiales_construccion(catalogo[ubicacion_edificio] -> costo_piedra, catalogo[ubicacion_edificio] -> costo_madera, catalogo[ubicacion_edificio] -> costo_metal);
+
+                    estado = OK;
+
+                } else estado = ERROR_MATERIALES_INSUFICIENTES;
+
+            } else estado = ERROR_MAXIMO_EDIFICIOS_ALCANZADO;
+
+        } else estado = ERROR_POSICION_INEXISTENTE;
+        
+    } else estado = ERROR_EDIFICIO_INEXISTENTE;
+
+
+    return estado;
+    
 }
 
 // ------------------------------------------------------------------------------------------------------------

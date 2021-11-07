@@ -3,11 +3,11 @@
 
 Estado_t construir_edificio_por_nombre(Andypolis& andypolis){
     string nombre;
+    string coord_x, coord_y;
     Estado_t estado;
 
-    cout << "Ingrese el nombre del edificio a construir: " << endl;
+    cout << TAB << MSJ_INGRESO_EDIFICIO_CONSTRUIR << endl;
     cout << ">";
-
     getline(cin, nombre);
 
     while(contiene_numeros(nombre)){
@@ -19,18 +19,46 @@ Estado_t construir_edificio_por_nombre(Andypolis& andypolis){
 
     }
 
-    if(!andypolis.esta_edificio(nombre))
-        return ERROR_EDIFICIO_INEXISTENTE;
+    cout << "Ingrese las coordenadas donde quiere construir: " << endl;
+    cout << "Coordenada x >";
+    getline(cin, coord_x);
+
+    while(contiene_letras(coord_x)){
+        imprimir_error(ERROR_ENTRADA_INVALIDA);
+        cout << endl << "Ingrese una opcion valida: " << endl;
+        cout << ">";
+        getline(cin, coord_x);
+    }
+
+    cout << endl << "Coordenada y >";
+    getline(cin, coord_y);
+
+    while(contiene_letras(coord_y)){
+        imprimir_error(ERROR_ENTRADA_INVALIDA);
+        cout << endl << "Ingrese una opcion valida: " << endl;
+        cout << ">";
+        getline(cin, coord_y);
+    }
         
+    estado = andypolis.construir_edificio(nombre, stoi(coord_x), stoi(coord_y));
     
-
-
+    return estado;
 
 }
+
+// -------------------------------------------------------------------------------------------
 
 bool contiene_numeros(string s){
     const string CONT = "0123456789";
     if(s.find_first_of(CONT) != string::npos){
+        return true;
+    }else
+        return false;
+}
+
+bool contiene_letras(string s){
+    const string CONT = "0123456789";
+    if(s.find_first_not_of(CONT) != string::npos){
         return true;
     }else
         return false;

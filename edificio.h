@@ -18,9 +18,9 @@ const string STR_P_ELECTRICA = "planta electrica";
 
 struct Datos_edificio{
     string nombre;
-    int costo_piedra;
-    int costo_madera;
-    int costo_metal;
+    double costo_piedra;
+    double costo_madera;
+    double costo_metal;
     int cantidad_construidos;
     int maximos_permitidos;
     string ubicaciones_construidos;

@@ -152,7 +152,7 @@ string Parser::nombre_edificio(){
 
 
 int Parser::costo_piedra(){
-    return stoi(entrada[cantidad_de_palabras - 4]);
+    return stod(entrada[cantidad_de_palabras - 4]);
 }
 
 
@@ -160,7 +160,7 @@ int Parser::costo_piedra(){
 
 
 int Parser::costo_madera(){
-    return stoi(entrada[cantidad_de_palabras - 3]);
+    return stod(entrada[cantidad_de_palabras - 3]);
 }
 
 
@@ -168,7 +168,7 @@ int Parser::costo_madera(){
 
 
 int Parser::costo_metal(){
-    return stoi(entrada[cantidad_de_palabras - 2]);
+    return stod(entrada[cantidad_de_palabras - 2]);
 }
 
 

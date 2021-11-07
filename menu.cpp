@@ -31,7 +31,7 @@ void mostrar_menu(){
 
 Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
 
-    // Estado_t st = OK; unused variable ‘st’
+    Estado_t st = OK;
     string str_edificio;
     string codigo_ingresado;
 
@@ -40,10 +40,9 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
 
         case CONSTRUIR_EDIFICIO_POR_NOMBRE:
             // system(CLR_SCREEN); error: ignoring return value of ‘int system(const char*)’, declared with attribute warn_unused_result
-            cout << TAB << MSJ_INGRESO_EDIFICIO_CONSTRUIR << endl;
-            getline(cin, str_edificio);
-            //if( (st = construir_edificio_nombre(andypolis, lm, str_edificio)) != OK )
-            //    return st;
+            if( (st = construir_edificio_por_nombre(andypolis)) != OK )
+                return st;
+    
             break;
 
         case LISTAR_EDIFICIOS_CONSTRUIDOS:

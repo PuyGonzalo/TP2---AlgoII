@@ -37,7 +37,27 @@ public:
 
     // pre:
     // pos:
-    void mostrar_inventario(); // agregar formato y Estado_t
+    int ubicacion_material_en_lista(char identificador);
+
+    // pre:
+    // pos:
+    double obtener_cantidad_de_piedra();
+
+    // pre:
+    // pos:
+    double obtener_cantidad_de_madera();
+
+    // pre:
+    // pos:
+    double obtener_cantidad_de_metal();
+
+    // pre:
+    // pos:
+    void restar_cantidad_materiales_construccion(double costo_piedra, double costo_madera, double costo_metal);
+
+    // pre:
+    // pos:
+    void mostrar_inventario();
 
 };
 

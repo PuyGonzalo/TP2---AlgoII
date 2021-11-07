@@ -13,6 +13,7 @@
 #include "parser.h"
 #include "inventario.h"
 #include "mapa.h"
+#include "errores.h"
 
 using namespace std;
 
@@ -99,6 +100,14 @@ public:
     // pre:
     // pos:
     bool esta_edificio(string nombre_edificio);
+
+    // pre:
+    // pos:
+    Estado_t construir_edificio(string nombre_edificio, int coord_x, int coord_y);
+
+    // pre:
+    // pos:
+    int ubicacion_edificio_en_catalogo(string nombre_edificio);
 
 
 
