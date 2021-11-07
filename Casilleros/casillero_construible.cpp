@@ -6,11 +6,8 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Casillero_Construible::Casillero_Construible(Superficie* superficie, int coord_x, int coord_y, bool ocupado) : Casillero(superficie, coord_x, coord_y, ocupado){
-
-    this -> edificio_construido = nullptr; // hasta no leer ubicaciones.txt no tiene sentido construir el casillero con el edificio (ni se cual poner)
-
-}
+Casillero_Construible::Casillero_Construible(Superficie* superficie, int coord_x, int coord_y, bool ocupado) 
+        :Casillero(superficie, coord_x, coord_y, ocupado){}
 
 
 // ------------------------------------------------------------------------------------------------------------

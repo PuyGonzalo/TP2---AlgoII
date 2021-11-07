@@ -15,6 +15,16 @@ Superficie::Superficie(char identificador){
 // ------------------------------------------------------------------------------------------------------------
 
 
+Superficie::Superficie(){
+
+    this -> identificador = ' ';
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 char Superficie::obtener_identificador(){
 
     return identificador;

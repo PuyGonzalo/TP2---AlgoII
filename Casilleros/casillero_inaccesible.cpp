@@ -2,9 +2,15 @@
 #include "casillero_inaccesible.h"
 
 
+// ------------------------------------------------------------------------------------------------------------
 
-Casillero_Inaccesible::Casillero_Inaccesible(Superficie* superficie, int coord_x, int coord_y, bool ocupado) : Casillero(superficie, coord_x, coord_y, ocupado){}
-// NO HAY FORMA DE QUE ESTE OCUPADO, ES INACCESIBLE, COMO HAGO ESO? (y siempre es un lago??)
+
+Casillero_Inaccesible::Casillero_Inaccesible(Superficie* superficie, int coord_x, int coord_y, bool ocupado) 
+        :Casillero(superficie, coord_x, coord_y, ocupado){}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 void Casillero_Inaccesible::imprimir_casillero(){
 
@@ -22,6 +28,8 @@ void Casillero_Inaccesible::imprimir_casillero(){
     }
 
 }
+
+// ------------------------------------------------------------------------------------------------------------
 
 
 void Casillero_Inaccesible::consultar_casillero(){

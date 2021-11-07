@@ -46,6 +46,39 @@ Mapa::Mapa(ifstream& archivo_mapa){
 // ------------------------------------------------------------------------------------------------------------
 
 
+Mapa::Mapa(){
+
+    this -> mapa = nullptr;
+    this -> cantidad_columnas = 0;
+    this -> cantidad_filas = 0;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Mapa::~Mapa(){
+
+    for(int i = 0 ; i < cantidad_filas ; ++i){
+        for(int j = 0 ; j < cantidad_columnas ; ++j){
+            delete mapa[i][j];
+            mapa[i][j] = nullptr;
+        }
+
+        delete [] mapa[i];
+        mapa[i] = nullptr;
+    }
+
+    delete [] mapa;
+    mapa = nullptr;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 int Mapa::obtener_filas(){
 
     return cantidad_filas;
@@ -59,21 +92,6 @@ int Mapa::obtener_filas(){
 int Mapa::obtener_columnas(){
 
     return cantidad_columnas;
-
-}
-
-
-// ------------------------------------------------------------------------------------------------------------
-
-
-void Mapa::mostrar_mapa(){
-
-    for (int i = 0 ; i < cantidad_filas ; ++i){
-        for (int j = 0 ; j < cantidad_columnas ; ++j){
-            mapa[i][j] -> imprimir_casillero();
-        }
-        cout << endl;
-    }
 
 }
 
@@ -142,28 +160,13 @@ void Mapa::consultar_casillero(int coord_x, int coord_y){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Mapa::mostrar_edificios_construidos(){
+void Mapa::mostrar_mapa(){
 
-// IMPLEMENTAR
-
-}
-
-// ------------------------------------------------------------------------------------------------------------
-
-
-Mapa::~Mapa(){
-
-    for(int i = 0 ; i < cantidad_filas ; ++i){
-        for(int j = 0 ; j < cantidad_columnas ; ++j){
-            delete mapa[i][j];
-            mapa[i][j] = nullptr;
+    for (int i = 0 ; i < cantidad_filas ; ++i){
+        for (int j = 0 ; j < cantidad_columnas ; ++j){
+            mapa[i][j] -> imprimir_casillero();
         }
-
-        delete [] mapa[i];
-        mapa[i] = nullptr;
+        cout << endl;
     }
-
-    delete [] mapa;
-    mapa = nullptr;
 
 }

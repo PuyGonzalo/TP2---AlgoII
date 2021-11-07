@@ -2,8 +2,6 @@
 #define LAGO_H
 
 
-#include <sstream>
-#include <fstream>
 #include <string>
 #include "../errores.h"
 #include "../superficie.h"
@@ -14,8 +12,17 @@ class Lago : public Superficie {
 
 public:
     // Metodos
+
+    // pre: -
+    // pos: CONSTRUCTOR de un lago
     Lago(char identificador);
 
+    // pre: -
+    // pos: CONSTRUCTOR de un lago default
+    Lago():Superficie(){};
+
+    // pre: -
+    // pos: DESTRUCTOR de un lago
     ~Lago(){};
 
 };
