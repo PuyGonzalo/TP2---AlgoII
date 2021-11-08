@@ -138,11 +138,17 @@ bool Mapa::casillero_esta_ocupado(int coord_x, int coord_y){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Mapa::construir_edificio_en_coord(Edificio* edificio, int coord_x, int coord_y){
+Estado_t Mapa::construir_edificio_en_coord(Edificio* edificio, int coord_x, int coord_y){
 
-    if(mapa[coord_x][coord_y] -> es_casillero_construible() && !(casillero_esta_ocupado(coord_x,coord_y)) ){
-        mapa[coord_x][coord_y] -> construir_edificio_en_casillero(edificio);
-    }
+    Estado_t estado = OK;
+
+    if(mapa[coord_x][coord_y] -> es_casillero_construible()){
+        if(!(casillero_esta_ocupado(coord_x,coord_y)) ){
+            mapa[coord_x][coord_y] -> construir_edificio_en_casillero(edificio);
+            } else estado = ERROR_CASILLERO_OCUPADO;
+    } else estado = ERROR_COORDENADA_NO_CONSTRUIBLE;
+
+    return estado;
 
 }
 

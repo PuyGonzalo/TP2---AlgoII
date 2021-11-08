@@ -58,7 +58,7 @@ public:
 
     // pre: coordenadas validas
     // pos: "construye" un edificio en una coordenada dada (y devuelve un error en caso de que sea no sea construible o ya este ocupado)
-    void construir_edificio_en_coord(Edificio* edificio, int coord_x, int coord_y); // status t
+    Estado_t construir_edificio_en_coord(Edificio* edificio, int coord_x, int coord_y);
 
     // pre: coordenadas validas
     // pos: consulta un casillero del mapa en particular

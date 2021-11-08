@@ -63,7 +63,7 @@ int Casillero::obtener_coordenada_y(){
 
 bool Casillero::esta_ocupado(){
 
-    return ocupado;
+    return this -> ocupado;
 
 }
 

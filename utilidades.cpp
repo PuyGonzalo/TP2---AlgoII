@@ -4,7 +4,7 @@
 Estado_t construir_edificio_por_nombre(Andypolis& andypolis){
     string nombre;
     string coord_x, coord_y;
-    Estado_t estado;
+    Estado_t estado = OK;
 
     cout << TAB << MSJ_INGRESO_EDIFICIO_CONSTRUIR << endl;
     cout << ">";

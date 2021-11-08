@@ -219,7 +219,8 @@ int Andypolis::ubicacion_edificio_en_catalogo(string nombre_edificio){
 // ------------------------------------------------------------------------------------------------------------
 
 Estado_t Andypolis::construir_edificio(string nombre_edificio, int coord_x, int coord_y){
-    Estado_t estado;
+    
+    Estado_t estado = OK;
     int ubicacion_edificio;
     string linea = "";
 
@@ -241,11 +242,9 @@ Estado_t Andypolis::construir_edificio(string nombre_edificio, int coord_x, int 
 
                     Parser parser(linea);
 
-                    mapa.construir_edificio_en_coord(parser.procesar_entrada_ubicaciones(), coord_x, coord_y);
+                    estado = mapa.construir_edificio_en_coord(parser.procesar_entrada_ubicaciones(), coord_x, coord_y);
                     cargar_coordenadas_en_catalogo(parser.nombre_edificio_ubicaciones(), coord_x, coord_y);
                     inventario.restar_cantidad_materiales_construccion(catalogo[ubicacion_edificio] -> costo_piedra, catalogo[ubicacion_edificio] -> costo_madera, catalogo[ubicacion_edificio] -> costo_metal);
-
-                    estado = OK;
 
                 } else estado = ERROR_MATERIALES_INSUFICIENTES;
 
@@ -254,7 +253,6 @@ Estado_t Andypolis::construir_edificio(string nombre_edificio, int coord_x, int 
         } else estado = ERROR_POSICION_INEXISTENTE;
         
     } else estado = ERROR_EDIFICIO_INEXISTENTE;
-
 
     return estado;
     
