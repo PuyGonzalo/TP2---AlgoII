@@ -24,10 +24,9 @@ private:
     // Atributos
     //Casilleroptr** mapa;
     Mapa mapa;
-    Datos_edificio** catalogo;
-    Inventario inventario;
+    Lista<Datos_edificio> catalogo;
     int cantidad_edificios_catalogo;
-    int cantidad_max_edificios_catalogo;
+    Inventario inventario;
 
 
 public:
@@ -99,6 +98,10 @@ public:
     // pre:
     // pos:
     int ubicacion_edificio_en_catalogo(string nombre_edificio);
+
+    // pre: 
+    // pos:
+    void mostrar_ubicaciones_construidas(int pos_edif_catalogo);
 
 
 

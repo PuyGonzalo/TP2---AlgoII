@@ -95,17 +95,18 @@ double Parser::cantidad_material(){
 // ----------------------------------------------------------------------------------------------------------//
 
 
-Datos_edificio* Parser::procesar_entrada_edificio(){
+Datos_edificio Parser::procesar_entrada_edificio(){
 
-    Datos_edificio* nuevos_datos = new Datos_edificio;
+    Datos_edificio nuevos_datos;
 
-    nuevos_datos -> nombre = nombre_edificio();
-    nuevos_datos -> costo_piedra = costo_piedra();
-    nuevos_datos -> costo_madera = costo_madera();
-    nuevos_datos -> costo_metal = costo_metal();
-    nuevos_datos -> cantidad_construidos = 0;
-    nuevos_datos -> maximos_permitidos = cantidad_maxima_permitida();
-    nuevos_datos -> ubicaciones_construidos = "";
+    nuevos_datos.nombre = nombre_edificio();
+    nuevos_datos.costo_piedra = costo_piedra();
+    nuevos_datos.costo_madera = costo_madera();
+    nuevos_datos.costo_metal = costo_metal();
+    nuevos_datos.cantidad_construidos = 0;
+    nuevos_datos.maximos_permitidos = cantidad_maxima_permitida();
+    // CREA UNA LISTA VACIA de Lista<Coordenadas_ubicaciones> ubicaciones_construidos
+    //nuevos_datos -> ubicaciones_construidos = "";
 
     return nuevos_datos;
 

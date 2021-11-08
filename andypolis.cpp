@@ -18,33 +18,16 @@ mapa(archivo_mapa) , inventario(archivo_mats) {
 
 
 void Andypolis::cargar_catalogo(ifstream& archivo_edif){
-
-    this -> catalogo = new Datos_edificio*[MAX_EDIF_CONSTRUIBLES_INICIAL];
+   
     this -> cantidad_edificios_catalogo = 0;
-    this -> cantidad_max_edificios_catalogo = MAX_EDIF_CONSTRUIBLES_INICIAL; 
-    Datos_edificio** nuevo_catalogo;
-    
     string linea_leida;
-    int i = 0;
 
     while (getline(archivo_edif,linea_leida)){
 
         Parser parser(linea_leida);
-
-        if(cantidad_edificios_catalogo == cantidad_max_edificios_catalogo){
-            nuevo_catalogo = new Datos_edificio*[cantidad_edificios_catalogo+AMPLIACION_EDIF_CONSTRUIBLES];
-            for (int j = 0 ; j < cantidad_edificios_catalogo ; ++j){
-                nuevo_catalogo[j] = catalogo[j];
-            }
-
-            delete [] catalogo;
-            catalogo = nuevo_catalogo;
-            cantidad_max_edificios_catalogo = cantidad_edificios_catalogo + AMPLIACION_EDIF_CONSTRUIBLES;
-        }
-
-        this -> catalogo[i] = parser.procesar_entrada_edificio();
+        Datos_edificio edificio_leido = parser.procesar_entrada_edificio();
+        catalogo.alta(edificio_leido, this -> cantidad_edificios_catalogo);
         ++cantidad_edificios_catalogo;
-        ++i;
 
     }   
 
@@ -73,8 +56,6 @@ void Andypolis::cargar_edificios(ifstream& archivo_ubics){
 
     }
 
-
-
 }
 
 
@@ -94,13 +75,13 @@ void Andypolis::cargar_edificios(ifstream& archivo_ubics){
 void Andypolis::mostrar_catalogo(){
 
     for(int i = 0 ; i < cantidad_edificios_catalogo ; ++i){
-        cout << catalogo[i]->nombre << endl;
-        cout << catalogo[i]-> costo_piedra<< endl;
-        cout << catalogo[i]-> costo_madera << endl;
-        cout << catalogo[i]-> costo_metal << endl;
-        cout << catalogo[i]-> cantidad_construidos << endl;
-        cout << catalogo[i]-> maximos_permitidos << endl;
-        cout << catalogo[i]-> ubicaciones_construidos << endl;
+        cout << catalogo.consulta(i).nombre << endl;
+        cout << catalogo.consulta(i).costo_piedra<< endl;
+        cout << catalogo.consulta(i).costo_madera << endl;
+        cout << catalogo.consulta(i).costo_metal << endl;
+        cout << catalogo.consulta(i).cantidad_construidos << endl;
+        cout << catalogo.consulta(i). maximos_permitidos << endl;
+        // Metodo MOSTRAR UBICACIONES cout << catalogo.consulta(i) -> ubicaciones_construidos << endl;
     }
 
 }
@@ -141,17 +122,15 @@ void Andypolis::mostrar_inventario(){
 
 void Andypolis::cargar_coordenadas_en_catalogo(string nombre_edificio, int coord_x, int coord_y){
 
-    string coordenada;
+    Coordenadas_ubicaciones coord = {coord_x , coord_y};
     bool edificio_detectado = false;
     int i = 0;
 
     while(!edificio_detectado){
-        if(nombre_edificio == catalogo[i] -> nombre){
-            stringstream ss;
-            ss << "(" << to_string(coord_x) << ", " << to_string(coord_y) << ")" << ESPACIO; // DESHARDCODEAR
-            coordenada = ss.str();
-            catalogo[i] -> ubicaciones_construidos.append(coordenada);
-            ++catalogo[i] -> cantidad_construidos;
+        if(nombre_edificio == catalogo.consulta(i).nombre){
+
+            catalogo.consulta(i).ubicaciones_construidos.alta(coord,0);
+            ++catalogo.consulta(i).cantidad_construidos;
             edificio_detectado = true;
         } 
         ++i;
@@ -169,9 +148,11 @@ void Andypolis::listar_edificios_construidos(){
         cout << "No hay edificios, rey" << endl;
     } else{
         for(int i = 0 ; i < cantidad_edificios_catalogo ; ++i){
-            if(catalogo[i] -> cantidad_construidos != 0){
-            cout << catalogo[i] -> nombre << ESPACIO << "(Totales = " << catalogo[i]->cantidad_construidos << ")" << endl;
-            cout << "Construidos en: " << catalogo[i] -> ubicaciones_construidos << endl << endl;
+            if(catalogo.consulta(i).cantidad_construidos != 0){
+            cout << catalogo.consulta(i).nombre << ESPACIO << "(Totales = " << catalogo.consulta(i).cantidad_construidos << ")" << endl;
+            cout << "Construidos en: ";
+            mostrar_ubicaciones_construidas(i);
+            cout << endl;
             }
         }
     }
@@ -181,13 +162,25 @@ void Andypolis::listar_edificios_construidos(){
 
 // ------------------------------------------------------------------------------------------------------------
 
+
+void Andypolis::mostrar_ubicaciones_construidas(int pos_edif){
+
+    for(int i = 0; i < catalogo.consulta(pos_edif).cantidad_construidos ; ++i){
+        cout << '(' << catalogo.consulta(pos_edif).ubicaciones_construidos.consulta(i).coordenada_x
+        << ',' << ESPACIO << catalogo.consulta(pos_edif).ubicaciones_construidos.consulta(i).coordenada_y << ') ';
+    }
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
 bool Andypolis::esta_edificio(string nombre_edificio){
     
     bool edificio_encontrado = false;
     int i = 0;
 
     while(!edificio_encontrado && i < cantidad_edificios_catalogo){
-        if(catalogo[i] -> nombre == nombre_edificio){
+        if(catalogo.consulta(i).nombre == nombre_edificio){
             edificio_encontrado = true;
         }
         ++i;
@@ -205,7 +198,7 @@ int Andypolis::ubicacion_edificio_en_catalogo(string nombre_edificio){
     bool edificio_encontrado = false;
 
     while(i < cantidad_edificios_catalogo && !edificio_encontrado){
-        if(catalogo[i] -> nombre == nombre_edificio){
+        if(catalogo.consulta(i).nombre == nombre_edificio){
             ubicacion = i;
             edificio_encontrado = true;
         }
@@ -227,12 +220,12 @@ Estado_t Andypolis::construir_edificio(string nombre_edificio, int coord_x, int 
     if(esta_edificio(nombre_edificio)){
         ubicacion_edificio = ubicacion_edificio_en_catalogo(nombre_edificio);
         if(coord_x < mapa.obtener_filas() && coord_y < mapa.obtener_columnas()){
-            if(catalogo[ubicacion_edificio] -> cantidad_construidos < catalogo[ubicacion_edificio] -> maximos_permitidos){
-                if(catalogo[ubicacion_edificio] -> costo_piedra < inventario.obtener_cantidad_de_piedra() 
-                && catalogo[ubicacion_edificio] -> costo_madera < inventario.obtener_cantidad_de_madera() 
-                && catalogo[ubicacion_edificio] -> costo_metal < inventario.obtener_cantidad_de_metal()){
+            if(catalogo.consulta(ubicacion_edificio).cantidad_construidos < catalogo.consulta(ubicacion_edificio).maximos_permitidos){
+                if(catalogo.consulta(ubicacion_edificio).costo_piedra < inventario.obtener_cantidad_de_piedra() 
+                && catalogo.consulta(ubicacion_edificio).costo_madera < inventario.obtener_cantidad_de_madera() 
+                && catalogo.consulta(ubicacion_edificio).costo_metal < inventario.obtener_cantidad_de_metal()){
 
-                    linea.append(catalogo[ubicacion_edificio] -> nombre);
+                    linea.append(catalogo.consulta(ubicacion_edificio).nombre);
                     linea.append(ESPACIO);
                     linea.append("(");
                     linea.append(to_string(coord_x));
@@ -244,7 +237,9 @@ Estado_t Andypolis::construir_edificio(string nombre_edificio, int coord_x, int 
 
                     estado = mapa.construir_edificio_en_coord(parser.procesar_entrada_ubicaciones(), coord_x, coord_y);
                     cargar_coordenadas_en_catalogo(parser.nombre_edificio_ubicaciones(), coord_x, coord_y);
-                    inventario.restar_cantidad_materiales_construccion(catalogo[ubicacion_edificio] -> costo_piedra, catalogo[ubicacion_edificio] -> costo_madera, catalogo[ubicacion_edificio] -> costo_metal);
+                    
+                    inventario.restar_cantidad_materiales_construccion(catalogo.consulta(ubicacion_edificio).costo_piedra, 
+                    catalogo.consulta(ubicacion_edificio).costo_madera, catalogo.consulta(ubicacion_edificio).costo_metal);
 
                 } else estado = ERROR_MATERIALES_INSUFICIENTES;
 
@@ -316,14 +311,4 @@ Estado_t Andypolis::posicionar_lluvia_de_recursos(double cantidad_piedra, double
 // ------------------------------------------------------------------------------------------------------------
 
 
-Andypolis::~Andypolis(){
-
-    for (int i = 0 ; i < cantidad_edificios_catalogo ; ++i){
-        delete catalogo[i];
-        catalogo[i] = nullptr;
-    }
-    
-    delete [] catalogo;
-    catalogo = nullptr;
-
-}
+Andypolis::~Andypolis(){}

@@ -7,10 +7,8 @@
 
 Inventario::Inventario(){
 
-    this -> lista_materiales = new Material*[cantidad_maxima_inicial];
-    this -> cantidad_materiales_actual = 0;
-    this -> cantidad_materiales_maxima = cantidad_maxima_inicial;
-
+    // CREAR LISTA VACIA DE Lista<Material*> lista_materiales;
+    this -> cantidad_materiales = 0;
 
 }
 
@@ -21,31 +19,17 @@ Inventario::Inventario(){
 Inventario::Inventario(ifstream& archivo){
     
     string linea_leida;
-    Material** nueva_lista_materiales;
+    this -> cantidad_materiales = 0;
+    // inicializar la lista como vacia? o ya siendo atributo se "crea vacia"?
 
-    this -> lista_materiales = new Material*[cantidad_maxima_inicial]; // esta bien esto?
-    this -> cantidad_materiales_actual = 0;
-    this -> cantidad_materiales_maxima = cantidad_maxima_inicial; 
- 
+
     while(getline(archivo, linea_leida)){
-        
+
         Parser parser(linea_leida);
         Material* material_leido = parser.procesar_entrada_material();
-
-        if(cantidad_materiales_actual < cantidad_materiales_maxima){ // CAMBIAR IF ELSE POR IF (act == max) -> REALLOC
-            lista_materiales[cantidad_materiales_actual] = material_leido;
-            cantidad_materiales_actual++;
-        } else{
-            nueva_lista_materiales = new Material*[cantidad_materiales_maxima+ampliacion_cantidad_materiales];
-            for(int i = 0; i < cantidad_materiales_maxima ; ++i)
-                nueva_lista_materiales[i] = lista_materiales[i]; // reasigno punteros
-            nueva_lista_materiales[cantidad_materiales_maxima] = material_leido;
-
-            delete [] lista_materiales;
-            lista_materiales = nueva_lista_materiales;
-            cantidad_materiales_actual++;
-            cantidad_materiales_maxima += ampliacion_cantidad_materiales;
-        }
+        lista_materiales.alta(material_leido, this->cantidad_materiales); // medio cabeza pero los voy metiendo todos al ppio (pila xd)
+        this ->cantidad_materiales++;
+        
     }
 }
 
@@ -55,13 +39,10 @@ Inventario::Inventario(ifstream& archivo){
 
 Inventario::~Inventario(){
     
-    for (int i = 0 ; i < cantidad_materiales_maxima ; ++i){
-        delete lista_materiales[i];
-        lista_materiales[i] = nullptr;
+    for (int i = 0 ; i < cantidad_materiales ; ++i){
+        delete lista_materiales.consulta(i);
+        // lista_materiales.consulta(i) == nullptr; value computed is not used [-Werror=unused-value]
     }
-    
-    delete [] lista_materiales;
-    lista_materiales = nullptr;
 
 }
 
@@ -70,8 +51,9 @@ Inventario::~Inventario(){
 
 
 void Inventario::mostrar_inventario(){
-    for(int i = 0 ; i < cantidad_materiales_actual ; ++i)
-        cout << "> " << lista_materiales[i] -> obtener_tipo_material() << ": " << lista_materiales[i] -> obtener_cantidad() << endl;
+    for(int i = 0 ; i < cantidad_materiales ; ++i)
+        cout << "> " << lista_materiales.consulta(i) -> obtener_tipo_material() << ": " << 
+        lista_materiales.consulta(i) -> obtener_cantidad() << endl;
 
 }
 
@@ -82,8 +64,8 @@ int Inventario::ubicacion_material_en_lista(char identificador){
     int ubicacion = -1;
     bool material_encontrado = false;
 
-    while(i < cantidad_materiales_actual && !material_encontrado ){
-        if(lista_materiales[i] -> obtener_identificador() == identificador){
+    while(i < cantidad_materiales && !material_encontrado ){
+        if(lista_materiales.consulta(i) -> obtener_identificador() == identificador){
             ubicacion = i;
             material_encontrado = true;
         }
@@ -96,32 +78,37 @@ int Inventario::ubicacion_material_en_lista(char identificador){
 // ------------------------------------------------------------------------------------------------------------
 
 double Inventario::obtener_cantidad_de_piedra(){
+    
     int ubicacion_material;
-
     ubicacion_material = ubicacion_material_en_lista(IDENTIF_PIEDRA);
 
-    return lista_materiales[ubicacion_material]->obtener_cantidad();
+    return lista_materiales.consulta(ubicacion_material) -> obtener_cantidad();
 }
 
 // ------------------------------------------------------------------------------------------------------------
 
 double Inventario::obtener_cantidad_de_madera(){
+   
     int ubicacion_material;
-
     ubicacion_material = ubicacion_material_en_lista(IDENTIF_MADERA);
 
-    return lista_materiales[ubicacion_material]->obtener_cantidad();
+    return lista_materiales.consulta(ubicacion_material) -> obtener_cantidad();
 }
 
 // ------------------------------------------------------------------------------------------------------------
 
-double Inventario::obtener_cantidad_de_metal(){
-    int ubicacion_material;
 
+double Inventario::obtener_cantidad_de_metal(){
+    
+    int ubicacion_material;
     ubicacion_material = ubicacion_material_en_lista(IDENTIF_METAL);
 
-    return lista_materiales[ubicacion_material]->obtener_cantidad();
+    return lista_materiales.consulta(ubicacion_material) -> obtener_cantidad();
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 void Inventario::restar_cantidad_materiales_construccion(double costo_piedra, double costo_madera, double costo_metal){
     int ubicacion_piedra, ubicacion_madera, ubicacion_metal;
@@ -130,8 +117,8 @@ void Inventario::restar_cantidad_materiales_construccion(double costo_piedra, do
     ubicacion_madera = ubicacion_material_en_lista(IDENTIF_MADERA);
     ubicacion_metal = ubicacion_material_en_lista(IDENTIF_METAL);
 
-    lista_materiales[ubicacion_piedra]->restar_cantidad(costo_piedra);
-    lista_materiales[ubicacion_madera]->restar_cantidad(costo_madera);
-    lista_materiales[ubicacion_metal]->restar_cantidad(costo_metal);
+    lista_materiales.consulta(ubicacion_piedra) -> restar_cantidad(costo_piedra);
+    lista_materiales.consulta(ubicacion_madera) -> restar_cantidad(costo_madera);
+    lista_materiales.consulta(ubicacion_metal) -> restar_cantidad(costo_metal);
 
 }

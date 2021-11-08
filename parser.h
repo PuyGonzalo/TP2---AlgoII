@@ -71,7 +71,7 @@ public:
 
     // pre:
     // pos:
-    Datos_edificio* procesar_entrada_edificio();
+    Datos_edificio procesar_entrada_edificio();
 
     //PRE:
     //POST:

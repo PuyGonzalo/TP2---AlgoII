@@ -5,19 +5,17 @@
 #include <fstream>
 #include "material.h"
 #include "parser.h"
+#include "lista.h"
 
 using namespace std;
 
-const int ampliacion_cantidad_materiales = 2;
-const int cantidad_maxima_inicial = 1;
 
 class Inventario{
 
 private:
     // Atributos
-    Material** lista_materiales;
-    int cantidad_materiales_actual;
-    int cantidad_materiales_maxima;
+    Lista<Material*> lista_materiales; // no puede ser Lista<Material> ?
+    int cantidad_materiales;
 
 public:
     // Metodos
