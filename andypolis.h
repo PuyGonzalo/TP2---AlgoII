@@ -52,14 +52,6 @@ public:
     // pos: 
     Edificio* buscar_por_nombre_edificio_en_lista(string nombre);
 
-    // pre:
-    // pos:
-    int obtener_filas_mapa();
-
-    // pre:
-    // pos:
-    int obtener_columnas_mapa();
-
     // pre: 
     // pos: 
     void mostrar_mapa();
@@ -99,6 +91,10 @@ public:
     // pre:
     // pos:
     Estado_t construir_edificio(string nombre_edificio, int coord_x, int coord_y);
+
+    // pre:
+    // pos:
+    Estado_t posicionar_lluvia_de_recursos(double cantidad_piedra, double cantidad_madera, double cantidad_metal);
 
     // pre:
     // pos:

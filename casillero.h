@@ -8,6 +8,7 @@
 #include "errores.h"
 #include "superficie.h"
 #include "edificio.h"
+#include "material.h"
 
 using namespace std;
 
@@ -63,6 +64,10 @@ public:
     // pre: -
     // pos: pone un casillero en el casillero (solo en construible)
     virtual void construir_edificio_en_casillero(Edificio* edificio){};
+
+    // pre:
+    // pos:
+    virtual void poner_material_en_casillero(Material* material){};
 
     // pre: -
     // pos: imprime un mensaje con informacion del casillero (que casillero es y si esta o no ocupado)

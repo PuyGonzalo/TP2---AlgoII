@@ -36,7 +36,7 @@ public:
 
     // pre: -
     // pos: pone/"tira" un material en el casillero
-    void poner_material_en_casillero(Material* mat);
+    void poner_material_en_casillero(Material* material);
 
 };
 

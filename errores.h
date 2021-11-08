@@ -7,7 +7,7 @@
 using namespace std;
 
 // hay que adaptarlos!!!! pero muchos son los que vamos a poner
-const int MAX_ERRORS = 13;
+const int MAX_ERRORS = 14;
 const string STR_OK = "Ok";
 const string STR_ERROR_ENTRADA_INVALIDA = "¡El dato ingresado es invalido!";
 const string STR_ERROR_PUNTERO_NULO = "Error interno del sistema";
@@ -21,6 +21,7 @@ const string STR_ERROR_CODIGO_INEXISTENTE = "¡Ese codigo no existe!";
 const string STR_ERROR_POSICION_INEXISTENTE = "La posicion ingresada no existe en el mapa!";
 const string STR_ERROR_COORDENADA_NO_CONSTRUIBLE = "¡No se puede construir en esta posicion!";
 const string STR_ERROR_CASILLERO_OCUPADO = "¡El casillero esta ocupado!";
+const string STR_ERROR_CASILLERO_NO_TRANSITABLE = "¡El casillero no es del tipo transitable!";
 
 const string errores[MAX_ERRORS] = {
 	STR_OK,
@@ -35,7 +36,8 @@ const string errores[MAX_ERRORS] = {
 	STR_ERROR_CODIGO_INEXISTENTE,
 	STR_ERROR_POSICION_INEXISTENTE,
 	STR_ERROR_COORDENADA_NO_CONSTRUIBLE,
-	STR_ERROR_CASILLERO_OCUPADO
+	STR_ERROR_CASILLERO_OCUPADO,
+	STR_ERROR_CASILLERO_NO_TRANSITABLE
 };
 
 enum Estado_t {
@@ -51,7 +53,9 @@ enum Estado_t {
 	ERROR_CODIGO_INEXISTENTE = 9,
 	ERROR_POSICION_INEXISTENTE = 10,
 	ERROR_COORDENADA_NO_CONSTRUIBLE = 11,
-	ERROR_CASILLERO_OCUPADO = 12};
+	ERROR_CASILLERO_OCUPADO = 12,
+	ERROR_CASILLERO_NO_TRANSITABLE = 13,
+	ADVERTENCIA_LLUVIA_RECURSOS = 14};
 
 
 //####################################################### FUNCIONES #################################################################

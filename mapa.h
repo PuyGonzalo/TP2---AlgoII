@@ -60,6 +60,11 @@ public:
     // pos: "construye" un edificio en una coordenada dada (y devuelve un error en caso de que sea no sea construible o ya este ocupado)
     Estado_t construir_edificio_en_coord(Edificio* edificio, int coord_x, int coord_y);
 
+    // pre:
+    // pos:
+    Estado_t agregar_material_en_coordenadas(Material* material, int coord_x, int coord_y);
+
+
     // pre: coordenadas validas
     // pos: consulta un casillero del mapa en particular
     void consultar_casillero(int coord_x, int coord_y);

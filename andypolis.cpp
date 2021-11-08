@@ -260,6 +260,61 @@ Estado_t Andypolis::construir_edificio(string nombre_edificio, int coord_x, int 
 
 // ------------------------------------------------------------------------------------------------------------
 
+Estado_t Andypolis::posicionar_lluvia_de_recursos(double cantidad_piedra, double cantidad_madera, double cantidad_metal){
+    Estado_t estado_final = OK;
+    /*Estado_t estado_piedra, estado_madera, estado_metal;
+
+
+    string piedra = "piedra 1";
+    string madera = "madera 1";
+    string metal = "metal 1";
+    
+
+    for(int i = 1; i <= cantidad_piedra; ++i){
+        Parser parser(piedra);
+    
+        while(estado_piedra != OK){
+            int coord_x = rand() % mapa.obtener_filas();
+            int coord_y = rand() % mapa.obtener_columnas();
+            estado_piedra = mapa.agregar_material_en_coordenadas(parser.procesar_entrada_material(), coord_x, coord_y);
+        }
+        
+    }
+
+    for(int i = 1; i <= cantidad_madera; ++i){int contador = 0;
+        Parser parser(madera);
+
+        while(estado_madera != OK){
+            int coord_x = rand() % mapa.obtener_filas();
+            int coord_y = rand() % mapa.obtener_columnas();
+            estado_madera = mapa.agregar_material_en_coordenadas(parser.procesar_entrada_material(), coord_x, coord_y);
+
+        }
+        
+    }
+
+    for(int i = 1; i <= cantidad_metal; ++i){
+        Parser parser(metal);
+    
+        while(estado_metal != OK){
+            int coord_x = rand() % mapa.obtener_filas();
+            int coord_y = rand() % mapa.obtener_columnas();
+            estado_metal = mapa.agregar_material_en_coordenadas(parser.procesar_entrada_material(), coord_x, coord_y);
+
+        }
+
+        
+    }
+
+    
+    return estado_final;*/
+
+    cout << endl << "No hay tal lluvia de recursos chinchulin :P" << endl;
+    return estado_final;
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 Andypolis::~Andypolis(){
 

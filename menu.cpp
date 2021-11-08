@@ -81,6 +81,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
 
         case LLUVIA_RECURSOS:
             //system(CLR_SCREEN);
+            lluvia_de_recursos(andypolis);
 
             break;
 

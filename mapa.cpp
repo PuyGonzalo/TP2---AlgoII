@@ -155,6 +155,22 @@ Estado_t Mapa::construir_edificio_en_coord(Edificio* edificio, int coord_x, int 
 
 // ------------------------------------------------------------------------------------------------------------
 
+Estado_t Mapa::agregar_material_en_coordenadas(Material* material, int coord_x, int coord_y){
+    Estado_t estado = OK;
+
+    if(mapa[coord_x][coord_y] -> es_casillero_transitable()){
+        if(!(casillero_esta_ocupado(coord_x, coord_y))){
+            mapa[coord_x][coord_y] -> poner_material_en_casillero(material);
+        }else estado = ERROR_CASILLERO_OCUPADO;
+
+    }else estado = ERROR_CASILLERO_NO_TRANSITABLE;
+
+    return estado;
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 void Mapa::consultar_casillero(int coord_x, int coord_y){
 

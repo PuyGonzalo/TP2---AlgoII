@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 #include "errores.h"
 #include "menu.h"
 #include "andypolis.h"
@@ -25,6 +26,8 @@ int main (void){
 
  	// inicializo la ciudad
     Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa, archivo_entrada_materiales);
+	
+	srand( (unsigned int)time(NULL) ); // Esto lo hago en main para que la secuencia de la cantidad de materiales que se genera con cada corrida del programa sea mas aleatoria.
 	
 	while(opcion != GUARDAR_SALIR){
 		mostrar_menu();
