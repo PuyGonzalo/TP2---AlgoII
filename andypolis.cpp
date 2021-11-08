@@ -182,10 +182,11 @@ void Andypolis::listar_edificios_construidos(){
 // ------------------------------------------------------------------------------------------------------------
 
 bool Andypolis::esta_edificio(string nombre_edificio){
+    
     bool edificio_encontrado = false;
     int i = 0;
 
-    while(!edificio_encontrado || i < cantidad_edificios_catalogo){
+    while(!edificio_encontrado && i < cantidad_edificios_catalogo){
         if(catalogo[i] -> nombre == nombre_edificio){
             edificio_encontrado = true;
         }
@@ -203,7 +204,7 @@ int Andypolis::ubicacion_edificio_en_catalogo(string nombre_edificio){
     int i = 0;
     bool edificio_encontrado = false;
 
-    while(i < cantidad_edificios_catalogo || !edificio_encontrado){
+    while(i < cantidad_edificios_catalogo && !edificio_encontrado){
         if(catalogo[i] -> nombre == nombre_edificio){
             ubicacion = i;
             edificio_encontrado = true;
@@ -226,7 +227,9 @@ Estado_t Andypolis::construir_edificio(string nombre_edificio, int coord_x, int 
         ubicacion_edificio = ubicacion_edificio_en_catalogo(nombre_edificio);
         if(coord_x < mapa.obtener_filas() && coord_y < mapa.obtener_columnas()){
             if(catalogo[ubicacion_edificio] -> cantidad_construidos < catalogo[ubicacion_edificio] -> maximos_permitidos){
-                if(catalogo[ubicacion_edificio] -> costo_piedra < inventario.obtener_cantidad_de_piedra() && catalogo[ubicacion_edificio] -> costo_madera < inventario.obtener_cantidad_de_madera() && catalogo[ubicacion_edificio] -> costo_metal < inventario.obtener_cantidad_de_metal()){
+                if(catalogo[ubicacion_edificio] -> costo_piedra < inventario.obtener_cantidad_de_piedra() 
+                && catalogo[ubicacion_edificio] -> costo_madera < inventario.obtener_cantidad_de_madera() 
+                && catalogo[ubicacion_edificio] -> costo_metal < inventario.obtener_cantidad_de_metal()){
 
                     linea.append(catalogo[ubicacion_edificio] -> nombre);
                     linea.append(ESPACIO);

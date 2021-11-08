@@ -82,7 +82,7 @@ int Inventario::ubicacion_material_en_lista(char identificador){
     int ubicacion = -1;
     bool material_encontrado = false;
 
-    while(i < cantidad_materiales_actual || !material_encontrado ){
+    while(i < cantidad_materiales_actual && !material_encontrado ){
         if(lista_materiales[i] -> obtener_identificador() == identificador){
             ubicacion = i;
             material_encontrado = true;

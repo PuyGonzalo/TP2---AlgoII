@@ -2,7 +2,6 @@
 #include "errores.h"
 #include "menu.h"
 #include "andypolis.h"
-#include "inventario.h"
 
 using namespace std;
 
@@ -14,6 +13,9 @@ const string PATH_ENTRADA_MAPA = "Archivos/mapa.txt";
 
 
 int main (void){
+	if(system(CLR_SCREEN));
+	int opcion = 0;
+	Estado_t estado = OK;
 
     // Abro archivos de lectura
 	ifstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES);
@@ -24,16 +26,30 @@ int main (void){
  	// inicializo la ciudad
     Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa, archivo_entrada_materiales);
 	
-	andypolis.mostrar_andypolis();
-	andypolis.consultar_casillero_de_mapa(7,9);
-	andypolis.mostrar_inventario();
-	andypolis.listar_edificios_construidos();
+	while(opcion != GUARDAR_SALIR){
+		mostrar_menu();
+		estado = ingreso_menu(opcion, andypolis);
+		if(estado != OK)
+			imprimir_error(estado);
+	}
 
     // Cierro archivos de lectura
 	archivo_entrada_materiales.close(); 
 	archivo_entrada_edificios.close();
     archivo_entrada_ubicaciones.close();
     archivo_entrada_mapa.close();
+
+	/*/ Abro los archivos de escritura para guardar el juego
+	ofstream archivo_salida_materiales(PATH_ENTRADA_MATERIALES, ios::trunc);
+    ofstream archivo_salida_edificios(PATH_ENTRADA_EDIFICIOS, ios::trunc);
+	
+	// Guardo los cambios
+	guardar_cambios(lista_de_materiales, andypolis, archivo_salida_materiales, archivo_salida_edificios);
+
+	// Cierros los archivos de escritura
+	archivo_salida_materiales.close();
+	archivo_salida_edificios.close();
+	*/
 
     return 0;
 }

@@ -10,19 +10,19 @@ using namespace std;
 
 void mostrar_menu(){
     cout << endl << endl;
-    cout << TAB <<NEGRITA<< MSJ_MENU_BIENVENIDA <<FIN_DE_FORMATO<< endl;
-    cout << TAB << "╔═══════════════════════════════════════╗" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_1 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_2 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_3 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_4 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_5 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_6 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_7 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_8 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_9 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_10 << TAB << FIN_DE_FORMATO << "║" << endl;
-    cout << TAB << "╚═══════════════════════════════════════╝" << endl;
+    cout << TAB <<NEGRITA<< MSJ_MENU_BIENVENIDA <<FIN_DE_FORMATO<< endl<<endl;
+    cout << TAB << "╔════════════════════════════════════════╗" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_1 << string(6, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_2 << string(3, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_3 << string(9, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_4 << string(1, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_5 << string(23, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_6 << string(15, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_7 << string(17, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_8 << string(5, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_9 << string(17, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_10 << string(19, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "╚════════════════════════════════════════╝" << endl;
 }
 
 
@@ -39,19 +39,18 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
     switch (opcion_elegida) {
 
         case CONSTRUIR_EDIFICIO_POR_NOMBRE:
-            // system(CLR_SCREEN); error: ignoring return value of ‘int system(const char*)’, declared with attribute warn_unused_result
+            if(system(CLR_SCREEN)); //error: ignoring return value of ‘int system(const char*)’, declared with attribute warn_unused_result
             if( (st = construir_edificio_por_nombre(andypolis)) != OK )
                 return st;
-    
             break;
 
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
-            // system(CLR_SCREEN);
+            if(system(CLR_SCREEN));
             andypolis.listar_edificios_construidos();
             break;
 
         case LISTAR_TODOS_LOS_EDIFICIOS: 
-            //system(CLR_SCREEN);
+            if(system(CLR_SCREEN));
             andypolis.mostrar_catalogo();
             break;
 
@@ -61,7 +60,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
             break;
 
         case MOSTRAR_MAPA:
-            //system(CLR_SCREEN);
+            if(system(CLR_SCREEN));
             andypolis.mostrar_andypolis();
             break;
         
@@ -71,7 +70,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
             break;
 
         case MOSTRAR_INVENTARIO:
-            //system(CLR_SCREEN);
+            if(system(CLR_SCREEN));
             andypolis.mostrar_inventario();
             break;
 
@@ -86,13 +85,13 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
             break;
 
         case GUARDAR_SALIR:
-            //system(CLR_SCREEN);
+            if(system(CLR_SCREEN));
             cout << TAB << NEGRITA << FONDO_COLOR_AZUL << MSJ_DESPEDIDA << FIN_DE_FORMATO <<endl;
             cout << endl << endl;
             break;
         
         case MENU_SECRETO:
-            //system(CLR_SCREEN);
+            if(system(CLR_SCREEN));
             cout << TAB << MSJ_INGRESO_CODIGO_SECRETO << endl;
             getline(cin, codigo_ingresado);
             //if( (st = menu_secreto(lm, codigo_ingresado)) != OK)
@@ -134,11 +133,8 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
 
 Estado_t ingreso_menu(int &opcion , Andypolis &andypolis){
     
-    Estado_t st = OK;
+    Estado_t estado = OK;
     string  opcion_elegida;
-
-    //if(andypolis == nullptr || lm == nullptr)
-    //    return ERROR_PUNTERO_NULO;
 
     cout << TAB << SUBRAYADO << MSJ_MENU_INGRESO_OPCION << FIN_DE_FORMATO <<endl;
     getline(cin, opcion_elegida);
@@ -148,9 +144,9 @@ Estado_t ingreso_menu(int &opcion , Andypolis &andypolis){
 
     opcion = stoi(opcion_elegida);
 
-    //st = procesar_opcion(opcion,andypolis,lm);
+    estado = procesar_opcion(opcion,andypolis);
 
-    return st;
+    return estado;
 }
 
 

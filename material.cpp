@@ -47,7 +47,7 @@ double Material::obtener_cantidad(){
 
 void Material::agregar_cantidad(double cantidad){
 
-    cantidad += cantidad;
+    this -> cantidad += cantidad;
 
 }
 
@@ -57,6 +57,6 @@ void Material::agregar_cantidad(double cantidad){
 
 void Material::restar_cantidad(double cantidad){
 
-    cantidad -= cantidad;
+    this -> cantidad -= cantidad;
 
 }
