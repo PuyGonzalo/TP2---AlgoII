@@ -39,7 +39,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
     switch (opcion_elegida) {
 
         case CONSTRUIR_EDIFICIO_POR_NOMBRE:
-            if(system(CLR_SCREEN)); //error: ignoring return value of ‘int system(const char*)’, declared with attribute warn_unused_result
+            if(system(CLR_SCREEN)); // error: ignoring return value of ‘int system(const char*)’, declared with attribute warn_unused_result
             if( (st = construir_edificio_por_nombre(andypolis)) != OK )
                 return st;
             break;
@@ -56,7 +56,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
 
         case DEMOLER_EDIFICIO_POR_COORD:
             //system(CLR_SCREEN);
-
+            
             break;
 
         case MOSTRAR_MAPA:
@@ -65,8 +65,9 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
             break;
         
         case CONSULTAR_COORDENADA: 
-            //system(CLR_SCREEN);
-
+            if(system(CLR_SCREEN));
+            if( (st = consultar_coordenada(andypolis)) != OK )
+                return st;
             break;
 
         case MOSTRAR_INVENTARIO:

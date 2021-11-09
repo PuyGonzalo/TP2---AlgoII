@@ -6,8 +6,7 @@
 
 using namespace std;
 
-// hay que adaptarlos!!!! pero muchos son los que vamos a poner
-const int MAX_ERRORS = 14;
+
 const string STR_OK = "Ok";
 const string STR_ERROR_ENTRADA_INVALIDA = "¡El dato ingresado es invalido!";
 const string STR_ERROR_PUNTERO_NULO = "Error interno del sistema";
@@ -22,8 +21,9 @@ const string STR_ERROR_POSICION_INEXISTENTE = "La posicion ingresada no existe e
 const string STR_ERROR_COORDENADA_NO_CONSTRUIBLE = "¡No se puede construir en esta posicion!";
 const string STR_ERROR_CASILLERO_OCUPADO = "¡El casillero esta ocupado!";
 const string STR_ERROR_CASILLERO_NO_TRANSITABLE = "¡El casillero no es del tipo transitable!";
+const string STR_ERROR_COORDENADA_INVALIDA = "¡Esa coordenada es invalida!";
 
-const string errores[MAX_ERRORS] = {
+const string errores[] = {
 	STR_OK,
 	STR_ERROR_ENTRADA_INVALIDA,
 	STR_ERROR_PUNTERO_NULO,
@@ -37,7 +37,8 @@ const string errores[MAX_ERRORS] = {
 	STR_ERROR_POSICION_INEXISTENTE,
 	STR_ERROR_COORDENADA_NO_CONSTRUIBLE,
 	STR_ERROR_CASILLERO_OCUPADO,
-	STR_ERROR_CASILLERO_NO_TRANSITABLE
+	STR_ERROR_CASILLERO_NO_TRANSITABLE,
+	STR_ERROR_COORDENADA_INVALIDA
 };
 
 enum Estado_t {
@@ -55,7 +56,8 @@ enum Estado_t {
 	ERROR_COORDENADA_NO_CONSTRUIBLE = 11,
 	ERROR_CASILLERO_OCUPADO = 12,
 	ERROR_CASILLERO_NO_TRANSITABLE = 13,
-	ADVERTENCIA_LLUVIA_RECURSOS = 14};
+	ERROR_COORDENADA_INVALIDA = 14,
+	ADVERTENCIA_LLUVIA_RECURSOS = 15};
 
 
 //####################################################### FUNCIONES #################################################################

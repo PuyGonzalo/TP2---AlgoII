@@ -20,7 +20,7 @@ Inventario::Inventario(ifstream& archivo){
     
     string linea_leida;
     this -> cantidad_materiales = 0;
-    // inicializar la lista como vacia? o ya siendo atributo se "crea vacia"?
+    // inicializar la lista como vacia? o ya siendo atributo se "crea vacia" -> si, printear para ver?
 
 
     while(getline(archivo, linea_leida)){

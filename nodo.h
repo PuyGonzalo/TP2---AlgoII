@@ -1,8 +1,6 @@
 #ifndef NODO_H
 #define NODO_H
 
-typedef int Dato;
-
 template <typename Tipo>
 class Nodo {
 

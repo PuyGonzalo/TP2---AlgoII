@@ -1,6 +1,7 @@
 #ifndef LISTA_H
 #define LISTA_H
 
+#include <iostream>
 #include "nodo.h"
 
 template <typename Tipo>
@@ -10,7 +11,6 @@ private:
     // Atributos
     Nodo<Tipo>* primero;
     int cantidad;
-
     
 public:
     // Metodos
@@ -43,8 +43,9 @@ public:
     // pos: obtiene el primer elemento de la lista
     Nodo<Tipo>* obtener_primero();
 
-    //NO VA COMO PRIMITIVA DE LISTAº
-    void mostrar();
+    // pre: -
+    // pos: devuelve la cantidad de nodos que hay en la lista
+    int obtener_cantidad();
 
 
 private:
@@ -142,6 +143,12 @@ Nodo<Tipo>* Lista<Tipo>::obtener_primero() {
     return primero;
 
 }
+
+template <typename Tipo>
+int Lista<Tipo>::obtener_cantidad(){
+    return cantidad;
+}
+
 
 
 #endif // LISTA_H

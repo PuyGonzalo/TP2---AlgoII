@@ -5,6 +5,11 @@
 
 using namespace std;
 
+struct Coordenadas{
+    int coordenada_x;
+    int coordenada_y;
+};
+
 // pre:
 // pos:
 bool contiene_numeros(string s);

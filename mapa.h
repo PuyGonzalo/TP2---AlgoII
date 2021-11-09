@@ -4,6 +4,8 @@
 #include "casillero.h"
 #include "superficie.h"
 #include "parser.h"
+#include "lista.h"
+#include "herramientas.h"
 #include "Casilleros/casillero_construible.h"
 #include "Casilleros/casillero_inaccesible.h"
 #include "Casilleros/casillero_transitable.h"
@@ -16,6 +18,7 @@ private:
     Casillero*** mapa;
     int cantidad_filas;
     int cantidad_columnas;
+    Lista<Coordenadas*> casilleros_transitables_disponibles;
 
 public:
     // Metodos
@@ -67,11 +70,23 @@ public:
 
     // pre: coordenadas validas
     // pos: consulta un casillero del mapa en particular
-    void consultar_casillero(int coord_x, int coord_y);
+    Estado_t consultar_casillero(int coord_x, int coord_y) const;
 
     // pre: -
     // pos: muestra el mapa con sus edificios y materiales
     void mostrar_mapa();
+
+    // pre: -
+    // pos: imprime la leyenda del mapa (las referencias de que es cada cosa)
+    void imprimir_leyenda_mapa();
+
+    // pre: -
+    // pos: saca una coordenada de la lista de trasitables ya que se ocupo
+    void sacar_coordenada_transitable_disponible_de_lista(Coordenadas coord);
+
+    // pre: -
+    // pos: devuelve la cantidad de casilleros transitables desocupados/disponibles/libres
+    int cantidad_casilleros_transitables_disponibles();
 
 };
 

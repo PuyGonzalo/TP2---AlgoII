@@ -5,6 +5,7 @@
 #include <sstream>
 #include "lista.h"
 #include "errores.h"
+#include "herramientas.h"
 
 using namespace std;
 
@@ -16,10 +17,6 @@ const string STR_OBELISCO = "obelisco";
 const string STR_YACIMIENTO = "yacimiento";
 const string STR_P_ELECTRICA = "planta electrica";
 
-struct Coordenadas_ubicaciones{
-    int coordenada_x;
-    int coordenada_y;
-};
 
 struct Datos_edificio{
     string nombre;
@@ -28,7 +25,7 @@ struct Datos_edificio{
     double costo_metal;
     int cantidad_construidos;
     int maximos_permitidos;
-    Lista<Coordenadas_ubicaciones> ubicaciones_construidos;
+    Lista<Coordenadas*> ubicaciones_construidos;
 };
 
 class Edificio{
