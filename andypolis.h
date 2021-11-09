@@ -49,7 +49,7 @@ public:
 
     // pre: -
     // pos carga los edificios ya construidos en otras sesiones del juego
-    void cargar_edificios(ifstream& archivo_ubics); // AGREGAR ESTADO_T DE ARCHIVO VACIO
+    Estado_t cargar_edificios(ifstream& archivo_ubics);
 
     // pre: coordenadas posibles y edificio que este en el catalogo
     // pos: se cargan sobre el catalogo las coordenadas de un edificio construido (a la lista de coordenadas de construidos del mismo)

@@ -55,24 +55,31 @@ void Andypolis::cargar_catalogo(ifstream& archivo_edif){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Andypolis::cargar_edificios(ifstream& archivo_ubics){
+Estado_t Andypolis::cargar_edificios(ifstream& archivo_ubics){
 
+    Estado_t estado = OK;
     string linea_leida;
     int coordenada_x, coordenada_y;
 
-    /*if(archivo_ubics.peek() == ifstream::traits_type::eof())
-        int pistola = 1; // estado_t st = ARCHIVO_VACIO
-        */
+    if(archivo_ubics.peek() == ifstream::traits_type::eof())
+        return ADVERTENCIA_UBICACIONES_VACIO;
 
     while(getline(archivo_ubics, linea_leida)){
 
         Parser parser(linea_leida);
         coordenada_x = parser.obtener_coordenada_x();
         coordenada_y = parser.obtener_coordenada_y();
-        mapa.construir_edificio_en_coord(parser.procesar_entrada_ubicaciones(), coordenada_x, coordenada_y);
-        cargar_coordenadas_en_catalogo(parser.nombre_edificio_ubicaciones(), coordenada_x, coordenada_y);
+        estado = mapa.construir_edificio_en_coord(parser.procesar_entrada_ubicaciones(), coordenada_x, coordenada_y);
+        if (estado == OK){
+            cargar_coordenadas_en_catalogo(parser.nombre_edificio_ubicaciones(), coordenada_x, coordenada_y);
+        } else {
+            estado = ADVERTENCIA_UBICACIONES_MAL_FORMADO;
+            imprimir_error(estado);
+        }
 
     }
+
+    return estado;
 
 }
 
