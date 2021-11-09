@@ -9,9 +9,9 @@ Repositorio para el Trabajo Práctico número 2 de Algoritmos y Programación II
 
 ---
 
-## Aclaraciones:
+## Aclaraciones
 
-### Compilación:
+### Compilación
 
 El programa tiene varias sub-carpetas, por lo tanto para compilar es altamente recomendable utilizar al `MAKEFILE` proporcionado, que cuenta con los siguientes flags:
 ~~~
@@ -23,7 +23,8 @@ El programa tiene varias sub-carpetas, por lo tanto para compilar hay que utiliz
 g++ -o <nombre_ejecutable> *.cpp Materiales/*.cpp Edificios/*.cpp Casilleros/*.cpp Superficies/*.cpp -Wall -Werror -Wconversion -pedantic -pedantic-errors
 ~~~
 
-Por favor, tener en cuenta las siguientes consideraciones a la hora de compilar:
+<span style="color:red">Por favor, tener en cuenta las siguientes consideraciones a la hora de compilar:</span>
+
 
 - **Los archivos `*.txt` deben estar en la carpeta "Archivos".**
 - **Por un tema de diseño y consigna del mismo TP, por favor asegurarse que los archivos estén hechos en LINUX. Si se hacen en Windows, puede haber un problema por la diferencia entre los 'end of line' de cada sistema operativo.**
