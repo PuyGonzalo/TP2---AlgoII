@@ -14,18 +14,9 @@ Estado_t construir_edificio_por_nombre(Andypolis& andypolis){
     cout << TAB << MSJ_INGRESO_EDIFICIO_CONSTRUIR << endl;
     cout << "> ";
     getline(cin, nombre);
-    //if(!andypolis.esta_edificio(nombre))
-    //    return ERROR_EDIFICIO_INEXISTENTE; // para mi si pone cualquier edificio esta mal (y sacaria la verificacion de construir_edificio)
+    if(!andypolis.esta_edificio(nombre))
+        return ERROR_EDIFICIO_INEXISTENTE;
 
-
-    while(contiene_numeros(nombre)){
-        if(system(CLR_SCREEN));
-        imprimir_error(ERROR_ENTRADA_INVALIDA);
-        cout << endl << "Ingrese una edificio valido: " << endl;
-        cout << "> ";
-        getline(cin, nombre);
-
-    }
 
     cout << "Ingrese las coordenadas donde quiere construir el edificio: " << endl;
     cout << "Coordenada x > ";
