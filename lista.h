@@ -40,10 +40,6 @@ public:
     ~Lista();
 
     // pre: -
-    // pos: obtiene el primer elemento de la lista
-    Nodo<Tipo>* obtener_primero();
-
-    // pre: -
     // pos: devuelve la cantidad de nodos que hay en la lista
     int obtener_cantidad();
 
@@ -136,13 +132,6 @@ Nodo<Tipo>* Lista<Tipo>::obtener_nodo(int pos) {
 
 }
 
-
-template <typename Tipo>
-Nodo<Tipo>* Lista<Tipo>::obtener_primero() {
-
-    return primero;
-
-}
 
 template <typename Tipo>
 int Lista<Tipo>::obtener_cantidad(){

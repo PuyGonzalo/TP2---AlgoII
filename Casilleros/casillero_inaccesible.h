@@ -29,6 +29,11 @@ public:
     // pre: -
     // pos: imprime un mensaje diciendo que es un casillero inaccesible
     void consultar_casillero();
+
+    // pre: -
+    // pos: a priori no puede ocuparse con nada un casilleor inaccesible, asi que devuelve una string vacia
+    string obtener_nombre_objeto_de_casillero(){return "";};
+
 };
 
 

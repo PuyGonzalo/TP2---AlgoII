@@ -11,37 +11,21 @@ Estado_t construir_edificio_por_nombre(Andypolis& andypolis){
     string coord_x, coord_y;
     Estado_t estado = OK;
 
-    cout << TAB << MSJ_INGRESO_EDIFICIO_CONSTRUIR << endl;
+    cout << TAB << SUBRAYADO << MSJ_INGRESO_EDIFICIO_CONSTRUIR << FIN_DE_FORMATO << endl;
     cout << "> ";
     getline(cin, nombre);
     if(!andypolis.esta_edificio(nombre))
         return ERROR_EDIFICIO_INEXISTENTE;
 
 
-    cout << "Ingrese las coordenadas donde quiere construir el edificio: " << endl;
-    cout << "Coordenada x > ";
-    getline(cin, coord_x);
+    cout << endl << TAB << SUBRAYADO << "Ingrese las coordenadas donde quiere construir el edificio:" << FIN_DE_FORMATO << endl;
+    cout << "Coordenada x > "; getline(cin, coord_x);
+    cout << endl << "Coordenada y > "; getline(cin, coord_y);
 
-    while(contiene_letras(coord_x)){
-        if(system(CLR_SCREEN));
-        imprimir_error(ERROR_ENTRADA_INVALIDA);
-        cout << endl << "Ingrese una coordenada valida: " << endl;
-        cout << "> ";
-        getline(cin, coord_x);
-    }
-
-    cout << endl << "Coordenada y > ";
-    getline(cin, coord_y);
-
-    while(contiene_letras(coord_y)){
-        if(system(CLR_SCREEN));
-        imprimir_error(ERROR_ENTRADA_INVALIDA);
-        cout << endl << "Ingrese una coordenada valida: " << endl;
-        cout << "> ";
-        getline(cin, coord_y);
-    }
-        
-    estado = andypolis.construir_edificio(nombre, stoi(coord_x), stoi(coord_y));
+    if(!es_un_numero(coord_x) || !es_un_numero(coord_y))
+        return ERROR_PAR_COORDENADAS_INVALIDAS;
+     
+    estado = andypolis.construir_edificio_en_coord(nombre, stoi(coord_x), stoi(coord_y));
     
     return estado;
 
@@ -55,19 +39,14 @@ Estado_t consultar_coordenada(const Andypolis &andypolis){
     Estado_t estado = OK;
     string coord_x, coord_y;
 
-    cout << "Ingrese las coordenada X que quiere consultar: " << endl;
-    getline(cin, coord_x);
-    if(contiene_letras(coord_x)) // NO VALIDA \n
-        return ERROR_COORDENADA_INVALIDA;
-    
-    cout << endl;
+    cout << TAB << SUBRAYADO << "Ingrese las coordenadas que quiere consultar:" << FIN_DE_FORMATO << endl;
+    cout << "Coordenada x > "; getline(cin, coord_x);
+    cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
 
-    cout << "Ingrese las coordenada Y que quiere consultar: " << endl;   
-    getline(cin, coord_y);
-    if(contiene_letras(coord_y))
-        return ERROR_COORDENADA_INVALIDA;
-        
-    cout << endl;
+
+    if(!es_un_numero(coord_x) || !es_un_numero(coord_y))
+        return ERROR_PAR_COORDENADAS_INVALIDAS;
+
 
     estado = andypolis.consultar_casillero_de_mapa(stoi(coord_x),stoi(coord_y));
 
@@ -78,17 +57,41 @@ Estado_t consultar_coordenada(const Andypolis &andypolis){
 // -------------------------------------------------------------------------------------------
 
 
-void lluvia_de_recursos(Andypolis& andypolis){
+Estado_t demoler_edificio_por_coordenada(Andypolis& andypolis){
+
+    Estado_t estado = OK;
+    string coord_x, coord_y;
+
+    cout << TAB << SUBRAYADO << "Ingrese la coordenadas del edificio que quiere demoler:" << FIN_DE_FORMATO << endl;
+    cout << "Coordenada x > "; getline(cin, coord_x);
+    cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
+    
+
+
+    if(!es_un_numero(coord_x) || !es_un_numero(coord_y))
+        return ERROR_PAR_COORDENADAS_INVALIDAS;
+
+    estado = andypolis.destruir_edificio_de_coord(stoi(coord_x), stoi(coord_y));
+
+    return estado;
+
+}
+
+
+// -------------------------------------------------------------------------------------------
+
+
+Estado_t lluvia_de_recursos(Andypolis& andypolis){
+    
     Estado_t estado;
-    int cantidad_piedra, cantidad_madera, cantidad_metal;
+    int cantidad_lluvia_piedra, cantidad_lluvia_madera, cantidad_lluvia_metal;
 
-    cantidad_piedra = rand() % RAND_MAX_PIEDRA + 1;
-    cantidad_madera = rand() % RAND_MAX_MADERA;
-    cantidad_metal = rand() % RAND_MAX_METAL + 2;
+    cantidad_lluvia_piedra = rand() % RAND_MAX_PIEDRA + 1;
+    cantidad_lluvia_madera = rand() % RAND_MAX_MADERA;
+    cantidad_lluvia_metal = rand() % RAND_MAX_METAL + 2;
 
-    estado = andypolis.posicionar_lluvia_de_recursos( (double) cantidad_piedra, (double) cantidad_madera, (double) cantidad_metal);
+    estado = andypolis.posicionar_lluvia_de_recursos( cantidad_lluvia_piedra, cantidad_lluvia_madera, cantidad_lluvia_metal);
 
-    if(estado != OK)
-        cout << TAB << "Advertencia: No se pudieron colocar todos los materiales" << endl;
+    return estado;
 
 }

@@ -43,6 +43,10 @@ public:
     // pos: obtiene la cantidad de columnas que tiene el mapa
     int obtener_columnas();
 
+    // pre: las coordenadas deben ser de un casillero que esta ocupado (es decir, validar antes en funcionas mas externas esto)
+    // pos: obtiene lo que haya en el casillero
+    string obtener_nombre_objeto_de_casillero_ocupado(int coord_x, int coord_y);
+
     // pre: coordenadas validas (depende de mapa.txt)
     // pos: devuelve si un casillero particular del mapa es transitable
     bool se_puede_transitar(int coord_x, int coord_y);
@@ -63,10 +67,9 @@ public:
     // pos: "construye" un edificio en una coordenada dada (y devuelve un error en caso de que sea no sea construible o ya este ocupado)
     Estado_t construir_edificio_en_coord(Edificio* edificio, int coord_x, int coord_y);
 
-    // pre:
-    // pos:
-    Estado_t agregar_material_en_coordenadas(Material* material, int coord_x, int coord_y);
-
+    // pre: coordenadas validas
+    // pos: "destruye" el edificio en una coordenada dada (y devuelve un error en caso de que sea no sea construible o no haya nada)
+    Estado_t destruir_edificio_en_coord(int coord_x, int coord_y);
 
     // pre: coordenadas validas
     // pos: consulta un casillero del mapa en particular
@@ -81,12 +84,16 @@ public:
     void imprimir_leyenda_mapa();
 
     // pre: -
-    // pos: saca una coordenada de la lista de trasitables ya que se ocupo
-    void sacar_coordenada_transitable_disponible_de_lista(Coordenadas coord);
-
-    // pre: -
     // pos: devuelve la cantidad de casilleros transitables desocupados/disponibles/libres
     int cantidad_casilleros_transitables_disponibles();
+
+    // pre:
+    // pos:
+    Estado_t agregar_material_en_coordenadas(Material* material, int coord_x, int coord_y);
+
+    // pre: -
+    // pos: agrega un material en un casillero transitable DISPOBILE (y deja de estar disponible, claro)
+    void agregar_material_en_coordenada_transitable_aleatoria(Material* material);
 
 };
 

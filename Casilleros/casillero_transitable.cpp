@@ -64,9 +64,19 @@ void Casillero_Transitable::consultar_casillero(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Casillero_Transitable::poner_material_en_casillero(Material* material){
+void Casillero_Transitable::poner_material(Material* material){
 
     this -> material_ocupado = material;
     this -> ocupado = true;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+string Casillero_Transitable::obtener_nombre_objeto_de_casillero(){
+
+    return material_ocupado -> obtener_tipo_material();
 
 }

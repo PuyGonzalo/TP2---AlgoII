@@ -103,6 +103,36 @@ void Andypolis::cargar_coordenadas_en_catalogo(string nombre_edificio, int coord
 // ------------------------------------------------------------------------------------------------------------
 
 
+void Andypolis::quitar_coordenadas_en_catalogo(string nombre_edificio, int coord_x, int coord_y){
+
+    bool edificio_detectado = false;
+    bool coordenada_encontrada = false;
+    int i = 0;
+
+    while(!edificio_detectado){
+        if(nombre_edificio == catalogo.consulta(i) -> nombre){
+            int j = 0 ;
+            edificio_detectado = true;
+            while(!coordenada_encontrada){
+                if(catalogo.consulta(i) -> ubicaciones_construidos.consulta(j) -> coordenada_x == coord_x
+                    && catalogo.consulta(i) -> ubicaciones_construidos.consulta(j) -> coordenada_y == coord_y){
+                        delete catalogo.consulta(i) -> ubicaciones_construidos.consulta(j);
+                        catalogo.consulta(i) -> ubicaciones_construidos.baja(j);
+                        --(catalogo.consulta(i) -> cantidad_construidos);
+                        coordenada_encontrada = true;
+                }
+                ++j;
+            }
+        } 
+        ++i;
+    }
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Andypolis::mostrar_catalogo(){
 
         cout
@@ -126,7 +156,7 @@ void Andypolis::mostrar_catalogo(){
         << setw(24)
         << "Restantes hasta maximo"
         << left
-        << setw(60) // imposible poner un numero fijo xd
+        << setw(33) // imposible poner un numero fijo xd
         << "Coordenadas donde se encuentran"
         << FIN_DE_FORMATO
         << endl;
@@ -153,9 +183,9 @@ void Andypolis::mostrar_catalogo(){
             << setw(24)
             << catalogo.consulta(i) ->  maximos_permitidos - catalogo.consulta(i) ->  cantidad_construidos
             << left
-            << setw(60);
-            mostrar_ubicaciones_construidas(i);
-            cout << endl;
+            << setw(33)
+            << obtener_ubicaciones_construidas_str(i)
+            << endl;
     }
 
 }
@@ -164,14 +194,23 @@ void Andypolis::mostrar_catalogo(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Andypolis::mostrar_ubicaciones_construidas(int pos_edif){
+string Andypolis::obtener_ubicaciones_construidas_str(int pos_edif){
+
+    stringstream sstream;
 
     if(catalogo.consulta(pos_edif)->cantidad_construidos != 0){
         for(int i = 0; i < catalogo.consulta(pos_edif) -> cantidad_construidos ; ++i){
+            
+            sstream << '(' << catalogo.consulta(pos_edif) -> ubicaciones_construidos.consulta(i) -> coordenada_x
+            << ',' << ESPACIO << catalogo.consulta(pos_edif) -> ubicaciones_construidos.consulta(i) -> coordenada_y << ") ";
+            /*
             cout << '(' << catalogo.consulta(pos_edif) -> ubicaciones_construidos.consulta(i) -> coordenada_x
             << ',' << ESPACIO << catalogo.consulta(pos_edif) -> ubicaciones_construidos.consulta(i) -> coordenada_y << ") ";
+            */
         }
     }
+
+    return sstream.str();
 
 }
 
@@ -226,7 +265,7 @@ void Andypolis::listar_edificios_construidos(){
         << setw(13)
         << "Construidos"
         << left
-        << setw(60)
+        << setw(33)
         << "Coordenadas donde se encuentran"
         << FIN_DE_FORMATO
         << endl;
@@ -242,9 +281,9 @@ void Andypolis::listar_edificios_construidos(){
                 << setw(13)
                 << catalogo.consulta(i) -> cantidad_construidos
                 << left
-                << setw(60);
-                mostrar_ubicaciones_construidas(i);
-            cout << endl;
+                << setw(33)
+                << obtener_ubicaciones_construidas_str(i)
+                << endl;
             }
         }
     }
@@ -255,39 +294,43 @@ void Andypolis::listar_edificios_construidos(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Estado_t Andypolis::construir_edificio(string nombre_edificio, int coord_x, int coord_y){
+Estado_t Andypolis::construir_edificio_en_coord(string nombre_edificio, int coord_x, int coord_y){
     
     Estado_t estado = OK;
-    int ubicacion_edificio;
+    int indice_edificio;
     string linea = "";
 
     if(esta_edificio(nombre_edificio)){
-        ubicacion_edificio = indice_edificio_en_catalogo(nombre_edificio);
+        indice_edificio = indice_edificio_en_catalogo(nombre_edificio);
         if(coord_x < mapa.obtener_filas() && coord_y < mapa.obtener_columnas()){
-            if(catalogo.consulta(ubicacion_edificio) -> cantidad_construidos < catalogo.consulta(ubicacion_edificio) -> maximos_permitidos){
-                if(catalogo.consulta(ubicacion_edificio) -> costo_piedra < inventario.obtener_cantidad_de_piedra() 
-                && catalogo.consulta(ubicacion_edificio) -> costo_madera < inventario.obtener_cantidad_de_madera() 
-                && catalogo.consulta(ubicacion_edificio) -> costo_metal < inventario.obtener_cantidad_de_metal()){
+            if(catalogo.consulta(indice_edificio) -> cantidad_construidos < catalogo.consulta(indice_edificio) -> maximos_permitidos){
+                if(catalogo.consulta(indice_edificio) -> costo_piedra < inventario.obtener_cantidad_de_piedra() 
+                && catalogo.consulta(indice_edificio) -> costo_madera < inventario.obtener_cantidad_de_madera() 
+                && catalogo.consulta(indice_edificio) -> costo_metal < inventario.obtener_cantidad_de_metal()){
                     if(mapa.se_puede_construir(coord_x,coord_y)){
                         if(!mapa.casillero_esta_ocupado(coord_x,coord_y)){
+                            if(confirma_construccion(estado, nombre_edificio, coord_x, coord_y)){
+                                
+                                linea.append(catalogo.consulta(indice_edificio) -> nombre);
+                                linea.append(ESPACIO);
+                                linea.append("(");
+                                linea.append(to_string(coord_x));
+                                linea.append(", ");
+                                linea.append(to_string(coord_y));
+                                linea.append(")");
 
-                        linea.append(catalogo.consulta(ubicacion_edificio) -> nombre);
-                        linea.append(ESPACIO);
-                        linea.append("(");
-                        linea.append(to_string(coord_x));
-                        linea.append(", ");
-                        linea.append(to_string(coord_y));
-                        linea.append(")");
+                                Parser parser(linea);
 
-                        Parser parser(linea);
+                                estado = mapa.construir_edificio_en_coord(parser.procesar_entrada_ubicaciones(), coord_x, coord_y);
+                                cargar_coordenadas_en_catalogo(parser.nombre_edificio_ubicaciones(), coord_x, coord_y);
+                                
+                                inventario.restar_cantidad_materiales_construccion(catalogo.consulta(indice_edificio) -> costo_piedra, 
+                                catalogo.consulta(indice_edificio) -> costo_madera, catalogo.consulta(indice_edificio) -> costo_metal);
 
-                        estado = mapa.construir_edificio_en_coord(parser.procesar_entrada_ubicaciones(), coord_x, coord_y);
-                        cargar_coordenadas_en_catalogo(parser.nombre_edificio_ubicaciones(), coord_x, coord_y);
-                        
-                        inventario.restar_cantidad_materiales_construccion(catalogo.consulta(ubicacion_edificio) -> costo_piedra, 
-                        catalogo.consulta(ubicacion_edificio) -> costo_madera, catalogo.consulta(ubicacion_edificio) -> costo_metal);
+                                cout<<TAB<<TAB<<NEGRITA<< "¡Se construyo " << nombre_edificio << " exitosamente!" <<FIN_DE_FORMATO<<endl;
+                            }
                         } else estado = ERROR_CASILLERO_OCUPADO;
-                    } else estado = ERROR_COORDENADA_NO_CONSTRUIBLE;
+                    } else estado = ERROR_CASILLERO_NO_CONSTRUIBLE;
                 } else estado = ERROR_MATERIALES_INSUFICIENTES;
             } else estado = ERROR_MAXIMO_EDIFICIOS_ALCANZADO;
         } else estado = ERROR_POSICION_INEXISTENTE;   
@@ -295,6 +338,68 @@ Estado_t Andypolis::construir_edificio(string nombre_edificio, int coord_x, int 
 
     return estado;
     
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Andypolis::destruir_edificio_de_coord(int coord_x, int coord_y){
+
+    Estado_t estado = OK;
+    string nombre_edificio;
+
+    if(coord_x < mapa.obtener_filas() && coord_y < mapa.obtener_columnas()){
+        if(mapa.se_puede_construir(coord_x,coord_y)){
+            if(mapa.casillero_esta_ocupado(coord_x,coord_y)){
+                
+                nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x,coord_y);
+
+                mapa.destruir_edificio_en_coord(coord_x, coord_y);
+
+                // Devuelvo materiales
+                int indice_edificio = indice_edificio_en_catalogo(nombre_edificio);
+                inventario.sumar_cantidad_materiales_construccion(
+                    catalogo.consulta(indice_edificio) -> costo_piedra/2,
+                    catalogo.consulta(indice_edificio) -> costo_madera/2,
+                    catalogo.consulta(indice_edificio) -> costo_metal/2);
+                
+                quitar_coordenadas_en_catalogo(nombre_edificio, coord_x, coord_y);
+
+                cout<<TAB<<TAB<<NEGRITA<< "¡Se destruyo " << nombre_edificio << " exitosamente!" <<FIN_DE_FORMATO<<endl;
+
+            } else estado = ERROR_CASILLERO_VACIO;
+        } else estado = ERROR_CASILLERO_NO_CONSTRUIBLE;
+    } else estado = ERROR_POSICION_INEXISTENTE;
+
+    
+ 
+    return estado;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+bool Andypolis::confirma_construccion(Estado_t &estado, string nombre_edificio, int coord_x, int coord_y){
+
+    string confirmacion_construccion;
+    
+    if(system(CLR_SCREEN));
+    cout << endl << TAB << "¿Esta seguro que desea construir " << nombre_edificio <<
+    " en " << '(' << coord_x << ',' << coord_y << ')' << "? (escribir SI o NO)" << endl;
+    getline(cin, confirmacion_construccion);
+
+    if(confirmacion_construccion == CONFIRMACION_AFIRMATIVA_CONSTRUCCION)
+        return true;
+    if(confirmacion_construccion == CONFIRMACION_NEGATIVA_CONSTRUCCION)
+        return false;
+    
+    // si no es ninguna de las 2, no edifico y devuelvo entrada invalida
+    estado = ERROR_ENTRADA_INVALIDA;
+    return false;   
+
 }
 
 
@@ -342,55 +447,35 @@ int Andypolis::indice_edificio_en_catalogo(string nombre_edificio){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Estado_t Andypolis::posicionar_lluvia_de_recursos(double cantidad_piedra, double cantidad_madera, double cantidad_metal){
-    Estado_t estado_final = OK;
-    /*Estado_t estado_piedra, estado_madera, estado_metal;
-
+Estado_t Andypolis::posicionar_lluvia_de_recursos(int cantidad_lluvia_piedra, int cantidad_lluvia_madera, int cantidad_lluvia_metal){
 
     string piedra = "piedra 1";
     string madera = "madera 1";
     string metal = "metal 1";
+
+    int casilleros_disponibles = mapa.cantidad_casilleros_transitables_disponibles();
+
+    if(casilleros_disponibles < cantidad_lluvia_piedra + cantidad_lluvia_madera + cantidad_lluvia_metal)
+        return ADVERTENCIA_LLUVIA_RECURSOS; // no tiene sentido seguir si esto pasa
     
 
-    for(int i = 1; i <= cantidad_piedra; ++i){
+    for(int i = 1; i <= cantidad_lluvia_piedra; ++i){
         Parser parser(piedra);
-    
-        while(estado_piedra != OK){
-            int coord_x = rand() % mapa.obtener_filas();
-            int coord_y = rand() % mapa.obtener_columnas();
-            estado_piedra = mapa.agregar_material_en_coordenadas(parser.procesar_entrada_material(), coord_x, coord_y);
-        }
-        
+        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material());
     }
 
-    for(int i = 1; i <= cantidad_madera; ++i){int contador = 0;
+    for(int i = 1; i <= cantidad_lluvia_madera; ++i){
         Parser parser(madera);
-
-        while(estado_madera != OK){
-            int coord_x = rand() % mapa.obtener_filas();
-            int coord_y = rand() % mapa.obtener_columnas();
-            estado_madera = mapa.agregar_material_en_coordenadas(parser.procesar_entrada_material(), coord_x, coord_y);
-
-        }
-        
+        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material());
     }
 
-    for(int i = 1; i <= cantidad_metal; ++i){
+    for(int i = 1; i <= cantidad_lluvia_metal; ++i){
         Parser parser(metal);
-    
-        while(estado_metal != OK){
-            int coord_x = rand() % mapa.obtener_filas();
-            int coord_y = rand() % mapa.obtener_columnas();
-            estado_metal = mapa.agregar_material_en_coordenadas(parser.procesar_entrada_material(), coord_x, coord_y);
-
-        }
-
-        
+        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material());
     }
 
-    
-    return estado_final;*/
+    cout << endl << TAB << FONDO_COLOR_AZUL << NEGRITA << "¡LLUVIA DE RECURSOS!" << FIN_DE_FORMATO << endl;
 
-    cout << endl << "No hay tal lluvia de recursos chinchulin :P" << endl;
-    return estado_final;
+
+    return OK;
 }

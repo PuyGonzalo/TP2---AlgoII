@@ -6,6 +6,7 @@
 #include "errores.h"
 #include "formatos.h"
 #include "utilidades.h"
+#include "herramientas.h"
 
 
 using namespace std;
@@ -78,10 +79,6 @@ void mostrar_menu();
 // pre: ingreso_menu() ya valida el puntero nulo
 // pos: realiza la opcion del menu que el usuario elija
 Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis);
-
-// pre: -
-// pos: devuelve true si esta dentro de las opciones posibles, false de lo contrario
-bool es_opcion_valida(string str); // peligroso pasar por referencia la opcion?
 
 // pre: -
 // pos: valida y procesa la opcion (existe para modularizar mejor)

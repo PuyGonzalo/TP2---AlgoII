@@ -61,9 +61,31 @@ void Casillero_Construible::consultar_casillero(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Casillero_Construible::construir_edificio_en_casillero(Edificio* edificio){
+void Casillero_Construible::construir_edificio(Edificio* edificio){
 
     this -> edificio_construido = edificio;
     this -> ocupado = true;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Casillero_Construible::destruir_edificio(){
+
+    delete edificio_construido;
+    edificio_construido = nullptr;
+    this -> ocupado = false;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+string Casillero_Construible::obtener_nombre_objeto_de_casillero(){
+    
+    return edificio_construido -> obtener_tipo_edificio();
 
 }

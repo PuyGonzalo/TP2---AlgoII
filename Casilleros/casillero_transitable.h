@@ -36,7 +36,11 @@ public:
 
     // pre: -
     // pos: pone/"tira" un material en el casillero
-    void poner_material_en_casillero(Material* material);
+    void poner_material(Material* material);
+
+    // pre: debe ser un casillero ocupado (validado en funcionas mas externas)
+    // pos: devuelve el nombre del material que esta ocupando el casillero
+    string obtener_nombre_objeto_de_casillero();
 
 };
 

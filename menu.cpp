@@ -31,7 +31,7 @@ void mostrar_menu(){
 
 Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
 
-    Estado_t st = OK;
+    Estado_t estado = OK;
     string str_edificio;
     string codigo_ingresado;
 
@@ -40,8 +40,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
 
         case CONSTRUIR_EDIFICIO_POR_NOMBRE:
             if(system(CLR_SCREEN)); // error: ignoring return value of ‘int system(const char*)’, declared with attribute warn_unused_result
-            if( (st = construir_edificio_por_nombre(andypolis)) != OK )
-                return st;
+            estado = construir_edificio_por_nombre(andypolis);
             break;
 
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
@@ -55,8 +54,8 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
             break;
 
         case DEMOLER_EDIFICIO_POR_COORD:
-            //system(CLR_SCREEN);
-            
+            if(system(CLR_SCREEN));
+            estado = demoler_edificio_por_coordenada(andypolis);
             break;
 
         case MOSTRAR_MAPA:
@@ -66,8 +65,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
         
         case CONSULTAR_COORDENADA: 
             if(system(CLR_SCREEN));
-            if( (st = consultar_coordenada(andypolis)) != OK )
-                return st;
+            estado = consultar_coordenada(andypolis);
             break;
 
         case MOSTRAR_INVENTARIO:
@@ -81,14 +79,13 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
             break;
 
         case LLUVIA_RECURSOS:
-            //system(CLR_SCREEN);
-            lluvia_de_recursos(andypolis);
-
+            if(system(CLR_SCREEN));
+            estado = lluvia_de_recursos(andypolis);
             break;
 
         case GUARDAR_SALIR:
             if(system(CLR_SCREEN));
-            cout << TAB << NEGRITA << FONDO_COLOR_AZUL << MSJ_DESPEDIDA << FIN_DE_FORMATO <<endl;
+            cout << endl << TAB << NEGRITA << FONDO_COLOR_AZUL << MSJ_DESPEDIDA << FIN_DE_FORMATO <<endl;
             cout << endl << endl;
             break;
         
@@ -104,29 +101,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
             return ERROR_NUMERO_OPCION_INVALIDA;
     }
 
-    return OK; 
-}
-
-
-// ------------------------------------------------------------------------------------------------------------
-
-
- bool es_entrada_valida(string str)
-{
-	char c;
-	int N = (int) str.length();
-    bool validez = true;
-
-    if(!N) // string vacia
-        validez = false; // si N == 0 ni va a entrar al for()
-
-    for (int i = 0 ; i < N ; i++) { // && validez = true ?
-    	c = str[i];
-        if (isdigit(c) == 0) validez = false;
-    }
-
-    
-    return validez;
+    return estado; 
 }
 
 
@@ -141,7 +116,7 @@ Estado_t ingreso_menu(int &opcion , Andypolis &andypolis){
     cout << TAB << SUBRAYADO << MSJ_MENU_INGRESO_OPCION << FIN_DE_FORMATO <<endl;
     getline(cin, opcion_elegida);
 
-    if(!es_entrada_valida(opcion_elegida))
+    if(!es_un_numero(opcion_elegida))
         return ERROR_ENTRADA_INVALIDA;
 
     opcion = stoi(opcion_elegida);

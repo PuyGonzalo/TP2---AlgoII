@@ -55,6 +55,10 @@ public:
 
     // pre:
     // pos:
+    void sumar_cantidad_materiales_construccion(double costo_piedra, double costo_madera, double costo_metal);
+
+    // pre:
+    // pos:
     void mostrar_inventario();
 
 };

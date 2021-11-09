@@ -45,7 +45,7 @@ double Material::obtener_cantidad(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Material::agregar_cantidad(double cantidad){
+void Material::sumar_cantidad(double cantidad){
 
     this -> cantidad += cantidad;
 

@@ -62,12 +62,20 @@ public:
     bool es_casillero_accesible();
 
     // pre: -
-    // pos: pone un casillero en el casillero (solo en construible)
-    virtual void construir_edificio_en_casillero(Edificio* edificio){};
+    // pos: pone un edificio en el casillero (solo en construible)
+    virtual void construir_edificio(Edificio* edificio){};
 
-    // pre:
-    // pos:
-    virtual void poner_material_en_casillero(Material* material){};
+    // pre: -
+    // pos: elimina el edificio del casillero (solo en construible)
+    virtual void destruir_edificio(){};
+
+    // pre: -
+    // pos: pone un material en un casillero (solo en transitables)
+    virtual void poner_material(Material* material){};
+
+    // pre: solo puede llamarse si se esta seguro que el casillero esta ocupado
+    // pos: devuelve el nombre del edificio (construible), material (transitable)
+    virtual string obtener_nombre_objeto_de_casillero() = 0;
 
     // pre: -
     // pos: imprime un mensaje con informacion del casillero (que casillero es y si esta o no ocupado)

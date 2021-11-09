@@ -36,7 +36,15 @@ public:
 
     // pre: -
     // pos: "construye" un edificio en el casillero
-    void construir_edificio_en_casillero(Edificio* edificio);
+    void construir_edificio(Edificio* edificio);
+
+    // pre: -
+    // pos: elimina el edificio del casillero
+    virtual void destruir_edificio();
+
+    // pre: debe ser un casillero ocupado (validado en funcionas mas externas)
+    // pos: devuelve el nombre del edificio construido en el casillero
+    string obtener_nombre_objeto_de_casillero();
 
 };
 

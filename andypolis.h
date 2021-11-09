@@ -17,6 +17,9 @@ const int MAX_EDIF_CONSTRUIBLES_INICIAL = 3;
 const int AMPLIACION_EDIF_CONSTRUIBLES = 2;
 const char DELIM_ESPACIO = ' ';
 
+const string CONFIRMACION_AFIRMATIVA_CONSTRUCCION = "SI";
+const string CONFIRMACION_NEGATIVA_CONSTRUCCION = "NO";
+
 
 class Andypolis{
 
@@ -49,8 +52,12 @@ public:
     void cargar_edificios(ifstream& archivo_ubics); // AGREGAR ESTADO_T DE ARCHIVO VACIO
 
     // pre: coordenadas posibles y edificio que este en el catalogo
-    // pos: se cargan sobre el catalogo las coordenadas de un edificio construido (a la lista de coordenadas de los distintos del mismo)
+    // pos: se cargan sobre el catalogo las coordenadas de un edificio construido (a la lista de coordenadas de construidos del mismo)
     void cargar_coordenadas_en_catalogo(string nombre_edificio, int coord_x, int coord_y);
+
+    // pre: coordenadas posibles y edificio que este en el catalogo
+    // pos: usada para sacar una coordenada de un edificio construido (porque seguro el usuario lo destruyo)
+    void quitar_coordenadas_en_catalogo(string nombre_edificio, int coord_x, int coord_y);
 
     // pre: -
     // pos: muestra el catalogo completo
@@ -58,7 +65,7 @@ public:
 
     // pre:  -
     // pos: muestra las ubicaciones del catalogo de un edificio en particular (en funcion de su indice en la lista)
-    void mostrar_ubicaciones_construidas(int pos_edif_catalogo);
+    string obtener_ubicaciones_construidas_str(int pos_edif_catalogo);
 
     // pre: -
     // pos: le pide al mapa que se imprima, mostrando Andypolis
@@ -78,7 +85,15 @@ public:
 
     // pre: -
     // pos: construye un edificio particular en unas coordenadas particulares (y devuelve un error si hay algun dato que no concuerda)
-    Estado_t construir_edificio(string nombre_edificio, int coord_x, int coord_y);
+    Estado_t construir_edificio_en_coord(string nombre_edificio, int coord_x, int coord_y);
+
+    // pre: -
+    // pos: destruye un edificio en caso de que en la coordenada que pase el usuario haya un edificio, si no devuelve un error/aviso
+    Estado_t destruir_edificio_de_coord(int coord_x, int coord_y);
+
+    // pre: -
+    // pos: le pregunta al usuario que confirme su construccion (y cambia el estado si pone cualquier cosa que no sea si o no)
+    bool confirma_construccion(Estado_t &estado, string nombre_edificio, int coord_x, int coord_y);
 
     // pre: -
     // pos: devuelve si hay o no un edificio en el catalogo
@@ -90,7 +105,7 @@ public:
 
     // pre: -
     // pos: posiciona los elementos de la lluvia de recursos
-    Estado_t posicionar_lluvia_de_recursos(double cantidad_piedra, double cantidad_madera, double cantidad_metal);
+    Estado_t posicionar_lluvia_de_recursos(int cantidad_lluvia_piedra, int cantidad_lluvia_madera, int cantidad_lluvia_metal);
 
 
 

@@ -49,7 +49,7 @@ public:
 
     // pre: 
     // pos:
-    void agregar_cantidad(double cantidad);
+    void sumar_cantidad(double cantidad);
 
     // pre: 
     // pos:
