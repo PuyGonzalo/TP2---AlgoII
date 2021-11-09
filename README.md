@@ -32,3 +32,6 @@ Por favor, tener en cuenta las siguientes consideraciones a la hora de compilar:
 ### Funcionamiento del programa
 
 En cuanto a los atributos de cada casillero, se cuenta con una superficie con atributos booleanos que van a dictar las características finales del casillero. Esto se realizó de esta manera ya que. Por ejemplo, un Lago es inaccesible porque se decidió que ese terreno, momentáneamente, no es accesible, no que un Casillero Inaccesible lo es porque tiene un Lago.
+
+![cuadricula_png__by_goddesdl_d3805p4-fullview](https://user-images.githubusercontent.com/39422659/141003488-948f4c41-d476-4285-afea-ea42de441251.png)
+
