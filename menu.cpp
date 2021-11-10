@@ -75,11 +75,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
 
         case RECOLETAR_RECURSOS_PRODUCIDOS:
             if(system(CLR_SCREEN));
-            if( (estado = andypolis.recolectar_materiales()) != OK){
-                imprimir_error(estado);
-            }else {
-                cout << endl << TAB << "¡Recoleccion de materiales realizada con exito!" << endl;
-            }
+            estado = andypolis.recolectar_materiales();
             break;
 
         case LLUVIA_RECURSOS:
@@ -189,4 +185,4 @@ void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, 
 
     andypolis.guardar_andypolis(archivo_salida_materiales, archivo_salida_ubicaciones);
 
-} // MEDIO AL DOPE ESTA FUNCION. PERO COMO QUE NO DA HACER 'andypolis.guardar_ciudad(archivo_salida_materiales, archivo_salida_ubicaciones)' en el main xD
+}

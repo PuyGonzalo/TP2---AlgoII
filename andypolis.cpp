@@ -163,7 +163,7 @@ void Andypolis::mostrar_catalogo(){
         << setw(24)
         << "Restantes hasta maximo"
         << left
-        << setw(22)
+        << setw(21)
         << "Material que brinda"
         << left
         << setw(33) // imposible poner un numero fijo xd
@@ -193,10 +193,10 @@ void Andypolis::mostrar_catalogo(){
             << setw(24)
             << catalogo.consulta(i) ->  maximos_permitidos - catalogo.consulta(i) ->  cantidad_construidos
             << left
-            << setw(27)
+            << setw(21)
             << obtener_material_brindado_por_edificio_str(i)
             << left
-            << setw(29)   
+            << setw(33)   
             << obtener_ubicaciones_construidas_str(i)
             << endl;
     }
@@ -206,7 +206,8 @@ void Andypolis::mostrar_catalogo(){
 
 // ------------------------------------------------------------------------------------------------------------
 
-string Andypolis::obtener_material_brindado_por_edificio_str(int posicion){ // VILLERISIMOOOOOOOOOO (NO SE ME OCURRE OTRA FORMA A ESTA HORA)
+string Andypolis::obtener_material_brindado_por_edificio_str(int posicion){
+
     if(catalogo.consulta(posicion) -> brinda_material){
         if(catalogo.consulta(posicion) -> nombre == STR_MINA){
             return STR_PIEDRA;
@@ -227,14 +228,9 @@ string Andypolis::obtener_ubicaciones_construidas_str(int pos_edif){
     stringstream sstream;
 
     if(catalogo.consulta(pos_edif)->cantidad_construidos != 0){
-        for(int i = 0; i < catalogo.consulta(pos_edif) -> cantidad_construidos ; ++i){
-            
+        for(int i = 0; i < catalogo.consulta(pos_edif) -> cantidad_construidos ; ++i){  
             sstream << '(' << catalogo.consulta(pos_edif) -> ubicaciones_construidos.consulta(i) -> coordenada_x
             << ',' << ESPACIO << catalogo.consulta(pos_edif) -> ubicaciones_construidos.consulta(i) -> coordenada_y << ") ";
-            /*
-            cout << '(' << catalogo.consulta(pos_edif) -> ubicaciones_construidos.consulta(i) -> coordenada_x
-            << ',' << ESPACIO << catalogo.consulta(pos_edif) -> ubicaciones_construidos.consulta(i) -> coordenada_y << ") ";
-            */
         }
     }
 
@@ -511,8 +507,8 @@ Estado_t Andypolis::posicionar_lluvia_de_recursos(int cantidad_lluvia_piedra, in
 // ------------------------------------------------------------------------------------------------------------
 
 Estado_t Andypolis::recolectar_materiales(){
-    bool exito = false;
     
+    bool exito = false;
     
     for(int i = 0; i < cantidad_edificios_catalogo; ++i){
         
@@ -521,7 +517,7 @@ Estado_t Andypolis::recolectar_materiales(){
             if(catalogo.consulta(i) -> cantidad_construidos > 0){
                 char identificador;
                 double cantidad_material, cantidad_a_agregar;
-                int x = catalogo.consulta(i)->ubicaciones_construidos.consulta(0)->coordenada_x;//Tomo el primero construido siempre, cualquiera me sirve.
+                int x = catalogo.consulta(i)->ubicaciones_construidos.consulta(0)->coordenada_x; // cualquiera sirve
                 int y = catalogo.consulta(i)->ubicaciones_construidos.consulta(0)->coordenada_y;
 
                 identificador = mapa.obtener_material_brindado_casillero(x,y);
@@ -538,6 +534,7 @@ Estado_t Andypolis::recolectar_materiales(){
     }
 
     if(exito){
+        cout << endl << TAB << "¡Recoleccion de materiales realizada con exito!" << endl;
         return OK;
     }else{
         return ERROR_RECOLECCION_MATERIALES;
@@ -548,11 +545,14 @@ Estado_t Andypolis::recolectar_materiales(){
 
 void Andypolis::guardar_andypolis(ofstream& archivo_materiales, ofstream& archivo_ubicaciones){
 
-    for(int i = 0; i < mapa.obtener_filas(); ++i){
-        for(int j = 0; j < mapa.obtener_columnas(); ++j){
-            if(mapa.se_puede_construir(i,j) && mapa.casillero_esta_ocupado(i,j)){
-                archivo_ubicaciones << mapa.obtener_nombre_objeto_de_casillero_ocupado(i,j)
-                                    << ESPACIO << "(" << i << ", " << j << ")" << '\n';
+
+    for (int i = 0 ; i < catalogo.obtener_cantidad() ; ++i){
+        if(catalogo.consulta(i) -> cantidad_construidos != 0){
+            for(int j = 0 ; j < catalogo.consulta(i) -> cantidad_construidos ; ++j){
+                archivo_ubicaciones << catalogo.consulta(i)->nombre
+                << ESPACIO <<
+                '(' << catalogo.consulta(i)->ubicaciones_construidos.consulta(j)->coordenada_x
+                << ", " << catalogo.consulta(i)->ubicaciones_construidos.consulta(j)->coordenada_y << ")\n";
             }
         }
     }

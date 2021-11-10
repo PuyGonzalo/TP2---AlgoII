@@ -276,6 +276,7 @@ int Mapa::cantidad_casilleros_transitables_disponibles(){
 
 // ------------------------------------------------------------------------------------------------------------
 
+
 Estado_t Mapa::agregar_material_en_coordenadas(Material* material, int coord_x, int coord_y){
     Estado_t estado = OK;
 
@@ -293,6 +294,7 @@ Estado_t Mapa::agregar_material_en_coordenadas(Material* material, int coord_x, 
 
 // ------------------------------------------------------------------------------------------------------------
 
+
 void Mapa::agregar_material_en_coordenada_transitable_aleatoria(Material* material){
 
     // Agarro una coordenada aleatoria de la lista
@@ -308,13 +310,17 @@ void Mapa::agregar_material_en_coordenada_transitable_aleatoria(Material* materi
 
 }
 
+
 // ------------------------------------------------------------------------------------------------------------
+
 
 char Mapa::obtener_material_brindado_casillero( int coord_x, int coord_y){
     return this -> mapa[coord_x][coord_y] -> obtener_material_brindado_de_casillero();
 }
 
+
 // ------------------------------------------------------------------------------------------------------------
+
 
 double Mapa::obtener_cantidad_material_brindado_casillero( int coord_x, int coord_y){
     return this -> mapa[coord_x][coord_y] -> obtener_cantidad_material_brindado_de_casillero();

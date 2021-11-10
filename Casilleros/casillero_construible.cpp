@@ -90,16 +90,20 @@ string Casillero_Construible::obtener_nombre_objeto_de_casillero(){
 
 }
 
+
 // ------------------------------------------------------------------------------------------------------------
+
 
 char Casillero_Construible::obtener_material_brindado_de_casillero(){
     
-    return edificio_construido->obtener_material_brindado();
+    return edificio_construido -> obtener_material_brindado();
 }
+
 
 // ------------------------------------------------------------------------------------------------------------
 
+
 double Casillero_Construible::obtener_cantidad_material_brindado_de_casillero(){
 
-    return edificio_construido->obtener_cantidad_material_brindado();
+    return edificio_construido -> obtener_cantidad_material_brindado();
 }
