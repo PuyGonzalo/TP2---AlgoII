@@ -18,7 +18,7 @@ El programa tiene varias sub-carpetas, por lo tanto para compilar es altamente r
 -Wall -Werror -Wconversion -pedantic -pedantic-errors
 ~~~
 
-El programa tiene varias sub-carpetas, por lo tanto para compilar hay que utilizar la siguiente linea de comando:
+De todas formas es posible compilar con la siguiente linea de comando:
 ~~~
 g++ -o <nombre_ejecutable> *.cpp Materiales/*.cpp Edificios/*.cpp Casilleros/*.cpp Superficies/*.cpp -Wall -Werror -Wconversion -pedantic -pedantic-errors
 ~~~
@@ -37,5 +37,18 @@ g++ -o <nombre_ejecutable> *.cpp Materiales/*.cpp Edificios/*.cpp Casilleros/*.c
 - Las coordenadas se representan de la siguiente manera:
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/39422659/141005634-1b72486a-d9fa-48c6-8c54-a54d7246f85d.png" />
+  <img src="https://user-images.githubusercontent.com/39422659/141196632-0186b85f-0ac1-4cce-a1b0-d592ad979fb8.png" />
 </p>
+
+- `HERRAMIENTAS` son funciones que sirven para realizar ciertos tipos de validaciones necesarias
+
+- `.UTILIDADES` engloba funciones que sirvieron para mejorar el encapsulamiento y la modularizacion del proyecto a la hora de usar un menu.
+
+
+## Diagrama UML del proyecto
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/39422659/141197428-f7352776-38c8-454d-930e-d771f95b87df.jpg" />
+</p>
+
+
