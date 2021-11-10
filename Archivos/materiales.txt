@@ -1,3 +1,3 @@
-madera 65
-metal 708
-piedra 1150
+madera 557.5
+metal 1372
+piedra 1660

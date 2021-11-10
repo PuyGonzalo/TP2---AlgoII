@@ -1,7 +1,1 @@
-mina (4, 7)
-mina (1, 8)
-planta electrica (0, 7)
-planta electrica (0, 4)
-fabrica (7, 2)
-aserradero (0, 9)
-yacimiento (6, 4)
+yacimiento (3, 2)
