@@ -163,3 +163,30 @@ Estado_t menu_secreto(Inventario inventario, string codigo){
     return st;
 
 }
+
+// ------------------------------------------------------------------------------------------------------------
+
+void procesar_juego(Andypolis& andypolis){
+
+    // Esto lo hago para que la secuencia de la cantidad de materiales que se genera con cada corrida del programa sea mas aleatoria.
+	srand( (unsigned int)time(NULL) );
+
+    int opcion = 0;
+	Estado_t estado = OK;
+
+
+    while(opcion != GUARDAR_SALIR){
+		mostrar_menu();
+		estado = ingreso_menu(opcion, andypolis);
+		if(estado != OK)
+			imprimir_error(estado);
+	}
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, ofstream& archivo_salida_ubicaciones){
+
+    andypolis.guardar_andypolis(archivo_salida_materiales, archivo_salida_ubicaciones);
+
+} // MEDIO AL DOPE ESTA FUNCION. PERO COMO QUE NO DA HACER 'andypolis.guardar_ciudad(archivo_salida_materiales, archivo_salida_ubicaciones)' en el main xD

@@ -3,6 +3,7 @@
 
 #include <sstream>
 #include <string>
+#include <ctime>
 #include "errores.h"
 #include "formatos.h"
 #include "utilidades.h"
@@ -87,5 +88,13 @@ Estado_t ingreso_menu(int &opcion , Andypolis &andypolis);
 // pre: -
 // pos: suma una cantidad "secreta" de un material dependiendo que codigo se ponga
 Estado_t menu_secreto(Inventario inventario, string codigo);
+
+// pre:
+// pos
+void procesar_juego(Andypolis& andypolis); // NO SE SI VA ACA O EN UTILIDADES
+
+// pre:
+// pos:
+void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, ofstream& archivo_salida_ubicaciones);
 
 #endif //MENU_H

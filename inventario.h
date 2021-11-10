@@ -14,7 +14,7 @@ class Inventario{
 
 private:
     // Atributos
-    Lista<Material*> lista_materiales; // no puede ser Lista<Material> ?
+    Lista<Material*> lista_materiales;
     int cantidad_materiales;
 
 public:
@@ -64,6 +64,10 @@ public:
     // pre:
     // pos:
     void mostrar_inventario();
+
+    // pre:
+    // pos:
+    void guardar_inventario(ofstream& archivo_materiales);
 
 };
 

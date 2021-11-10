@@ -67,6 +67,10 @@ public:
     // pos: muestra las ubicaciones del catalogo de un edificio en particular (en funcion de su indice en la lista)
     string obtener_ubicaciones_construidas_str(int pos_edif_catalogo);
 
+    // pre:
+    // pos:
+    string obtener_material_brindado_por_edificio_str(int posicion);
+
     // pre: -
     // pos: le pide al mapa que se imprima, mostrando Andypolis
     void mostrar_andypolis();
@@ -110,6 +114,10 @@ public:
     // pre:
     // pos:
     Estado_t recolectar_materiales();
+
+    // pre:
+    // pos:
+    void guardar_andypolis(ofstream& archivo_materiales, ofstream& archivo_ubicaciones);
 
 
 };

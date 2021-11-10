@@ -148,3 +148,12 @@ void Inventario::sumar_cantidad_material(char identificador, double cantidad){
 
     lista_materiales.consulta(ubicacion) -> sumar_cantidad(cantidad);
 }
+
+// ------------------------------------------------------------------------------------------------------------
+
+void Inventario::guardar_inventario(ofstream& archivo_materiales){
+
+    for(int i = 0; i < cantidad_materiales; ++i){
+        archivo_materiales << lista_materiales.consulta(i)->obtener_tipo_material() << ESPACIO << lista_materiales.consulta(i)->obtener_cantidad() << '\n';
+    }
+}

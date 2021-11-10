@@ -103,7 +103,7 @@ Datos_edificio* Parser::procesar_entrada_edificio(){
 
     if (nombre_edificio() == STR_MINA){
         nuevos_datos -> brinda_material = true;
-    }else if(nombre_edificio() == STR_YACIMIENTO){
+    }else if(nombre_edificio() == STR_ASERRADERO){
             nuevos_datos -> brinda_material = true;
     }else if(nombre_edificio() == STR_FABRICA){
             nuevos_datos -> brinda_material = true;

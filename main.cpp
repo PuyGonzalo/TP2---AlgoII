@@ -1,5 +1,4 @@
 #include <iostream>
-#include <ctime>
 #include "errores.h"
 #include "menu.h"
 #include "andypolis.h"
@@ -15,13 +14,9 @@ const string PATH_ENTRADA_MAPA = "Archivos/mapa.txt";
 
 int main (void){
 	if(system(CLR_SCREEN));
-	// Esto lo hago en main para que la secuencia de la cantidad de materiales que se genera con cada corrida del programa sea mas aleatoria.
-	srand( (unsigned int)time(NULL) );
+	
 
 	
-	int opcion = 0;
-	Estado_t estado = OK;
-
     // Abro archivos de lectura
 	ifstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES);
     ifstream archivo_entrada_edificios(PATH_ENTRADA_EDIFICIOS);
@@ -32,12 +27,7 @@ int main (void){
     Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa, archivo_entrada_materiales);
 	
 	
-	while(opcion != GUARDAR_SALIR){
-		mostrar_menu();
-		estado = ingreso_menu(opcion, andypolis);
-		if(estado != OK)
-			imprimir_error(estado);
-	}
+	procesar_juego(andypolis);
 
     // Cierro archivos de lectura
 	archivo_entrada_materiales.close(); 
@@ -45,16 +35,16 @@ int main (void){
     archivo_entrada_ubicaciones.close();
     archivo_entrada_mapa.close();
 
-	/*/ Abro los archivos de escritura para guardar el juego
+	/*// Abro los archivos de escritura para guardar el juego
 	ofstream archivo_salida_materiales(PATH_ENTRADA_MATERIALES, ios::trunc);
-    ofstream archivo_salida_edificios(PATH_ENTRADA_EDIFICIOS, ios::trunc);
+    ofstream archivo_salida_ubicaciones(PATH_ENTRADA_UBICACIONES, ios::trunc);
 	
 	// Guardo los cambios
-	guardar_cambios(lista_de_materiales, andypolis, archivo_salida_materiales, archivo_salida_edificios);
+	guardar_cambios(andypolis, archivo_salida_materiales, archivo_salida_ubicaciones);
 
 	// Cierros los archivos de escritura
 	archivo_salida_materiales.close();
-	archivo_salida_edificios.close();
+	archivo_salida_ubicaciones.close();
 	*/
 
     return 0;

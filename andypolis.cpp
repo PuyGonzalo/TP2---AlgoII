@@ -163,6 +163,9 @@ void Andypolis::mostrar_catalogo(){
         << setw(24)
         << "Restantes hasta maximo"
         << left
+        << setw(22)
+        << "Material que brinda"
+        << left
         << setw(33) // imposible poner un numero fijo xd
         << "Coordenadas donde se encuentran"
         << FIN_DE_FORMATO
@@ -190,7 +193,10 @@ void Andypolis::mostrar_catalogo(){
             << setw(24)
             << catalogo.consulta(i) ->  maximos_permitidos - catalogo.consulta(i) ->  cantidad_construidos
             << left
-            << setw(33)
+            << setw(27)
+            << obtener_material_brindado_por_edificio_str(i)
+            << left
+            << setw(29)   
             << obtener_ubicaciones_construidas_str(i)
             << endl;
     }
@@ -200,6 +206,21 @@ void Andypolis::mostrar_catalogo(){
 
 // ------------------------------------------------------------------------------------------------------------
 
+string Andypolis::obtener_material_brindado_por_edificio_str(int posicion){ // VILLERISIMOOOOOOOOOO (NO SE ME OCURRE OTRA FORMA A ESTA HORA)
+    if(catalogo.consulta(posicion) -> brinda_material){
+        if(catalogo.consulta(posicion) -> nombre == STR_MINA){
+            return STR_PIEDRA;
+        }else if(catalogo.consulta(posicion) -> nombre == STR_FABRICA){
+            return STR_METAL;
+        }else if(catalogo.consulta(posicion) -> nombre == STR_ASERRADERO){
+            return STR_MADERA;
+        }
+    }
+
+    return "-";
+}
+
+// ------------------------------------------------------------------------------------------------------------
 
 string Andypolis::obtener_ubicaciones_construidas_str(int pos_edif){
 
@@ -521,4 +542,20 @@ Estado_t Andypolis::recolectar_materiales(){
     }else{
         return ERROR_RECOLECCION_MATERIALES;
     }
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+void Andypolis::guardar_andypolis(ofstream& archivo_materiales, ofstream& archivo_ubicaciones){
+
+    for(int i = 0; i < mapa.obtener_filas(); ++i){
+        for(int j = 0; j < mapa.obtener_columnas(); ++j){
+            if(mapa.se_puede_construir(i,j) && mapa.casillero_esta_ocupado(i,j)){
+                archivo_ubicaciones << mapa.obtener_nombre_objeto_de_casillero_ocupado(i,j)
+                                    << ESPACIO << "(" << i << ", " << j << ")" << '\n';
+            }
+        }
+    }
+
+    inventario.guardar_inventario(archivo_materiales);
 }
