@@ -29,15 +29,15 @@ Mapa::Mapa(ifstream& archivo_mapa){
             Superficie* superficie_leida = parser.procesar_entrada_superficie();
             if(superficie_leida -> es_accesible()){
                 if ( superficie_leida -> es_construible()){
-                    mapa[i][j] = new Casillero_Construible(superficie_leida, i, j, false);
+                    mapa[i][j] = new Casillero_construible(superficie_leida, i, j, false);
                 } else {
-                    mapa[i][j] = new Casillero_Transitable(superficie_leida, i, j, false);
+                    mapa[i][j] = new Casillero_transitable(superficie_leida, i, j, false);
                     Coordenadas* coord = new Coordenadas;
                     *coord = {i,j};
                     casilleros_transitables_disponibles.alta(coord,0);
                 }
             } else {
-                mapa[i][j] = new Casillero_Inaccesible(superficie_leida, i, j, false);
+                mapa[i][j] = new Casillero_inaccesible(superficie_leida, i, j, false);
             }
 
         }

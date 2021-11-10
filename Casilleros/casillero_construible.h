@@ -5,7 +5,7 @@
 #include "../casillero.h"
 #include "../formatos.h"
 
-class Casillero_Construible: public Casillero {
+class Casillero_construible: public Casillero {
 
 private:
     // Atributos
@@ -16,15 +16,15 @@ public:
 
     // pre: -
     // pos: CONSTRUCTOR de un casillero construible
-    Casillero_Construible(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
+    Casillero_construible(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
 
     // pre: -
     // pos: CONSTRUCTOR de un casillero construible default
-    Casillero_Construible():Casillero(){};
+    Casillero_construible():Casillero(){};
 
     // pre: -
     // pos: DESTRUCTOR de un casillero construible
-    ~Casillero_Construible();
+    ~Casillero_construible();
 
     // pre: -
     // pos: imprime una letra que representa el edificio que tiene construido y el color de la superficie del casillero

@@ -5,14 +5,14 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Casillero_Transitable::Casillero_Transitable(Superficie* superficie, int coord_x, int coord_y, bool ocupado) 
+Casillero_transitable::Casillero_transitable(Superficie* superficie, int coord_x, int coord_y, bool ocupado) 
         :Casillero(superficie, coord_x, coord_y, ocupado){}
 
 
 // ------------------------------------------------------------------------------------------------------------
 
 
-Casillero_Transitable::~Casillero_Transitable(){
+Casillero_transitable::~Casillero_transitable(){
 
     if(material_ocupado != nullptr){
         delete material_ocupado;
@@ -25,7 +25,7 @@ Casillero_Transitable::~Casillero_Transitable(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Casillero_Transitable::imprimir_casillero(){
+void Casillero_transitable::imprimir_casillero(){
 
     bool color_superficie_encontrada = false;
     int i = 0;
@@ -49,7 +49,7 @@ void Casillero_Transitable::imprimir_casillero(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Casillero_Transitable::consultar_casillero(){
+void Casillero_transitable::consultar_casillero(){
 
     cout << TAB << NEGRITA << FONDO_COLOR_ANARANJADO << "Soy un casillero transitable y ";
     if(!ocupado){
@@ -64,7 +64,7 @@ void Casillero_Transitable::consultar_casillero(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Casillero_Transitable::poner_material(Material* material){
+void Casillero_transitable::poner_material(Material* material){
 
     this -> material_ocupado = material;
     this -> ocupado = true;
@@ -75,7 +75,7 @@ void Casillero_Transitable::poner_material(Material* material){
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Casillero_Transitable::obtener_nombre_objeto_de_casillero(){
+string Casillero_transitable::obtener_nombre_objeto_de_casillero(){
 
     return material_ocupado -> obtener_tipo_material();
 

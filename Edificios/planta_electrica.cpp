@@ -4,13 +4,13 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Planta_Electrica::Planta_Electrica(string identificador) : Edificio(identificador){}
+Planta_electrica::Planta_electrica(string identificador) : Edificio(identificador){}
 
 
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Planta_Electrica::obtener_tipo_edificio(){
+string Planta_electrica::obtener_tipo_edificio(){
 
     return STR_P_ELECTRICA;
 }

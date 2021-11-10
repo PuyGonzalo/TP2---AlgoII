@@ -3,17 +3,17 @@
 
 #include "../edificio.h"
 
-class Planta_Electrica: public Edificio {
+class Planta_electrica: public Edificio {
 public:
     // Metodos
 
     // pre: -
     // pos: CONSTRUCTOR planta electrica 
-    Planta_Electrica(string identificador);
+    Planta_electrica(string identificador);
 
     // pre: -
     // pos: DESTRUCTOR planta electrica 
-    ~Planta_Electrica(){};
+    ~Planta_electrica(){};
 
     // pre: -
     // pos: obtiene el tipo de edificio que es (su "nombre")

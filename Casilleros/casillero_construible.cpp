@@ -6,13 +6,13 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Casillero_Construible::Casillero_Construible(Superficie* superficie, int coord_x, int coord_y, bool ocupado) 
+Casillero_construible::Casillero_construible(Superficie* superficie, int coord_x, int coord_y, bool ocupado) 
         :Casillero(superficie, coord_x, coord_y, ocupado){}
 
 
 // ------------------------------------------------------------------------------------------------------------
 
-Casillero_Construible::~Casillero_Construible(){
+Casillero_construible::~Casillero_construible(){
     if(edificio_construido!=nullptr){
         delete edificio_construido;
         edificio_construido=nullptr;
@@ -22,7 +22,7 @@ Casillero_Construible::~Casillero_Construible(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Casillero_Construible::imprimir_casillero(){
+void Casillero_construible::imprimir_casillero(){
 
     bool color_superficie_encontrada = false;
     int i = 0;
@@ -46,7 +46,7 @@ void Casillero_Construible::imprimir_casillero(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Casillero_Construible::consultar_casillero(){
+void Casillero_construible::consultar_casillero(){
  
     cout << TAB << NEGRITA << FONDO_COLOR_ANARANJADO << "Soy un casillero construible y";
     if(!ocupado){
@@ -61,7 +61,7 @@ void Casillero_Construible::consultar_casillero(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Casillero_Construible::construir_edificio(Edificio* edificio){
+void Casillero_construible::construir_edificio(Edificio* edificio){
 
     this -> edificio_construido = edificio;
     this -> ocupado = true;
@@ -72,7 +72,7 @@ void Casillero_Construible::construir_edificio(Edificio* edificio){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Casillero_Construible::destruir_edificio(){
+void Casillero_construible::destruir_edificio(){
 
     delete edificio_construido;
     edificio_construido = nullptr;
@@ -84,7 +84,7 @@ void Casillero_Construible::destruir_edificio(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Casillero_Construible::obtener_nombre_objeto_de_casillero(){
+string Casillero_construible::obtener_nombre_objeto_de_casillero(){
     
     return edificio_construido -> obtener_tipo_edificio();
 
@@ -94,7 +94,7 @@ string Casillero_Construible::obtener_nombre_objeto_de_casillero(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-char Casillero_Construible::obtener_material_brindado_de_casillero(){
+char Casillero_construible::obtener_material_brindado_de_casillero(){
     
     return edificio_construido -> obtener_material_brindado();
 }
@@ -104,7 +104,7 @@ char Casillero_Construible::obtener_material_brindado_de_casillero(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-double Casillero_Construible::obtener_cantidad_material_brindado_de_casillero(){
+double Casillero_construible::obtener_cantidad_material_brindado_de_casillero(){
 
     return edificio_construido -> obtener_cantidad_material_brindado();
 

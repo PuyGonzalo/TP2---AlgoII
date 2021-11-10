@@ -236,7 +236,7 @@ Edificio* Parser::procesar_entrada_ubicaciones(){
     if(nombre_edificio_ubicaciones() == STR_MINA){
         edificio = new Mina(obtener_identificador_edificio());
     } else if(nombre_edificio_ubicaciones() == STR_P_ELECTRICA){
-        edificio = new Planta_Electrica(obtener_identificador_edificio());
+        edificio = new Planta_electrica(obtener_identificador_edificio());
     } else if(nombre_edificio_ubicaciones() == STR_YACIMIENTO){
         edificio = new Yacimiento(obtener_identificador_edificio());
     } else if(nombre_edificio_ubicaciones() == STR_ESCUELA){

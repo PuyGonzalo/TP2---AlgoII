@@ -1,4 +1,4 @@
-mina (4, 7)
 mina (1, 8)
+mina (4, 7)
 planta electrica (0, 4)
 fabrica (7, 2)

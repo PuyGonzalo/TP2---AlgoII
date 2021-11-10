@@ -5,7 +5,7 @@
 #include "../casillero.h"
 #include "../formatos.h"
 
-class Casillero_Transitable: public Casillero {
+class Casillero_transitable: public Casillero {
 
 private:
     // Atributos
@@ -16,15 +16,15 @@ public:
 
     // pre: -
     // pos: CONSTRUCTOR de un casillero transitable
-    Casillero_Transitable(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
+    Casillero_transitable(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
 
     // pre: -
     // pos: CONSTRUCTOR de un casillero transitable default
-    Casillero_Transitable():Casillero(){};
+    Casillero_transitable():Casillero(){};
 
     // pre: -
     // pos: DESTRUCTOR de un casillero transitable
-    ~Casillero_Transitable();
+    ~Casillero_transitable();
 
     // pre: -
     // pos: imprime una letra que representa el material que tiene "en el piso" y el color de la superficie del casillero
