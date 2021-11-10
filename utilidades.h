@@ -16,20 +16,20 @@ const int RAND_MAX_METAL = 3;
 
 const string MSJ_INGRESO_EDIFICIO_CONSTRUIR = "Ingresa el nombre del edifico a construir:";
 
-// pre: 
-// pos:
+// pre: -
+// pos: funcion para el menu para pedirle al usuario datos para construir en andypolis
 Estado_t construir_edificio_por_nombre(Andypolis& andypolis);
 
-// pre:
-// pos:
+// pre: -
+// pos: funcion para el menu para pedirle al usuario datos para destruir en andypolis
 Estado_t demoler_edificio_por_coordenada(Andypolis& andypolis);
 
-// pre:
-// pos:
+// pre: -
+// pos: funcion para el menu para pedirle al usuario datos para consultar un casillero de andypolis
 Estado_t consultar_coordenada(const Andypolis &andypolis); // (me evito crear un nuevo objeto andypolis..)
 
-// pre:
-// pos:
+// pre: -
+// pos: funcion para el menu para realizar las lluvias de recursos
 Estado_t lluvia_de_recursos(Andypolis& andypolis);
 
 #endif // UTILIDADES_H

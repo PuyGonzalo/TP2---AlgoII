@@ -39,32 +39,32 @@ protected:
 public:
     // Metodos
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: CONSTRUCTOR edificio
     Edificio();
 
-    // pre: 
-    // pos: 
+    // pre: identificador valido (entre los que hay en la consigna)
+    // pos: CONSTRUCTOR con parametro
     Edificio(string identificador);
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: DESTRUCTOR de edificios
     virtual ~Edificio(){};
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: devuelve el tipo/nombre del edificio
     virtual string obtener_tipo_edificio() = 0;
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: obtiene (en caso de poder brindar materiales) el identificador del material que brinda el edificio
     virtual char obtener_material_brindado() = 0;
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: obtiene (en caso de poder brindar materiales) la cantidad de material que brinda el edificio
     virtual double obtener_cantidad_material_brindado() = 0;
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: devuelve el identificador del edificio
     string obtener_identificador();
 
 };

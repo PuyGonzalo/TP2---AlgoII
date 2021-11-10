@@ -42,12 +42,12 @@ public:
     // pos: devuelve el nombre del material que esta ocupando el casillero
     string obtener_nombre_objeto_de_casillero();
 
-    // pre:
-    // pos:
+    // pre: - 
+    // pos: momentaneamente no tiene sentido pedirle info de un material a un casillero transitable (metodo virtual ret =/= void)
     char obtener_material_brindado_de_casillero(){return ' ';};
 
-    // pre:
-    // pos:
+    // pre: - 
+    // pos: momentaneamente no tiene sentido pedirle info de un material a un casillero transitable (metodo virtual ret =/= void)
     double obtener_cantidad_material_brindado_de_casillero(){return 0;};
 
 };

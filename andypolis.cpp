@@ -19,7 +19,7 @@ mapa(archivo_mapa) , inventario(archivo_mats) {
 
 Andypolis::~Andypolis(){
 
-    for(int i = 0 ; i < cantidad_edificios_catalogo ; ++i){
+    for(int i = 0 ; i < catalogo.obtener_cantidad() ; ++i){
         for(int j = 0 ; j < catalogo.consulta(i) -> cantidad_construidos ; ++j){
             delete catalogo.consulta(i) -> ubicaciones_construidos.consulta(j);
             // catalogo.consulta(i) -> ubicaciones_construidos.consulta(j) = nullptr;
@@ -37,15 +37,15 @@ Andypolis::~Andypolis(){
 
 void Andypolis::cargar_catalogo(ifstream& archivo_edif){
    
-    this -> cantidad_edificios_catalogo = 0;
+    int i = 0;
     string linea_leida;
 
     while (getline(archivo_edif,linea_leida)){
 
         Parser parser(linea_leida);
         Datos_edificio* edificio_leido = parser.procesar_entrada_edificio();
-        catalogo.alta(edificio_leido, this -> cantidad_edificios_catalogo);
-        ++cantidad_edificios_catalogo;
+        catalogo.alta(edificio_leido, i);
+        ++i;
 
     }   
 
@@ -166,13 +166,13 @@ void Andypolis::mostrar_catalogo(){
         << setw(21)
         << "Material que brinda"
         << left
-        << setw(33) // imposible poner un numero fijo xd
+        << setw(33)
         << "Coordenadas donde se encuentran"
         << FIN_DE_FORMATO
         << endl;
 
 
-    for(int i = 0 ; i < cantidad_edificios_catalogo ; ++i){
+    for(int i = 0 ; i < catalogo.obtener_cantidad() ; ++i){
         cout
             << left
             << setw(22)
@@ -206,6 +206,7 @@ void Andypolis::mostrar_catalogo(){
 
 // ------------------------------------------------------------------------------------------------------------
 
+
 string Andypolis::obtener_material_brindado_por_edificio_str(int posicion){
 
     if(catalogo.consulta(posicion) -> brinda_material){
@@ -221,7 +222,9 @@ string Andypolis::obtener_material_brindado_por_edificio_str(int posicion){
     return "-";
 }
 
+
 // ------------------------------------------------------------------------------------------------------------
+
 
 string Andypolis::obtener_ubicaciones_construidas_str(int pos_edif){
 
@@ -276,8 +279,8 @@ Estado_t Andypolis::consultar_casillero_de_mapa(int coord_x, int coord_y) const{
 
 void Andypolis::listar_edificios_construidos(){
 
-    if(!cantidad_edificios_catalogo){
-        cout << "No hay edificios construidos :(" << endl;
+    if(!catalogo.obtener_cantidad()){
+        cout << endl << TAB << NEGRITA << "No hay edificios construidos :(" << FIN_DE_FORMATO << endl;
     } else{
 
     cout
@@ -295,7 +298,7 @@ void Andypolis::listar_edificios_construidos(){
         << endl;
 
 
-        for(int i = 0 ; i < cantidad_edificios_catalogo ; ++i){
+        for(int i = 0 ; i < catalogo.obtener_cantidad() ; ++i){
             if(catalogo.consulta(i) -> cantidad_construidos != 0){        
             cout 
                 << left
@@ -435,7 +438,7 @@ bool Andypolis::esta_edificio(string nombre_edificio){
     bool edificio_encontrado = false;
     int i = 0;
 
-    while(!edificio_encontrado && i < cantidad_edificios_catalogo){
+    while(!edificio_encontrado && i < catalogo.obtener_cantidad()){
         if(catalogo.consulta(i) -> nombre == nombre_edificio){
             edificio_encontrado = true;
         }
@@ -455,7 +458,7 @@ int Andypolis::indice_edificio_en_catalogo(string nombre_edificio){
     int i = 0;
     bool edificio_encontrado = false;
 
-    while(i < cantidad_edificios_catalogo && !edificio_encontrado){
+    while(i < catalogo.obtener_cantidad() && !edificio_encontrado){
         if(catalogo.consulta(i) -> nombre == nombre_edificio){
             ubicacion = i;
             edificio_encontrado = true;
@@ -504,13 +507,15 @@ Estado_t Andypolis::posicionar_lluvia_de_recursos(int cantidad_lluvia_piedra, in
     return OK;
 }
 
+
 // ------------------------------------------------------------------------------------------------------------
+
 
 Estado_t Andypolis::recolectar_materiales(){
     
     bool exito = false;
     
-    for(int i = 0; i < cantidad_edificios_catalogo; ++i){
+    for(int i = 0; i < catalogo.obtener_cantidad(); ++i){
         
         if(catalogo.consulta(i) -> brinda_material){
 
@@ -534,17 +539,18 @@ Estado_t Andypolis::recolectar_materiales(){
     }
 
     if(exito){
-        cout << endl << TAB << "¡Recoleccion de materiales realizada con exito!" << endl;
+        cout << endl << TAB << FONDO_COLOR_AMARILLO << "¡Recoleccion de materiales realizada con exito!" << FIN_DE_FORMATO << endl;
         return OK;
     }else{
         return ERROR_RECOLECCION_MATERIALES;
     }
 }
 
+
 // ------------------------------------------------------------------------------------------------------------
 
-void Andypolis::guardar_andypolis(ofstream& archivo_materiales, ofstream& archivo_ubicaciones){
 
+void Andypolis::guardar_andypolis(ofstream& archivo_materiales, ofstream& archivo_ubicaciones){
 
     for (int i = 0 ; i < catalogo.obtener_cantidad() ; ++i){
         if(catalogo.consulta(i) -> cantidad_construidos != 0){
@@ -558,4 +564,5 @@ void Andypolis::guardar_andypolis(ofstream& archivo_materiales, ofstream& archiv
     }
 
     inventario.guardar_inventario(archivo_materiales);
+
 }

@@ -15,24 +15,24 @@ private:
 public:
     // Metodos
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: CONSTRUCTOR mina
     Mina(string identificador);
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: DESTRUCTOR mina
     ~Mina(){};
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: obtiene el tipo de edificio que es (su "nombre")
     string obtener_tipo_edificio();
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: obtiene el identificador del material que brinda
     char obtener_material_brindado();
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: obtiene la cantidad de material que brinda
     double obtener_cantidad_material_brindado();
 };
 

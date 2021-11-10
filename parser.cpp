@@ -309,22 +309,3 @@ int Parser::obtener_coordenada_y(){
     return i > 0 ? stoi(coordenada) : this -> entrada[cantidad_de_palabras - 1][0] - '0';
 
 }
-
-
-// ------------------------------------------------------------------------------------------------------------
-
-// ··············· METODOS PARA DEBUGGEAR -> BORRAR
-
-int Parser::obtener_cantidad_palabras(){
-
-    return this -> cantidad_de_palabras;
-
-}
-
-void Parser::mostrar_entrada(){
-
-    for(int i = 0; i < cantidad_de_palabras; ++i ){
-        cout << this -> entrada[i] << endl;
-    }
-
-}

@@ -20,7 +20,7 @@ Mapa::Mapa(ifstream& archivo_mapa){
         mapa[i] = new Casillero*[cantidad_columnas];
     }
 
-    // Utilizo el polimorfismo para crear el casillero y superficie correspondiente
+    // Utilizo el polimorfismo dinamico para crear el casillero y superficie correspondiente
     for(int i = 0 ; i < cantidad_filas ; ++i){
         for (int j = 0 ; j < cantidad_columnas; ++j){
             
@@ -227,7 +227,7 @@ void Mapa::mostrar_mapa(){
         cout << endl;
     }
 
-/* esta bueno esto para que se printee bien, si no se imprime todo el menua abajo y queda medio feo.. pero esto es re cabeza
+/* Para mejor visualizacion del mapa es posible descomentar el siguiente codigo:
     string retorno;
     cout << endl;
     cout << "Ingrese cualquier cosa para volver" << endl;

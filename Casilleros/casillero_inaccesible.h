@@ -30,16 +30,19 @@ public:
     // pos: imprime un mensaje diciendo que es un casillero inaccesible
     void consultar_casillero();
 
+    // Aclaracion: estas 3 funciones estan ya que es la unica forma de definir un metodo virtual con return != void
+    // (haciendolo virtual puro y devolviendo defaults en los que no se requieran)
+
     // pre: -
-    // pos: a priori no puede ocuparse con nada un casilleor inaccesible, asi que devuelve una string vacia
+    // pos: a priori no puede ocuparse con nada un casillero inaccesible, asi que devuelve una string vacia
     string obtener_nombre_objeto_de_casillero(){return "";};
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: momentaneamente no tiene sentido pedirle un material a un casillero inaccesible
     char obtener_material_brindado_de_casillero(){return ' ';};
 
-    // pre:
-    // pos:
+    // pre: - 
+    // pos: momentaneamente no tiene sentido pedirle info de un material a un casillero inaccesible
     double obtener_cantidad_material_brindado_de_casillero(){return 0;};
 
 };

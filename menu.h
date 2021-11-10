@@ -14,7 +14,7 @@ using namespace std;
 
 
 const int OPCION_MINIMA = 1;
-const int OPCION_MAXIMA = 11;
+const int OPCION_MAXIMA = 10;
 
 enum Opciones_menu{
 	CONSTRUIR_EDIFICIO_POR_NOMBRE = 1,
@@ -27,20 +27,8 @@ enum Opciones_menu{
 	RECOLETAR_RECURSOS_PRODUCIDOS = 8,
 	LLUVIA_RECURSOS = 9,
 	GUARDAR_SALIR = 10,
-	MENU_SECRETO = 11
 };
 
-const string CODIGO_SECRETO_PIEDRA = "piedra porfa";
-const string CODIGO_SECRETO_MADERA = "madera porfa";
-const string CODIGO_SERCRETO_METAL = "metal porfa";
-const int MAX_CODIGOS_SECRETOS = 3;
-const int CANTIDAD_SECRETA_AGREGADA = 500;
-
-const string codigos_secretos[MAX_CODIGOS_SECRETOS] = {
-	CODIGO_SECRETO_PIEDRA,
-	CODIGO_SECRETO_MADERA,
-	CODIGO_SERCRETO_METAL,
-};
 
 const string MSJ_MENU_BIENVENIDA = R"(
  _______  __    _  ______   __   __  _______  _______  ___      ___   _______ 
@@ -66,7 +54,6 @@ const string MSJ_MENU_INGRESO_OPCION = "Ingrese una opcion";
 
 const string MSJ_INGRESO_EDIFICIO_DEMOLER = "Ingresa el nombre del edificio a demoler:";
 const string MSJ_DESPEDIDA = "¡Hasta la proxima!";
-const string MSJ_INGRESO_CODIGO_SECRETO = "Ingrese algun codigo secreto:";
 
 
 //####################################################### FUNCIONES #################################################################
@@ -89,12 +76,13 @@ Estado_t ingreso_menu(int &opcion , Andypolis &andypolis);
 // pos: suma una cantidad "secreta" de un material dependiendo que codigo se ponga
 Estado_t menu_secreto(Inventario inventario, string codigo);
 
-// pre:
-// pos
-void procesar_juego(Andypolis& andypolis); // NO SE SI VA ACA O EN UTILIDADES
+// pre: -
+// pos hace todo el proceso de juego (seguir jugando hasta que el usuario quiera irse e iniciar el aleatorio)
+void procesar_juego(Andypolis& andypolis); 
 
-// pre:
-// pos:
+// pre: -
+// pos: guarda todos los cambios que haya realizado el jugador
 void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, ofstream& archivo_salida_ubicaciones);
+
 
 #endif //MENU_H

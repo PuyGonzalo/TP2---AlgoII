@@ -3,6 +3,7 @@
 
 #include <string>
 #include <fstream>
+#include <iomanip>
 #include "material.h"
 #include "parser.h"
 #include "lista.h"
@@ -25,48 +26,48 @@ public:
     Inventario(ifstream& archivo);
 
     // pre: -
-    // pos: construye un inventario vacio con una capacidad inicial para cargar materiales
+    // pos: CONSTRUCTOR un inventario vacio con una capacidad inicial para cargar materiales
     Inventario(); // Constructor por default
 
 
     // pre: -
-    // pos: destruye el inventario (especificamente la lista de materiales dinamica)
+    // pos: DESTRUCTOR del inventario (especificamente la lista de materiales dinamica)
     ~Inventario(); // destructor
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: devuelve la ubicacion de un material en la lista de materiales
     int ubicacion_material_en_lista(char identificador);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: obtiene cuanta cantidad de piedra hay en el inventario
     double obtener_cantidad_de_piedra();
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: obtiene cuanta cantidad de madera hay en el inventario
     double obtener_cantidad_de_madera();
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: obtiene cuanta cantidad de metal hay en el inventario
     double obtener_cantidad_de_metal();
 
-    // pre:
-    // pos:
+    // pre: deberia ya estar chequeado que la resta queda > 0 como cantidad final de c/material
+    // pos: resta una cantidad de material de los 3 elementos de construccion
     void restar_cantidad_materiales_construccion(double costo_piedra, double costo_madera, double costo_metal);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: resta una cantidad de material de los 3 elementos de construccion
     void sumar_cantidad_materiales_construccion(double costo_piedra, double costo_madera, double costo_metal);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: se suma una cantidad especifica de un material especifico en funcion de su identificador
     void sumar_cantidad_material(char identificador, double cantidad);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: mustra el inventario
     void mostrar_inventario();
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: guarda el inventario
     void guardar_inventario(ofstream& archivo_materiales);
 
 };

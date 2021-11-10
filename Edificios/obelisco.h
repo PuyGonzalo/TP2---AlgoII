@@ -8,24 +8,24 @@ class Obelisco: public Edificio {
 public:
     // Metodos
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: CONSTRUCTOR obelisco
     Obelisco(string identificador);
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: DESTRUCTOR obelisco
     ~Obelisco(){};
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: obtiene el tipo de edificio que es (su "nombre")
     string obtener_tipo_edificio();
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: no brinda material (se necesita por metodo virtual puro que se uso para devolver return =/= void)
     char obtener_material_brindado(){return ' ';}
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: no brinda material (se necesita por metodo virtual puro que se uso para devolver return =/= void)
     double obtener_cantidad_material_brindado(){return 0;}
 };
 

@@ -7,7 +7,6 @@
 
 Inventario::Inventario(){
 
-    // CREAR LISTA VACIA DE Lista<Material*> lista_materiales;
     this -> cantidad_materiales = 0;
 
 }
@@ -20,14 +19,13 @@ Inventario::Inventario(ifstream& archivo){
     
     string linea_leida;
     this -> cantidad_materiales = 0;
-    // inicializar la lista como vacia? o ya siendo atributo se "crea vacia" -> si, printear para ver?
 
 
     while(getline(archivo, linea_leida)){
 
         Parser parser(linea_leida);
         Material* material_leido = parser.procesar_entrada_material();
-        lista_materiales.alta(material_leido, this->cantidad_materiales); // medio cabeza pero los voy metiendo todos al ppio (pila xd)
+        lista_materiales.alta(material_leido, this->cantidad_materiales);
         this ->cantidad_materiales++;
         
     }
@@ -51,9 +49,24 @@ Inventario::~Inventario(){
 
 
 void Inventario::mostrar_inventario(){
+
+    cout
+    << endl << TAB << NEGRITA << SUBRAYADO
+    << left
+    << setw(10)
+    << "Material"
+    << left
+    << setw(9)
+    << "Cantidad"
+    << FIN_DE_FORMATO
+    << endl;
+
+
     for(int i = 0 ; i < cantidad_materiales ; ++i)
-        cout << "> " << lista_materiales.consulta(i) -> obtener_tipo_material() << ": " << 
-        lista_materiales.consulta(i) -> obtener_cantidad() << endl;
+        cout
+        << TAB
+        << left << setw(10) << lista_materiales.consulta(i) -> obtener_tipo_material()
+        << left << setw(9) << lista_materiales.consulta(i) -> obtener_cantidad() << endl;
 
 }
 

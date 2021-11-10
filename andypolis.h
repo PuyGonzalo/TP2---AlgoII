@@ -28,7 +28,6 @@ private:
     //Casilleroptr** mapa;
     Mapa mapa;
     Lista<Datos_edificio*> catalogo;
-    int cantidad_edificios_catalogo;
     Inventario inventario;
 
 
@@ -67,8 +66,8 @@ public:
     // pos: muestra las ubicaciones del catalogo de un edificio en particular (en funcion de su indice en la lista)
     string obtener_ubicaciones_construidas_str(int pos_edif_catalogo);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: devuelve una string con el nombre del material que brinda un edificio que este en la posicion enviada del catalogo
     string obtener_material_brindado_por_edificio_str(int posicion);
 
     // pre: -
@@ -111,12 +110,12 @@ public:
     // pos: posiciona los elementos de la lluvia de recursos
     Estado_t posicionar_lluvia_de_recursos(int cantidad_lluvia_piedra, int cantidad_lluvia_madera, int cantidad_lluvia_metal);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: recoleta los materiales segun los edificios construidos que brinden materiales
     Estado_t recolectar_materiales();
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: guarda en el archivo todos los cambios realizados en andypolis
     void guardar_andypolis(ofstream& archivo_materiales, ofstream& archivo_ubicaciones);
 
 

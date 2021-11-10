@@ -27,36 +27,36 @@ protected:
 public:
     // Metodos
 
-    // pre: 
-    // pos: 
-    Material(double cantidad); // Constructor con parametros
+    // pre: -
+    // pos: CONSTRUCTOR con parametros
+    Material(double cantidad);
 
-    // pre: 
-    // pos: 
-    Material(); // Constructor por default
+    // pre: -
+    // pos: CONSTRUCTOR por default
+    Material(); 
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: DESTRUCTOR de material
     virtual ~Material(){};
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: obtiene el identificador del material
     char obtener_identificador();
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: obtiene la cantidad de un material
     double obtener_cantidad();
 
-    // pre: 
-    // pos:
+    // pre: -
+    // pos: suma una cantidad de material
     void sumar_cantidad(double cantidad);
 
-    // pre: 
-    // pos:
+    // pre: no se deberia restar mas del valor actual de material que hay (validar antes de usar)
+    // pos: resta una cantidad de material
     void restar_cantidad(double cantidad);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: obtiene que tipo/nombre de material es
     virtual string obtener_tipo_material() = 0;
 
 };

@@ -87,20 +87,20 @@ public:
     // pos: devuelve la cantidad de casilleros transitables desocupados/disponibles/libres
     int cantidad_casilleros_transitables_disponibles();
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: agrega un material a una coordenada particular
     Estado_t agregar_material_en_coordenadas(Material* material, int coord_x, int coord_y);
 
     // pre: -
-    // pos: agrega un material en un casillero transitable DISPOBILE (y deja de estar disponible, claro)
+    // pos: agrega un material en un casillero transitable DISPONIBLE ALEATORIO (y deja de estar disponible, claro)
     void agregar_material_en_coordenada_transitable_aleatoria(Material* material);
 
-    // pre:s
-    // pos:
-    char obtener_material_brindado_casillero( int coord_x, int coord_y);
+    // pre: antes de llamarla chequear que el casillero tenga un edificio que sea capaz de bridnar materiales
+    // pos: devuelve el identificador de un casillero que tiene un edificio con la capacidad de brindar materiales
+    char obtener_material_brindado_casillero(int coord_x, int coord_y);
 
-    // pre:
-    // pos:
+    // pre: antes de llamarla chequear que el casillero tenga un edificio que sea capaz de bridnar materiales
+    // pos: devuelve la cantidad de material brindado de un casillero que tiene un edificio con la capacidad de brindar materiales
     double obtener_cantidad_material_brindado_casillero( int coord_x, int coord_y);
 
 };

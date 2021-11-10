@@ -34,6 +34,7 @@ Estado_t construir_edificio_por_nombre(Andypolis& andypolis){
 
 // -------------------------------------------------------------------------------------------
 
+
 Estado_t consultar_coordenada(const Andypolis &andypolis){
 
     Estado_t estado = OK;
@@ -53,6 +54,7 @@ Estado_t consultar_coordenada(const Andypolis &andypolis){
     return estado;
 
 }
+
 
 // -------------------------------------------------------------------------------------------
 

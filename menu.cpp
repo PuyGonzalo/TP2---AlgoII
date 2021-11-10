@@ -88,14 +88,6 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
             cout << endl << TAB << NEGRITA << FONDO_COLOR_AZUL << MSJ_DESPEDIDA << FIN_DE_FORMATO <<endl;
             cout << endl << endl;
             break;
-        
-        case MENU_SECRETO:
-            if(system(CLR_SCREEN));
-            cout << TAB << MSJ_INGRESO_CODIGO_SECRETO << endl;
-            getline(cin, codigo_ingresado);
-            //if( (st = menu_secreto(lm, codigo_ingresado)) != OK)
-            //    return st;
-            break;
 
         default: 
             return ERROR_NUMERO_OPCION_INVALIDA;
@@ -126,39 +118,6 @@ Estado_t ingreso_menu(int &opcion , Andypolis &andypolis){
     return estado;
 }
 
-
-// ------------------------------------------------------------------------------------------------------------
-
-
-Estado_t menu_secreto(Inventario inventario, string codigo){
-    
-    Estado_t st = OK;
-    string material_a_sumar;
-    bool codigo_encontrado = false;
-    int i = 0;
-
-    //if (lm == nullptr)
-    //    return ERROR_PUNTERO_NULO;
-
-    while(!codigo_encontrado &&  i < MAX_CODIGOS_SECRETOS){
-        if( codigo == codigos_secretos[i] ){
-            stringstream sstream(codigo);
-            sstream >> material_a_sumar;
-            //agregar_cantidad_material(lm, material_a_sumar, CANTIDAD_SECRETA_AGREGADA);
-            codigo_encontrado = true;
-            cout << endl << endl;
-            cout << TAB << NEGRITA << "¡Se agrego " << CANTIDAD_SECRETA_AGREGADA << " de " << material_a_sumar << "!" << FIN_DE_FORMATO << endl; 
-        }
-        i++;
-    }
-
-    if(!codigo_encontrado)
-        st = ERROR_CODIGO_INEXISTENTE;
-
-
-    return st;
-
-}
 
 // ------------------------------------------------------------------------------------------------------------
 

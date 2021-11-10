@@ -124,10 +124,6 @@ public:
     // POST:
     int obtener_coordenada_y();
 
-    // ESTOS METODOS NO VAN SON DE PRUEBA
-    int obtener_cantidad_palabras();
-
-    void mostrar_entrada();
 
 
 
