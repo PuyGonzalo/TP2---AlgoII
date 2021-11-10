@@ -65,6 +65,14 @@ public:
     // pos: pone un edificio en el casillero (solo en construible)
     virtual void construir_edificio(Edificio* edificio){};
 
+    // pre:
+    // pos:
+    virtual char obtener_material_brindado_de_casillero() = 0;
+
+    // pre:
+    // pos:
+    virtual double obtener_cantidad_material_brindado_de_casillero() = 0;
+
     // pre: -
     // pos: elimina el edificio del casillero (solo en construible)
     virtual void destruir_edificio(){};

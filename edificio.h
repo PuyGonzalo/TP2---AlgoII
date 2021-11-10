@@ -25,6 +25,7 @@ struct Datos_edificio{
     double costo_metal;
     int cantidad_construidos;
     int maximos_permitidos;
+    bool brinda_material;
     Lista<Coordenadas*> ubicaciones_construidos;
 };
 
@@ -53,6 +54,14 @@ public:
     // pre: 
     // pos: 
     virtual string obtener_tipo_edificio() = 0;
+
+    // pre:
+    // pos:
+    virtual char obtener_material_brindado() = 0;
+
+    // pre:
+    // pos:
+    virtual double obtener_cantidad_material_brindado() = 0;
 
     // pre: 
     // pos: 

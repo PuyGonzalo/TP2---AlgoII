@@ -107,6 +107,9 @@ public:
     // pos: posiciona los elementos de la lluvia de recursos
     Estado_t posicionar_lluvia_de_recursos(int cantidad_lluvia_piedra, int cantidad_lluvia_madera, int cantidad_lluvia_metal);
 
+    // pre:
+    // pos:
+    Estado_t recolectar_materiales();
 
 
 };

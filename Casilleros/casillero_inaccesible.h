@@ -34,6 +34,14 @@ public:
     // pos: a priori no puede ocuparse con nada un casilleor inaccesible, asi que devuelve una string vacia
     string obtener_nombre_objeto_de_casillero(){return "";};
 
+    // pre:
+    // pos:
+    char obtener_material_brindado_de_casillero(){return ' ';};
+
+    // pre:
+    // pos:
+    double obtener_cantidad_material_brindado_de_casillero(){return 0;};
+
 };
 
 

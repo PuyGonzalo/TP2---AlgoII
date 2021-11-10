@@ -139,3 +139,12 @@ void Inventario::sumar_cantidad_materiales_construccion(double costo_piedra, dou
     lista_materiales.consulta(ubicacion_metal) -> sumar_cantidad(costo_metal);
 
 }
+
+// ------------------------------------------------------------------------------------------------------------
+
+void Inventario::sumar_cantidad_material(char identificador, double cantidad){
+    
+    int ubicacion = ubicacion_material_en_lista(identificador);
+
+    lista_materiales.consulta(ubicacion) -> sumar_cantidad(cantidad);
+}

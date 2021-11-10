@@ -307,3 +307,15 @@ void Mapa::agregar_material_en_coordenada_transitable_aleatoria(Material* materi
     casilleros_transitables_disponibles.baja(indice_coordenada_a_colocar);
 
 }
+
+// ------------------------------------------------------------------------------------------------------------
+
+char Mapa::obtener_material_brindado_casillero( int coord_x, int coord_y){
+    return this -> mapa[coord_x][coord_y] -> obtener_material_brindado_de_casillero();
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+double Mapa::obtener_cantidad_material_brindado_casillero( int coord_x, int coord_y){
+    return this -> mapa[coord_x][coord_y] -> obtener_cantidad_material_brindado_de_casillero();
+}

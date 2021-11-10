@@ -46,6 +46,14 @@ public:
     // pos: devuelve el nombre del edificio construido en el casillero
     string obtener_nombre_objeto_de_casillero();
 
+    // pre:
+    // pos:
+    char obtener_material_brindado_de_casillero();
+
+    // pre:
+    // pos:
+    double obtener_cantidad_material_brindado_de_casillero();
+
 };
 
 

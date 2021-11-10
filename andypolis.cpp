@@ -486,3 +486,39 @@ Estado_t Andypolis::posicionar_lluvia_de_recursos(int cantidad_lluvia_piedra, in
 
     return OK;
 }
+
+// ------------------------------------------------------------------------------------------------------------
+
+Estado_t Andypolis::recolectar_materiales(){
+    bool exito = false;
+    
+    
+    for(int i = 0; i < cantidad_edificios_catalogo; ++i){
+        
+        if(catalogo.consulta(i) -> brinda_material){
+
+            if(catalogo.consulta(i) -> cantidad_construidos > 0){
+                char identificador;
+                double cantidad_material, cantidad_a_agregar;
+                int x = catalogo.consulta(i)->ubicaciones_construidos.consulta(0)->coordenada_x;//Tomo el primero construido siempre, cualquiera me sirve.
+                int y = catalogo.consulta(i)->ubicaciones_construidos.consulta(0)->coordenada_y;
+
+                identificador = mapa.obtener_material_brindado_casillero(x,y);
+
+                cantidad_material = mapa.obtener_cantidad_material_brindado_casillero(x,y);
+
+                cantidad_a_agregar = (double) catalogo.consulta(i) -> cantidad_construidos * cantidad_material;
+
+                inventario.sumar_cantidad_material(identificador, cantidad_a_agregar);
+
+                exito = true;
+            }
+        }
+    }
+
+    if(exito){
+        return OK;
+    }else{
+        return ERROR_RECOLECCION_MATERIALES;
+    }
+}

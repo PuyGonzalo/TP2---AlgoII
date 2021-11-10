@@ -4,13 +4,13 @@
 #include "../edificio.h"
 #include "../material.h"
 
-const int CANTIDAD_METAL_BRINDADA = 40;
+const double CANTIDAD_METAL_BRINDADA = 40;
 
 class Fabrica: public Edificio {
 private:
     // Atributos
-    string material_brindado;
-    int cantidad_material_brindado;
+    char identificador_material_brindado;
+    double cantidad_material_brindado;
 
 public:
     // Metodos
@@ -29,11 +29,11 @@ public:
 
     // pre: 
     // pos: 
-    string obtener_material_brindado();
+    char obtener_material_brindado();
 
     // pre: 
     // pos: 
-    int obtener_cantidad_material_brindado();
+    double obtener_cantidad_material_brindado();
 };
 
 

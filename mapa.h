@@ -95,6 +95,14 @@ public:
     // pos: agrega un material en un casillero transitable DISPOBILE (y deja de estar disponible, claro)
     void agregar_material_en_coordenada_transitable_aleatoria(Material* material);
 
+    // pre:s
+    // pos:
+    char obtener_material_brindado_casillero( int coord_x, int coord_y);
+
+    // pre:
+    // pos:
+    double obtener_cantidad_material_brindado_casillero( int coord_x, int coord_y);
+
 };
 
 

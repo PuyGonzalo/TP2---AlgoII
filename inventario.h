@@ -59,6 +59,10 @@ public:
 
     // pre:
     // pos:
+    void sumar_cantidad_material(char identificador, double cantidad);
+
+    // pre:
+    // pos:
     void mostrar_inventario();
 
 };

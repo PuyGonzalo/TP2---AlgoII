@@ -24,6 +24,7 @@ const string STR_ERROR_CASILLERO_NO_TRANSITABLE = "¡El casillero no es del tipo
 const string STR_ERROR_PAR_COORDENADAS_INVALIDAS = "¡Alguna de esas coordenadas no es un numero!";
 const string STR_ERROR_CASILLERO_VACIO = "¡Este casillero esta vacio!";
 const string STR_ADVERTENCIA_LLUVIA_RECURSOS = "Advertencia: No hay suficientes casilleros para realizar la lluvia de materiales";
+const string STR_ERROR_RECOLECCION_MATERIALES = "¡No hay edificios de los cuales recolectar materiales!";
 const string STR_ADVERTENCIA_UBICACIONES_MAL_FORMADO = "Advertencia: En el archivo ubicaciones.txt habia un edificio que estaba en una posicion invalida.";
 
 const string errores[] = {
@@ -44,7 +45,9 @@ const string errores[] = {
 	STR_ERROR_PAR_COORDENADAS_INVALIDAS,
 	STR_ERROR_CASILLERO_VACIO,
 	STR_ADVERTENCIA_LLUVIA_RECURSOS,
-	STR_ADVERTENCIA_UBICACIONES_MAL_FORMADO
+	STR_ADVERTENCIA_UBICACIONES_MAL_FORMADO,
+	STR_ERROR_RECOLECCION_MATERIALES
+	
 };
 
 enum Estado_t {
@@ -66,6 +69,7 @@ enum Estado_t {
 	ERROR_CASILLERO_VACIO = 15,
 	ADVERTENCIA_LLUVIA_RECURSOS = 16,
 	ADVERTENCIA_UBICACIONES_MAL_FORMADO = 17,
+	ERROR_RECOLECCION_MATERIALES = 18,
 	ADVERTENCIA_UBICACIONES_VACIO = 200};
 
 

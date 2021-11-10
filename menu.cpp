@@ -74,8 +74,12 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
             break;
 
         case RECOLETAR_RECURSOS_PRODUCIDOS:
-            //system(CLR_SCREEN);
-
+            if(system(CLR_SCREEN));
+            if( (estado = andypolis.recolectar_materiales()) != OK){
+                imprimir_error(estado);
+            }else {
+                cout << endl << TAB << "¡Recoleccion de materiales realizada con exito!" << endl;
+            }
             break;
 
         case LLUVIA_RECURSOS:
