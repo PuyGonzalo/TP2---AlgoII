@@ -51,11 +51,11 @@ void Casillero_Transitable::imprimir_casillero(){
 
 void Casillero_Transitable::consultar_casillero(){
 
-    cout << "Soy un casillero transitable y ";
+    cout << TAB << NEGRITA << FONDO_COLOR_ANARANJADO << "Soy un casillero transitable y ";
     if(!ocupado){
-        cout << "estoy vacio" << endl;
+        cout << "estoy vacio" << FIN_DE_FORMATO << endl;
     } else {
-        cout << "tengo " << material_ocupado -> obtener_tipo_material() << " en mi casillero" << endl;
+        cout << "tengo " << material_ocupado -> obtener_tipo_material() << " en mi casillero" << FIN_DE_FORMATO << endl;
     }
 
 }
