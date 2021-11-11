@@ -21,7 +21,7 @@ void Casillero_inaccesible::imprimir_casillero(){
 
         if(superficie -> obtener_color() == codigos_color_superficies[i][0]){
             color_superficie_encontrada = true;
-            cout << codigos_color_superficies[i][1] << ' ' << FIN_DE_FORMATO; // deshardcodear espacio
+            cout << codigos_color_superficies[i][1] << ' ' << FIN_DE_FORMATO;
         }
 
         ++i;
