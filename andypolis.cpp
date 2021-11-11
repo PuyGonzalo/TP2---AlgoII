@@ -4,7 +4,7 @@
 
 // ------------------------------------------------------------------------------------------------------------
 
-// typedef Casillero* casilleroptr;
+
 Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa, ifstream& archivo_mats) : 
 mapa(archivo_mapa) , inventario(archivo_mats) {
     
@@ -22,10 +22,8 @@ Andypolis::~Andypolis(){
     for(int i = 0 ; i < catalogo.obtener_cantidad() ; ++i){
         for(int j = 0 ; j < catalogo.consulta(i) -> cantidad_construidos ; ++j){
             delete catalogo.consulta(i) -> ubicaciones_construidos.consulta(j);
-            // catalogo.consulta(i) -> ubicaciones_construidos.consulta(j) = nullptr;
         }
         delete catalogo.consulta(i);
-        // catalogo.consulta(i) = nullptr;
     }
 
 
@@ -265,7 +263,7 @@ void Andypolis::mostrar_inventario(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Estado_t Andypolis::consultar_casillero_de_mapa(int coord_x, int coord_y) const{ // BUENA PRACTICA poner en todos los Consultar/mostrar
+Estado_t Andypolis::consultar_casillero_de_mapa(int coord_x, int coord_y) const{
 
     Estado_t estado = OK;
 
