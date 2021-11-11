@@ -13,12 +13,8 @@ Repositorio para el Trabajo Práctico número 2 de Algoritmos y Programación II
 
 ### Compilación
 
-El programa tiene varias sub-carpetas, por lo tanto para compilar es altamente recomendable utilizar al `MAKEFILE` proporcionado, que cuenta con los siguientes flags:
-~~~
--Wall -Werror -Wconversion -pedantic -pedantic-errors
-~~~
+El programa tiene varias sub-carpetas, por lo tanto para compilar utilizar la siguiente linea de comando
 
-De todas formas es posible compilar con la siguiente linea de comando:
 ~~~
 g++ -o <nombre_ejecutable> *.cpp Materiales/*.cpp Edificios/*.cpp Casilleros/*.cpp Superficies/*.cpp -Wall -Werror -Wconversion -pedantic -pedantic-errors
 ~~~
