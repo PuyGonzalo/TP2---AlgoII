@@ -39,52 +39,52 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis){
     switch (opcion_elegida) {
 
         case CONSTRUIR_EDIFICIO_POR_NOMBRE:
-            if(system(CLR_SCREEN)); // error: ignoring return value of ‘int system(const char*)’, declared with attribute warn_unused_result
+            system(CLR_SCREEN);
             estado = construir_edificio_por_nombre(andypolis);
             break;
 
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
-            if(system(CLR_SCREEN));
+            system(CLR_SCREEN);
             andypolis.listar_edificios_construidos();
             break;
 
         case LISTAR_TODOS_LOS_EDIFICIOS: 
-            if(system(CLR_SCREEN));
+            system(CLR_SCREEN);
             andypolis.mostrar_catalogo();
             break;
 
         case DEMOLER_EDIFICIO_POR_COORD:
-            if(system(CLR_SCREEN));
+            system(CLR_SCREEN);
             estado = demoler_edificio_por_coordenada(andypolis);
             break;
 
         case MOSTRAR_MAPA:
-            if(system(CLR_SCREEN));
+            system(CLR_SCREEN);
             andypolis.mostrar_andypolis();
             break;
         
         case CONSULTAR_COORDENADA: 
-            if(system(CLR_SCREEN));
+            system(CLR_SCREEN);
             estado = consultar_coordenada(andypolis);
             break;
 
         case MOSTRAR_INVENTARIO:
-            if(system(CLR_SCREEN));
+            system(CLR_SCREEN);
             andypolis.mostrar_inventario();
             break;
 
         case RECOLETAR_RECURSOS_PRODUCIDOS:
-            if(system(CLR_SCREEN));
+            system(CLR_SCREEN);
             estado = andypolis.recolectar_materiales();
             break;
 
         case LLUVIA_RECURSOS:
-            if(system(CLR_SCREEN));
+            system(CLR_SCREEN);
             estado = lluvia_de_recursos(andypolis);
             break;
 
         case GUARDAR_SALIR:
-            if(system(CLR_SCREEN));
+            system(CLR_SCREEN);
             cout << endl << TAB << NEGRITA << FONDO_COLOR_AZUL << MSJ_DESPEDIDA << FIN_DE_FORMATO <<endl;
             cout << endl << endl;
             break;

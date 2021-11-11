@@ -116,7 +116,7 @@ Datos_edificio* Parser::procesar_entrada_edificio(){
     nuevos_datos -> costo_metal = costo_metal();
     nuevos_datos -> cantidad_construidos = 0;
     nuevos_datos -> maximos_permitidos = cantidad_maxima_permitida();
-    // ya carga la lista como vacia cuadno se declara en la linea del ppio
+    // ya carga la lista como vacia cuadno se declara en la linea del principio
 
     return nuevos_datos;
 
@@ -127,7 +127,7 @@ Datos_edificio* Parser::procesar_entrada_edificio(){
 string Parser::obtener_identificador_edificio(){
 
     string identificador;
-    locale loc; // mmmmmmm
+    locale loc;
 
     identificador = toupper(this->entrada[0][POS_PRIMERA_LETRA],loc);
 

@@ -40,7 +40,7 @@ bool contiene_letras(string s){
     if(!N) // string vacia
         validez = false; // si N == 0 ni va a entrar al for()
 
-    for (int i = 0 ; i < N ; i++) { // && validez = true ?
+    for (int i = 0 ; i < N ; i++) {
     	c = str[i];
         if (isdigit(c) == 0) validez = false;
     }

@@ -13,7 +13,7 @@ const string PATH_ENTRADA_MAPA = "Archivos/mapa.txt";
 
 
 int main (void){
-	if(system(CLR_SCREEN));
+	system(CLR_SCREEN);
 	
     // Abro archivos de lectura
 	ifstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES);
