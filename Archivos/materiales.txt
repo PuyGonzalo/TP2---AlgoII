@@ -1,3 +1,3 @@
-madera 5307.5
-metal 1492
-piedra 1750
+madera 5305
+metal 1442
+piedra 1830

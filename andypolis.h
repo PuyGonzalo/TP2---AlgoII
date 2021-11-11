@@ -25,7 +25,6 @@ class Andypolis{
 
 private:
     // Atributos
-    //Casilleroptr** mapa;
     Mapa mapa;
     Lista<Datos_edificio*> catalogo;
     Inventario inventario;

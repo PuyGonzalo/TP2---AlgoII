@@ -35,7 +35,7 @@ public:
 
     // pre: -
     // pos: DESTRUCTOR de casillero
-    virtual ~Casillero(); // Destructor
+    virtual ~Casillero();
 
     // pre: -
     // pos: devuelve la coordenada x del casillero

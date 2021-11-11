@@ -75,7 +75,6 @@ Mapa::~Mapa(){
 
     for(int i = 0 ; i < casilleros_transitables_disponibles.obtener_cantidad() ; ++i){
         delete casilleros_transitables_disponibles.consulta(i);
-        // casilleros_transitables_disponibles.consulta(i) == nullptr;
     }
 
     delete [] mapa;
@@ -227,7 +226,9 @@ void Mapa::mostrar_mapa(){
         cout << endl;
     }
 
-/* Para mejor visualizacion del mapa es posible descomentar el siguiente codigo:
+ // Para mejor visualizacion del mapa es posible descomentar el siguiente codigo:
+ 
+/*
     string retorno;
     cout << endl;
     cout << "Ingrese cualquier cosa para volver" << endl;

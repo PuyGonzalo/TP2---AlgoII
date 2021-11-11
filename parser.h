@@ -44,84 +44,84 @@ private:
 public:
     // Metodos
 
-    // pre:
-    // pos:
+    // pre: linea debe ser un string cuyo delimitador de campos sea un espacio
+    // pos: Constructor de parser a partir de un string
     Parser(string linea);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Destructor de parser
     ~Parser();
 
 
     // ### Para materiales ###
 
-    // pre:
-    // pos: 
+    // pre: Parser tiene que estar instanciado con una linea del tipo "materiales.txt"
+    // pos: Pide memoria para un material segun la linea que haya leido y devuelve un puntero a Material
     Material* procesar_entrada_material();
 
-    // pre:
-    // pos: 
+    // pre: Parser tiene que estar instanciado con una linea del tipo "materiales.txt"
+    // pos: Devuelve el tipo de material
     string tipo_material();
 
-    // pre:
-    // pos: 
+    // pre: Parser tiene que estar instanciado con una linea del tipo "materiales.txt"
+    // pos: Devuelve la cantidad de material
     double cantidad_material();
 
     // ### Para edificios ###
 
-    // pre:
-    // pos:
+    // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt"
+    // pos: Crea una estructura del tipo Datos_edificio
     Datos_edificio* procesar_entrada_edificio();
 
-    //PRE:
-    //POST:
+    // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt"
+    // pos: Devuelve la primer letra del nombre en mayuscula (identificador)
     string obtener_identificador_edificio();
 
-    // pre:
-    // pos:
+    // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt"
+    // pos: Devuelve el nombre del edificio
     string nombre_edificio();
 
-    // pre:
-    // pos:
+    // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt"
+    // pos: Devuelve el costo de piedra
     double costo_piedra();
 
-    // pre:
-    // pos:
+    // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt"
+    // pos: Devuelve el costo de madera
     double costo_madera();
 
-    // pre:
-    // pos:
+    // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt"
+    // pos: Devuelve el costo de metal
     double costo_metal();
 
-    // pre:
-    // pos:
+    // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt"
+    // pos: Devuelve la cantidad maxima permitida para construir
     int cantidad_maxima_permitida();
 
 
     // ### Para superficies ###
 
-    // pre:
-    // pos:
+    // pre: Parser tiene que estar instanciado con una linea del tipo "mapa.txt"
+    // pos: Pide memoria para un Edificio segun la linea que haya leido y devuelve un puntero a Edificio
     Edificio* procesar_entrada_ubicaciones();
 
-    // pre: 
-    // pos: 
+    // pre: Parser tiene que estar instanciado con una linea del tipo "mapa.txt"
+    // pos: Pide memoria para una Superficie segun la linea que haya leido y devuelve un puntero a Superficie
     Superficie* procesar_entrada_superficie();
 
-    // pre:
-    // pos:
+    // pre: Parser tiene que estar instanciado con una linea del tipo "mapa.txt"
+    // pos: Devuelve el identificador de la superficie
     char identificador_superficie();
 
-    // PRE:
-    // POST:
+    // pre: Parser tiene que estar instanciado con una linea del tipo "mapa.txt"
+    // pos: Devuelve el nombre del edificio
     string nombre_edificio_ubicaciones();
 
-    // PRE:
-    // POST:
+    // pre: Parser tiene que estar instanciado con una linea del tipo "mapa.txt"
+    // pos: Obtiene la coordenada X
     int obtener_coordenada_x();
 
-    // PRE:
-    // POST:
+    // pre: Parser tiene que estar instanciado con una linea del tipo "mapa.txt"
+    // pos: Obtiene la coordenada Y
     int obtener_coordenada_y();
 
 
